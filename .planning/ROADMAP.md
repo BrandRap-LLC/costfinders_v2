@@ -1,0 +1,169 @@
+# Roadmap: CostFinders
+
+## Overview
+
+Build the complete CostFinders UI — a price transparency and lead generation platform for medical spas. The journey progresses from foundational design system through consumer deal discovery, business lead management, and admin moderation tools. All features use mock data structured for Supabase integration by a separate team.
+
+## Domain Expertise
+
+None
+
+## Phases
+
+**Phase Numbering:**
+- Integer phases (1, 2, 3): Planned milestone work
+- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+
+Decimal phases appear between their surrounding integers in numeric order.
+
+- [ ] **Phase 1: Foundation** - Project setup, glassmorphic design system, mock data layer
+- [ ] **Phase 2: Location Discovery** - Location-first browsing with auto-detect and manual override
+- [ ] **Phase 3: Deal Browsing** - Anonymous deal cards, filters, and comparison experience
+- [ ] **Phase 4: Consumer Auth** - Account creation with email/SMS verification UI, business reveal
+- [ ] **Phase 5: Consumer Dashboard** - Favorites, claims, status tracking, deal alerts, profile
+- [ ] **Phase 6: Business Onboarding** - Claim existing profile and create new business flows
+- [ ] **Phase 7: Business Dashboard** - Deal management, lead inbox, messaging, analytics
+- [ ] **Phase 8: Admin Core** - Deal moderation, user management, content management
+- [ ] **Phase 9: Admin Platform** - Reporting, metrics, data management tools
+- [ ] **Phase 10: Monetization UI** - Tiers, subscription billing, sponsored placements, pricing settings
+
+## Phase Details
+
+### Phase 1: Foundation
+**Goal**: Establish project structure, glassmorphic design system, and mock data layer aligned with Supabase schema
+**Depends on**: Nothing (first phase)
+**Research**: Unlikely (established Next.js patterns, Tailwind v4 setup)
+**Plans**: TBD
+
+Plans:
+- [ ] 01-01: Project setup with Next.js 16, TypeScript, Tailwind v4, Phosphor icons
+- [ ] 01-02: Glassmorphic design system — tokens, base components (Button, Card, Input, etc.)
+- [ ] 01-03: Mock data layer — types, fixtures structured for Supabase schema
+
+### Phase 2: Location Discovery
+**Goal**: Location-first discovery with auto-detection and manual city/area selection
+**Depends on**: Phase 1
+**Research**: Unlikely (standard geolocation APIs, internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 02-01: Location detection service (browser geolocation, fallback to IP-based)
+- [ ] 02-02: Location selection UI — city picker, area filter, "near me" toggle
+
+### Phase 3: Deal Browsing
+**Goal**: Core deal discovery UX — browse, filter, compare anonymous deals
+**Depends on**: Phase 2
+**Research**: Unlikely (internal UI patterns, established filter/sort patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 03-01: Deal card component — anonymous display, pricing visible, business hidden
+- [ ] 03-02: Browse page with grid/list views, treatment type filters
+- [ ] 03-03: Advanced filters — price range, location radius, sort options
+- [ ] 03-04: Deal detail view — full pricing breakdown, treatment info, claim CTA
+
+### Phase 4: Consumer Auth
+**Goal**: Account creation flow with email/SMS verification UI, triggering business reveal
+**Depends on**: Phase 3
+**Research**: Likely (auth patterns, verification UI flows)
+**Research topics**: Supabase Auth UI patterns, SMS verification mock flows, session handling
+**Plans**: TBD
+
+Plans:
+- [ ] 04-01: Sign up / sign in forms with email + password
+- [ ] 04-02: Email verification UI flow (mock)
+- [ ] 04-03: SMS verification UI flow (mock phone number entry + code input)
+- [ ] 04-04: Business reveal on verification — show business details, claim CTA
+
+### Phase 5: Consumer Dashboard
+**Goal**: Consumer account features — favorites, claims, tracking, alerts, profile
+**Depends on**: Phase 4
+**Research**: Unlikely (internal CRUD patterns, dashboard UI)
+**Plans**: TBD
+
+Plans:
+- [ ] 05-01: Saved deals / favorites list
+- [ ] 05-02: Claim deal flow — preferred time request form
+- [ ] 05-03: Claim status tracking (Pending → Contacted → Booked → Completed)
+- [ ] 05-04: Deal alerts preferences (email/SMS toggles)
+- [ ] 05-05: User profile and settings page
+
+### Phase 6: Business Onboarding
+**Goal**: Business claim existing profile or create new business flows
+**Depends on**: Phase 1
+**Research**: Unlikely (form patterns, verification UI)
+**Plans**: TBD
+
+Plans:
+- [ ] 06-01: Find and claim existing business flow (search, verify ownership)
+- [ ] 06-02: Create new business flow (if not in system)
+- [ ] 06-03: Business verification UI (mock ownership confirmation)
+
+### Phase 7: Business Dashboard
+**Goal**: Business portal — deal management, leads, messaging, analytics, profile editing
+**Depends on**: Phase 6
+**Research**: Unlikely (dashboard patterns, messaging UI)
+**Plans**: TBD
+
+Plans:
+- [ ] 07-01: Business dashboard shell with navigation
+- [ ] 07-02: Deal management — create, edit, pause deals
+- [ ] 07-03: Lead inbox with claim details
+- [ ] 07-04: In-platform messaging with leads
+- [ ] 07-05: Performance analytics dashboard
+- [ ] 07-06: Business profile editing
+- [ ] 07-07: Scheduling integrations placeholder ("Coming Soon" UI)
+
+### Phase 8: Admin Core
+**Goal**: Admin moderation and management tools
+**Depends on**: Phase 5, Phase 7
+**Research**: Unlikely (admin dashboard patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 08-01: Admin dashboard shell with role-based navigation
+- [ ] 08-02: Deal moderation (approve, reject, request changes)
+- [ ] 08-03: User management (consumers and businesses)
+- [ ] 08-04: Content management (categories, locations, treatments)
+
+### Phase 9: Admin Platform
+**Goal**: Platform reporting, metrics, and data management
+**Depends on**: Phase 8
+**Research**: Unlikely (reporting UI, table patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 09-01: Platform reporting and metrics dashboard
+- [ ] 09-02: Data management tools UI
+
+### Phase 10: Monetization UI
+**Goal**: Business tier system, billing UI, sponsored placements, pricing configuration
+**Depends on**: Phase 7, Phase 9
+**Research**: Likely (Stripe-ready patterns, subscription UI)
+**Research topics**: Stripe Elements patterns (UI only), subscription tier UX, pricing tables
+**Plans**: TBD
+
+Plans:
+- [ ] 10-01: Business tier system UI (Unclaimed → Free → Paid)
+- [ ] 10-02: Subscription billing UI (Stripe-ready checkout, payment method management)
+- [ ] 10-03: Sponsored placements configuration
+- [ ] 10-04: Per-lead pricing settings
+- [ ] 10-05: Admin overrides for monetization settings
+
+## Progress
+
+**Execution Order:**
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Foundation | 0/3 | Not started | - |
+| 2. Location Discovery | 0/2 | Not started | - |
+| 3. Deal Browsing | 0/4 | Not started | - |
+| 4. Consumer Auth | 0/4 | Not started | - |
+| 5. Consumer Dashboard | 0/5 | Not started | - |
+| 6. Business Onboarding | 0/3 | Not started | - |
+| 7. Business Dashboard | 0/7 | Not started | - |
+| 8. Admin Core | 0/4 | Not started | - |
+| 9. Admin Platform | 0/2 | Not started | - |
+| 10. Monetization UI | 0/5 | Not started | - |
