@@ -7,12 +7,12 @@ import {
   MapPin,
   Star,
 } from '@phosphor-icons/react/dist/ssr'
-import { getAnonymousDealById } from '@/lib/mock-data'
+import { getAnonymousDealById, getDealById } from '@/lib/mock-data'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { BlurredImage } from '@/components/patterns/blurredImage'
 import { PricingBreakdown } from '@/components/features/pricingBreakdown'
-import { ClaimCTA } from '@/components/features/claimCTA'
+import { DealSidebar } from '@/components/features/dealSidebar'
 import type { TreatmentCategory } from '@/types'
 
 const categoryLabels: Record<TreatmentCategory, string> = {
@@ -31,8 +31,9 @@ interface DealDetailPageProps {
 export default async function DealDetailPage({ params }: DealDetailPageProps) {
   const { id } = await params
   const deal = getAnonymousDealById(id)
+  const fullDeal = getDealById(id)
 
-  if (!deal) {
+  if (!deal || !fullDeal) {
     notFound()
   }
 
@@ -137,8 +138,8 @@ export default async function DealDetailPage({ params }: DealDetailPageProps) {
             {/* Pricing Breakdown */}
             <PricingBreakdown deal={deal} />
 
-            {/* Claim CTA */}
-            <ClaimCTA dealId={deal.id} />
+            {/* Business Info / Auth Wall */}
+            <DealSidebar deal={fullDeal} />
 
             {/* Verified Badge */}
             {deal.businessTier === 'paid' && (
