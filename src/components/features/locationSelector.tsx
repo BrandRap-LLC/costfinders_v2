@@ -1,13 +1,9 @@
 'use client'
 
-import { useLocation } from '@/lib/context/locationContext'
-import { CityPicker } from '@/components/patterns/cityPicker'
+import { Crosshair, SpinnerGap, WarningCircle } from '@phosphor-icons/react'
 import { AreaFilter } from '@/components/patterns/areaFilter'
-import {
-  Crosshair,
-  SpinnerGap,
-  WarningCircle,
-} from '@phosphor-icons/react'
+import { CityPicker } from '@/components/patterns/cityPicker'
+import { useLocation } from '@/lib/context/locationContext'
 
 interface LocationSelectorProps {
   showAreaFilter?: boolean

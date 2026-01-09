@@ -1,4 +1,8 @@
-export type VerificationStatus = 'unverified' | 'email_verified' | 'phone_verified' | 'fully_verified'
+export type VerificationStatus =
+  | 'unverified'
+  | 'email_verified'
+  | 'phone_verified'
+  | 'fully_verified'
 
 export interface Consumer {
   id: string

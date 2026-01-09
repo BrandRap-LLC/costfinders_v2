@@ -1,38 +1,39 @@
 // Raw data exports
-export { deals, toAnonymousDeal } from './deals'
+
 export { businesses } from './businesses'
+export { claims, consumers } from './consumers'
+export { deals, toAnonymousDeal } from './deals'
 export { cities, locationAreas } from './locations'
-export { consumers, claims } from './consumers'
 
 // Query utilities
 export {
+  DEFAULT_CITY,
+  type DealFilters,
+  // Filtering & Sorting
+  filterDeals,
+  findNearestCity,
+  // Locations
+  getActiveCities,
   // Deals
   getActiveDeals,
+  getAnonymousDealById,
+  getAreasForCity,
+  // Businesses
+  getBusinessById,
+  getBusinessForDeal,
+  getCityById,
+  getCityByName,
+  getClaimById,
+  // Claims
+  getClaimsByConsumer,
+  getClaimsByStatus,
+  // Consumers
+  getConsumerById,
+  getDealById,
   getDealsByCategory,
   getDealsByCity,
   getFeaturedDeals,
   getSponsoredDeals,
-  getDealById,
-  getAnonymousDealById,
-  // Businesses
-  getBusinessById,
-  getBusinessForDeal,
-  // Locations
-  getActiveCities,
-  getAreasForCity,
-  getCityByName,
-  getCityById,
-  findNearestCity,
-  DEFAULT_CITY,
-  // Consumers
-  getConsumerById,
-  // Claims
-  getClaimsByConsumer,
-  getClaimsByStatus,
-  getClaimById,
-  // Filtering & Sorting
-  filterDeals,
-  sortDeals,
-  type DealFilters,
   type SortOption,
+  sortDeals,
 } from './utils'

@@ -1,5 +1,5 @@
-export * from './deal'
 export * from './business'
-export * from './consumer'
 export * from './claim'
+export * from './consumer'
+export * from './deal'
 export * from './location'

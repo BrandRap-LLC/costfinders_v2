@@ -7,9 +7,12 @@ import {
   Globe,
   Star,
   CheckCircle,
+  Clock,
 } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { ClaimDealModal } from '@/components/features/claimDealModal'
+import { useClaims } from '@/lib/context/claimsContext'
 import type { Business, Deal } from '@/types'
 
 interface BusinessInfoProps {
@@ -17,16 +20,18 @@ interface BusinessInfoProps {
   deal: Deal
 }
 
-export function BusinessInfo({ business, deal: _deal }: BusinessInfoProps) {
-  const [claiming, setClaiming] = useState(false)
+export function BusinessInfo({ business, deal }: BusinessInfoProps) {
+  const { getClaimByDealId } = useClaims()
+  const [isClaimModalOpen, setIsClaimModalOpen] = useState(false)
 
-  const handleClaim = () => {
-    setClaiming(true)
-    // Simulate a brief loading state, then show placeholder message
-    setTimeout(() => {
-      setClaiming(false)
-      alert('Claim flow coming in Phase 5')
-    }, 300)
+  const existingClaim = getClaimByDealId(deal.id)
+
+  const handleClaimClick = () => {
+    setIsClaimModalOpen(true)
+  }
+
+  const handleClaimClose = () => {
+    setIsClaimModalOpen(false)
   }
 
   return (
@@ -92,17 +97,56 @@ export function BusinessInfo({ business, deal: _deal }: BusinessInfoProps) {
           )}
         </div>
 
-        {/* Claim Button */}
-        <Button
-          size="lg"
-          className="w-full mt-2"
-          onClick={handleClaim}
-          disabled={claiming}
-          type="button"
-        >
-          {claiming ? 'Processing...' : 'Claim This Deal'}
-        </Button>
+        {/* Claim Button or Already Claimed State */}
+        {existingClaim ? (
+          <div className="mt-2 space-y-3">
+            <div className="p-3 bg-green-500/10 rounded-xl">
+              <div className="flex items-center gap-2">
+                <CheckCircle size={20} weight="fill" className="text-green-500" />
+                <span className="text-sm font-medium text-green-500">
+                  Deal Claimed
+                </span>
+              </div>
+            </div>
+            <div className="p-3 bg-bg-tertiary rounded-xl">
+              <div className="flex items-center gap-2 text-sm">
+                <Clock size={16} weight="regular" className="text-text-muted" />
+                <span className="text-text-secondary">
+                  Status:{' '}
+                  <span className="text-text-primary capitalize">
+                    {existingClaim.status}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <Button
+              variant="secondary"
+              size="md"
+              className="w-full"
+              onClick={() => (window.location.href = '/dashboard/claims')}
+            >
+              View My Claims
+            </Button>
+          </div>
+        ) : (
+          <Button
+            size="lg"
+            className="w-full mt-2"
+            onClick={handleClaimClick}
+            type="button"
+          >
+            Claim This Deal
+          </Button>
+        )}
       </div>
+
+      <ClaimDealModal
+        isOpen={isClaimModalOpen}
+        onClose={handleClaimClose}
+        dealId={deal.id}
+        businessId={business.id}
+        dealTitle={deal.title}
+      />
     </Card>
   )
 }

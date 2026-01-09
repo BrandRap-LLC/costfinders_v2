@@ -1,6 +1,12 @@
 import type { ReactNode } from 'react'
 
-type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info' | 'brand'
+type BadgeVariant =
+  | 'default'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
+  | 'brand'
 type BadgeSize = 'sm' | 'md'
 
 interface BadgeProps {

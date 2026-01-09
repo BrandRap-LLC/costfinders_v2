@@ -174,7 +174,7 @@ export const locationAreas: LocationArea[] = [
     cityId: 'city-new-york',
     name: 'SoHo',
     latitude: 40.7233,
-    longitude: -74.0030,
+    longitude: -74.003,
     radiusMiles: 2,
   },
   // Miami areas

@@ -1,4 +1,10 @@
-export type TreatmentCategory = 'botox' | 'fillers' | 'facials' | 'laser' | 'body' | 'skincare'
+export type TreatmentCategory =
+  | 'botox'
+  | 'fillers'
+  | 'facials'
+  | 'laser'
+  | 'body'
+  | 'skincare'
 
 export interface Deal {
   id: string

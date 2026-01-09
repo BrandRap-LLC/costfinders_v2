@@ -3,13 +3,20 @@
  *
  * Programmatic access to CSS custom properties for the glassmorphic design system.
  * These reference CSS variables defined in globals.css.
+ *
+ * Theme: Blue slate with pink/magenta accent
+ * Shadows: Grounded product-photography style
  */
 
 export const colors = {
   bg: {
-    primary: 'var(--color-bg-primary)',
-    secondary: 'var(--color-bg-secondary)',
-    tertiary: 'var(--color-bg-tertiary)',
+    primary: 'var(--color-bg-primary)', // #4c5578 (blue slate)
+    secondary: 'var(--color-bg-secondary)', // #3d4563
+    tertiary: 'var(--color-bg-tertiary)', // #2a2d3a
+  },
+  surface: {
+    light: 'var(--color-surface-light)', // #e2e8f0
+    medium: 'var(--color-surface-medium)', // #94a3b8
   },
   glass: {
     bg: 'var(--color-glass-bg)',
@@ -18,15 +25,15 @@ export const colors = {
     borderHover: 'var(--color-glass-border-hover)',
   },
   text: {
-    primary: 'var(--color-text-primary)',
-    secondary: 'var(--color-text-secondary)',
-    tertiary: 'var(--color-text-tertiary)',
-    muted: 'var(--color-text-muted)',
+    primary: 'var(--color-text-primary)', // #e2e8f0
+    secondary: 'var(--color-text-secondary)', // #94a3b8
+    tertiary: 'var(--color-text-tertiary)', // #8b92a6
+    muted: 'var(--color-text-muted)', // #4c5578
   },
   brand: {
-    primary: 'var(--color-brand-primary)',
-    secondary: 'var(--color-brand-secondary)',
-    tertiary: 'var(--color-brand-tertiary)',
+    primary: 'var(--color-brand-primary)', // #ff0080 (pink)
+    secondary: 'var(--color-brand-secondary)', // #ff4081
+    tertiary: 'var(--color-brand-tertiary)', // #ff6b9d
   },
   semantic: {
     success: 'var(--color-success)',
@@ -37,11 +44,16 @@ export const colors = {
 } as const
 
 export const shadows = {
+  // Standard shadows
   sm: 'var(--shadow-sm)',
   md: 'var(--shadow-md)',
   lg: 'var(--shadow-lg)',
   glass: 'var(--shadow-glass)',
   elevated: 'var(--shadow-elevated)',
+  // Product photography shadows (grounded, overhead light)
+  productOverhead: 'var(--shadow-product-overhead)',
+  photographicGround: 'var(--shadow-photographic-ground)',
+  naturalBottom: 'var(--shadow-natural-bottom)',
 } as const
 
 export const blur = {

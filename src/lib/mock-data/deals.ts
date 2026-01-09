@@ -18,7 +18,8 @@ export const deals: Deal[] = [
     maxUnits: 60,
     validFrom: '2024-01-01T00:00:00Z',
     validUntil: '2024-12-31T23:59:59Z',
-    termsAndConditions: 'New clients only. Cannot be combined with other offers.',
+    termsAndConditions:
+      'New clients only. Cannot be combined with other offers.',
     isActive: true,
     isFeatured: false,
     isSponsored: false,
@@ -152,8 +153,7 @@ export const deals: Deal[] = [
     unit: 'per session',
     validFrom: '2024-01-01T00:00:00Z',
     validUntil: '2024-12-31T23:59:59Z',
-    termsAndConditions:
-      'Package of 6 sessions recommended. Price per session.',
+    termsAndConditions: 'Package of 6 sessions recommended. Price per session.',
     isActive: true,
     isFeatured: false,
     isSponsored: false,
@@ -263,8 +263,7 @@ export const deals: Deal[] = [
     unit: 'per session',
     validFrom: '2024-01-01T00:00:00Z',
     validUntil: '2024-12-31T23:59:59Z',
-    termsAndConditions:
-      'Requires 1 week downtime. Consultation required.',
+    termsAndConditions: 'Requires 1 week downtime. Consultation required.',
     isActive: true,
     isFeatured: false,
     isSponsored: false,
