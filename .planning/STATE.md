@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-09)
 
 **Core value:** Deal discovery UX that makes finding and comparing medspa pricing effortless
-**Current focus:** Phase 6 — Business Onboarding (Next)
+**Current focus:** Phase 6 — Business Onboarding
 
 ## Current Position
 
-Phase: 5 of 10 (Consumer Dashboard) - COMPLETE
-Plan: 5 of 5 in current phase
-Status: Phase complete
-Last activity: 2026-01-09 — Completed 05-05-PLAN.md (Profile & Settings)
+Phase: 6 of 10 (Business Onboarding)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-01-09 — Completed 06-01-PLAN.md (Business Auth & Search)
 
-Progress: ██████████████████████████████████████████████████░░░░░░░░░░ 50%
+Progress: ███████████████████████████████████████████████████████░░░░░ 55%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
-- Average duration: 8.4 min
-- Total execution time: 2.5 hours
+- Total plans completed: 19
+- Average duration: 8.2 min
+- Total execution time: 2.6 hours
 
 **By Phase:**
 
@@ -33,10 +33,11 @@ Progress: ███████████████████████�
 | 3.1 Image Blur | 1/1 | 4 min | 4 min |
 | 4. Consumer Auth | 5/5 | 55 min | 11 min |
 | 5. Consumer Dashboard | 5/5 | 67 min | 13 min |
+| 6. Business Onboarding | 1/3 | 5 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-05 (25 min), 05-03 (15 min), 05-04 (10 min), 05-05 (5 min)
-- Trend: Phase 5 complete - consumer dashboard features done
+- Last 5 plans: 05-03 (15 min), 05-04 (10 min), 05-05 (5 min), 06-01 (5 min)
+- Trend: Phase 6 started - business onboarding underway
 
 ## Accumulated Context
 
@@ -101,6 +102,10 @@ Recent decisions affecting current work:
 | 05-05 | SMS toggle disabled without phone | Prevents confusion when phone not verified |
 | 05-05 | Email field read-only in profile | Identity field shouldn't change in profile settings |
 | 05-05 | updateProfile/updateAlertPreferences in AuthContext | Centralized state updates with timestamp tracking |
+| 06-01 | BusinessAuthContext mirrors AuthContext | Consistent pattern for business auth flow |
+| 06-01 | BusinessOwner separate from Consumer | Different fields/status, separate type |
+| 06-01 | Debounced search (300ms) | Responsive filtering without excessive re-renders |
+| 06-01 | Tier badges for businesses | Unclaimed/Free/Premium distinguish claim status |
 
 ### Deferred Issues
 
@@ -113,5 +118,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-09
-Stopped at: Completed 05-05-PLAN.md (Profile & Settings) - Phase 5 COMPLETE
+Stopped at: Completed 06-01-PLAN.md (Business Auth & Search)
 Resume file: None
