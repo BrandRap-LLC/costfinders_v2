@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-01-09)
 ## Current Position
 
 Phase: 5 of 10 (Consumer Dashboard)
-Plan: 2 of 5 in current phase
+Plan: 3 of 5 in current phase
 Status: In progress
-Last activity: 2026-01-09 — Completed 04-05-PLAN.md (Business reveal on verification)
+Last activity: 2026-01-09 — Completed 05-03-PLAN.md (Claim deal flow)
 
-Progress: ███████████████████████████████████████░░░░░░░░░░░░░░░░░░░░ 41%
+Progress: ███████████████████████████████████████████░░░░░░░░░░░░░░░░ 44%
 
 ## Performance Metrics
 
@@ -32,11 +32,11 @@ Progress: ███████████████████████�
 | 3. Deal Browsing | 4/4 | 20 min | 5 min |
 | 3.1 Image Blur | 1/1 | 4 min | 4 min |
 | 4. Consumer Auth | 5/5 | 55 min | 11 min |
-| 5. Consumer Dashboard | 2/5 | 37 min | 19 min |
+| 5. Consumer Dashboard | 3/5 | 52 min | 17 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-04 (8 min), 05-01 (25 min), 05-02 (12 min), 04-05 (25 min)
-- Trend: 04-05 integration with concurrent Phase 5 work
+- Last 5 plans: 05-01 (25 min), 05-02 (12 min), 04-05 (25 min), 05-03 (15 min)
+- Trend: Steady progress through dashboard features
 
 ## Accumulated Context
 
@@ -91,6 +91,9 @@ Recent decisions affecting current work:
 | 04-05 | DealSidebar client component wrapper | Handles auth state in Server Component page |
 | 04-05 | Verification check any verified status | email_verified, phone_verified, or fully_verified all grant access |
 | 04-05 | Reuse getBusinessForDeal utility | Already existed in utils.ts, no duplication needed |
+| 05-03 | Claims in localStorage, not Consumer type | UI-only build, no mock data mutations needed |
+| 05-03 | 7-day claim expiration | Built into createClaim method for auto-expire logic |
+| 05-03 | ClaimDealModal outside Card wrapper | Fragment wrapper ensures proper overlay positioning |
 
 ### Deferred Issues
 
@@ -103,5 +106,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-09
-Stopped at: Completed 04-05-PLAN.md (Business reveal) - Phase 4 COMPLETE, Phase 5 in progress
+Stopped at: Completed 05-03-PLAN.md (Claim deal flow) - 3/5 plans in Phase 5
 Resume file: None
