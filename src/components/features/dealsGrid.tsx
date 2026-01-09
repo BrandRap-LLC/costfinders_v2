@@ -2,9 +2,9 @@
 
 import { List, MagnifyingGlass, SquaresFour } from '@phosphor-icons/react'
 import { useState } from 'react'
+import type { AnonymousDeal } from '@/types'
 import { DealCard } from './dealCard'
 import { DealCardSkeleton } from './dealCardSkeleton'
-import type { AnonymousDeal } from '@/types'
 
 interface DealsGridProps {
   deals: AnonymousDeal[]
@@ -24,6 +24,7 @@ function ViewModeToggle({ viewMode, onChange, disabled }: ViewModeToggleProps) {
   return (
     <div className="flex items-center gap-1 p-1 bg-glass-bg rounded-lg border border-glass-border">
       <button
+        type="button"
         onClick={() => onChange('grid')}
         disabled={disabled}
         className={`
@@ -38,9 +39,13 @@ function ViewModeToggle({ viewMode, onChange, disabled }: ViewModeToggleProps) {
         aria-label="Grid view"
         aria-pressed={viewMode === 'grid'}
       >
-        <SquaresFour size={18} weight={viewMode === 'grid' ? 'fill' : 'regular'} />
+        <SquaresFour
+          size={18}
+          weight={viewMode === 'grid' ? 'fill' : 'regular'}
+        />
       </button>
       <button
+        type="button"
         onClick={() => onChange('list')}
         disabled={disabled}
         className={`
@@ -61,7 +66,11 @@ function ViewModeToggle({ viewMode, onChange, disabled }: ViewModeToggleProps) {
   )
 }
 
-export function DealsGrid({ deals, isLoading = false, onDealClick }: DealsGridProps) {
+export function DealsGrid({
+  deals,
+  isLoading = false,
+  onDealClick,
+}: DealsGridProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
 
   // Loading state
@@ -78,8 +87,15 @@ export function DealsGrid({ deals, isLoading = false, onDealClick }: DealsGridPr
               : 'flex flex-col gap-4'
           }
         >
-          {Array.from({ length: 6 }).map((_, i) => (
-            <DealCardSkeleton key={i} variant={viewMode} />
+          {[
+            'skeleton-1',
+            'skeleton-2',
+            'skeleton-3',
+            'skeleton-4',
+            'skeleton-5',
+            'skeleton-6',
+          ].map((id) => (
+            <DealCardSkeleton key={id} variant={viewMode} />
           ))}
         </div>
       </div>
@@ -95,13 +111,18 @@ export function DealsGrid({ deals, isLoading = false, onDealClick }: DealsGridPr
         </div>
         <div className="flex flex-col items-center justify-center py-16">
           <div className="w-16 h-16 rounded-full bg-glass-bg border border-glass-border flex items-center justify-center mb-4">
-            <MagnifyingGlass size={32} weight="light" className="text-text-tertiary" />
+            <MagnifyingGlass
+              size={32}
+              weight="light"
+              className="text-text-tertiary"
+            />
           </div>
           <h3 className="text-lg font-semibold text-text-primary mb-2">
             No deals found
           </h3>
           <p className="text-text-secondary text-center max-w-md">
-            Try adjusting your filters or location to see more deals in your area.
+            Try adjusting your filters or location to see more deals in your
+            area.
           </p>
         </div>
       </div>

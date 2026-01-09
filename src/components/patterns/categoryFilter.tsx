@@ -11,7 +11,10 @@ interface CategoryFilterProps {
 interface CategoryOption {
   value: TreatmentCategory | 'all'
   label: string
-  icon: React.ComponentType<{ size?: number; weight?: 'regular' | 'fill' }> | null
+  icon: React.ComponentType<{
+    size?: number
+    weight?: 'regular' | 'fill'
+  }> | null
 }
 
 const categories: CategoryOption[] = [
@@ -31,6 +34,7 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps) {
 
         return (
           <button
+            type="button"
             key={category.value}
             onClick={() => onChange(category.value)}
             className={`
