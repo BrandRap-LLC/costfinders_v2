@@ -76,6 +76,69 @@ export function getCityByName(name: string): City | undefined {
   return cities.find((c) => c.name.toLowerCase() === name.toLowerCase())
 }
 
+export function getCityById(id: string): City | undefined {
+  return cities.find((c) => c.id === id)
+}
+
+/**
+ * Calculate distance between two coordinates using Haversine formula
+ * Returns distance in miles
+ */
+function haversineDistance(
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number
+): number {
+  const R = 3959 // Earth's radius in miles
+  const dLat = ((lat2 - lat1) * Math.PI) / 180
+  const dLon = ((lon2 - lon1) * Math.PI) / 180
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2)
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  return R * c
+}
+
+/**
+ * Find the nearest active city to given coordinates
+ * Returns the first active city as fallback if no cities exist
+ */
+export function findNearestCity(lat: number, lng: number): City {
+  const activeCities = getActiveCities()
+  if (activeCities.length === 0) {
+    return cities[0] // Fallback to first city even if inactive
+  }
+
+  let nearestCity = activeCities[0]
+  let minDistance = haversineDistance(
+    lat,
+    lng,
+    nearestCity.latitude,
+    nearestCity.longitude
+  )
+
+  for (let i = 1; i < activeCities.length; i++) {
+    const city = activeCities[i]
+    const distance = haversineDistance(lat, lng, city.latitude, city.longitude)
+    if (distance < minDistance) {
+      minDistance = distance
+      nearestCity = city
+    }
+  }
+
+  return nearestCity
+}
+
+/**
+ * Default city to use when no location is available
+ * Returns the first active city
+ */
+export const DEFAULT_CITY: City = cities.find((c) => c.isActive) || cities[0]
+
 // Consumer queries
 export function getConsumerById(id: string) {
   return consumers.find((c) => c.id === id)

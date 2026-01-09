@@ -21,6 +21,9 @@ export {
   getActiveCities,
   getAreasForCity,
   getCityByName,
+  getCityById,
+  findNearestCity,
+  DEFAULT_CITY,
   // Consumers
   getConsumerById,
   // Claims

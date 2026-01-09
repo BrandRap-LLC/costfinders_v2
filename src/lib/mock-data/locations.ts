@@ -1,6 +1,7 @@
 import type { City, LocationArea } from '@/types'
 
 export const cities: City[] = [
+  // Texas cities
   {
     id: 'city-austin',
     name: 'Austin',
@@ -29,6 +30,39 @@ export const cities: City[] = [
     latitude: 29.7604,
     longitude: -95.3698,
     timezone: 'America/Chicago',
+    isActive: true,
+  },
+  // California
+  {
+    id: 'city-los-angeles',
+    name: 'Los Angeles',
+    state: 'California',
+    stateCode: 'CA',
+    latitude: 34.0522,
+    longitude: -118.2437,
+    timezone: 'America/Los_Angeles',
+    isActive: true,
+  },
+  // New York
+  {
+    id: 'city-new-york',
+    name: 'New York',
+    state: 'New York',
+    stateCode: 'NY',
+    latitude: 40.7128,
+    longitude: -74.006,
+    timezone: 'America/New_York',
+    isActive: true,
+  },
+  // Florida
+  {
+    id: 'city-miami',
+    name: 'Miami',
+    state: 'Florida',
+    stateCode: 'FL',
+    latitude: 25.7617,
+    longitude: -80.1918,
+    timezone: 'America/New_York',
     isActive: true,
   },
 ]
@@ -91,6 +125,81 @@ export const locationAreas: LocationArea[] = [
     name: 'Galleria Area',
     latitude: 29.7383,
     longitude: -95.4616,
+    radiusMiles: 4,
+  },
+  // Los Angeles areas
+  {
+    id: 'area-la-beverly-hills',
+    cityId: 'city-los-angeles',
+    name: 'Beverly Hills',
+    latitude: 34.0736,
+    longitude: -118.4004,
+    radiusMiles: 3,
+  },
+  {
+    id: 'area-la-santa-monica',
+    cityId: 'city-los-angeles',
+    name: 'Santa Monica',
+    latitude: 34.0195,
+    longitude: -118.4912,
+    radiusMiles: 4,
+  },
+  {
+    id: 'area-la-west-hollywood',
+    cityId: 'city-los-angeles',
+    name: 'West Hollywood',
+    latitude: 34.0901,
+    longitude: -118.3617,
+    radiusMiles: 3,
+  },
+  // New York areas
+  {
+    id: 'area-ny-manhattan',
+    cityId: 'city-new-york',
+    name: 'Manhattan',
+    latitude: 40.7831,
+    longitude: -73.9712,
+    radiusMiles: 5,
+  },
+  {
+    id: 'area-ny-upper-east-side',
+    cityId: 'city-new-york',
+    name: 'Upper East Side',
+    latitude: 40.7736,
+    longitude: -73.9566,
+    radiusMiles: 2,
+  },
+  {
+    id: 'area-ny-soho',
+    cityId: 'city-new-york',
+    name: 'SoHo',
+    latitude: 40.7233,
+    longitude: -74.0030,
+    radiusMiles: 2,
+  },
+  // Miami areas
+  {
+    id: 'area-miami-south-beach',
+    cityId: 'city-miami',
+    name: 'South Beach',
+    latitude: 25.7826,
+    longitude: -80.1341,
+    radiusMiles: 3,
+  },
+  {
+    id: 'area-miami-brickell',
+    cityId: 'city-miami',
+    name: 'Brickell',
+    latitude: 25.7617,
+    longitude: -80.1918,
+    radiusMiles: 2,
+  },
+  {
+    id: 'area-miami-coral-gables',
+    cityId: 'city-miami',
+    name: 'Coral Gables',
+    latitude: 25.7215,
+    longitude: -80.2684,
     radiusMiles: 4,
   },
 ]

@@ -25,3 +25,16 @@ export interface UserLocation {
   longitude: number
   source: 'geolocation' | 'ip' | 'manual'
 }
+
+export interface LocationState {
+  current: {
+    type: 'detected' | 'selected' | 'default'
+    city: City | null
+    area: LocationArea | null
+    coordinates: { latitude: number; longitude: number } | null
+    accuracy: number | null
+  }
+  isLoading: boolean
+  error: string | null
+  hasPermission: boolean | null
+}
