@@ -16,7 +16,7 @@ None
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Project setup, glassmorphic design system, mock data layer
+- [x] **Phase 1: Foundation** - Project setup, glassmorphic design system, mock data layer ✓
 - [ ] **Phase 2: Location Discovery** - Location-first browsing with auto-detect and manual override
 - [ ] **Phase 3: Deal Browsing** - Anonymous deal cards, filters, and comparison experience
 - [ ] **Phase 4: Consumer Auth** - Account creation with email/SMS verification UI, business reveal
@@ -33,12 +33,12 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Goal**: Establish project structure, glassmorphic design system, and mock data layer aligned with Supabase schema
 **Depends on**: Nothing (first phase)
 **Research**: Unlikely (established Next.js patterns, Tailwind v4 setup)
-**Plans**: TBD
+**Status**: Complete
 
 Plans:
 - [x] 01-01: Project setup with Next.js 16, TypeScript, Tailwind v4, Phosphor icons ✓
 - [x] 01-02: Glassmorphic design system — tokens, base components (Button, Card, Input, etc.) ✓
-- [ ] 01-03: Mock data layer — types, fixtures structured for Supabase schema
+- [x] 01-03: Mock data layer — types, fixtures structured for Supabase schema ✓
 
 ### Phase 2: Location Discovery
 **Goal**: Location-first discovery with auto-detection and manual city/area selection
@@ -157,7 +157,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In progress | - |
+| 1. Foundation | 3/3 | Complete | 2026-01-09 |
 | 2. Location Discovery | 0/2 | Not started | - |
 | 3. Deal Browsing | 0/4 | Not started | - |
 | 4. Consumer Auth | 0/4 | Not started | - |
