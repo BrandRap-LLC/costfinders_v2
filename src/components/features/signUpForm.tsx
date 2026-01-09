@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 import { useAuth } from '@/lib/context/authContext'
 
 interface SignUpFormProps {
-  onSuccess?: () => void
+  onSuccess?: (email: string) => void
   onSwitchToSignIn?: () => void
 }
 
@@ -73,7 +73,7 @@ export function SignUpForm({ onSuccess, onSwitchToSignIn }: SignUpFormProps) {
         firstName || undefined,
         lastName || undefined,
       )
-      onSuccess?.()
+      onSuccess?.(email)
     } catch {
       // Error is handled by context and displayed via state.error
     } finally {

@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { EnvelopeSimple } from '@phosphor-icons/react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/lib/context/authContext'
@@ -64,7 +64,11 @@ export function EmailVerification({
         {/* Icon */}
         <div className="flex justify-center">
           <div className="w-16 h-16 rounded-full bg-brand-primary/20 flex items-center justify-center">
-            <EnvelopeSimple size={32} weight="light" className="text-brand-primary" />
+            <EnvelopeSimple
+              size={32}
+              weight="light"
+              className="text-brand-primary"
+            />
           </div>
         </div>
 
@@ -144,7 +148,11 @@ export function EmailVerification({
       {/* Icon */}
       <div className="flex justify-center">
         <div className="w-16 h-16 rounded-full bg-brand-primary/20 flex items-center justify-center">
-          <EnvelopeSimple size={32} weight="light" className="text-brand-primary" />
+          <EnvelopeSimple
+            size={32}
+            weight="light"
+            className="text-brand-primary"
+          />
         </div>
       </div>
 
@@ -160,11 +168,7 @@ export function EmailVerification({
       </div>
 
       {/* Open Email Button */}
-      <Button
-        onClick={handleOpenEmailApp}
-        className="w-full"
-        size="lg"
-      >
+      <Button onClick={handleOpenEmailApp} className="w-full" size="lg">
         Open Email App
       </Button>
 
