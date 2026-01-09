@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-09)
 
 **Core value:** Deal discovery UX that makes finding and comparing medspa pricing effortless
-**Current focus:** Phase 5 — Consumer Dashboard (Next)
+**Current focus:** Phase 6 — Business Onboarding (Next)
 
 ## Current Position
 
-Phase: 5 of 10 (Consumer Dashboard)
-Plan: 4 of 5 in current phase
-Status: In progress
-Last activity: 2026-01-09 — Completed 05-04-PLAN.md (Claim status tracking)
+Phase: 5 of 10 (Consumer Dashboard) - COMPLETE
+Plan: 5 of 5 in current phase
+Status: Phase complete
+Last activity: 2026-01-09 — Completed 05-05-PLAN.md (Profile & Settings)
 
-Progress: █████████████████████████████████████████████░░░░░░░░░░░░░░ 46%
+Progress: ██████████████████████████████████████████████████░░░░░░░░░░ 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
-- Average duration: 8.5 min
-- Total execution time: 2.4 hours
+- Total plans completed: 18
+- Average duration: 8.4 min
+- Total execution time: 2.5 hours
 
 **By Phase:**
 
@@ -32,11 +32,11 @@ Progress: ███████████████████████�
 | 3. Deal Browsing | 4/4 | 20 min | 5 min |
 | 3.1 Image Blur | 1/1 | 4 min | 4 min |
 | 4. Consumer Auth | 5/5 | 55 min | 11 min |
-| 5. Consumer Dashboard | 4/5 | 62 min | 16 min |
+| 5. Consumer Dashboard | 5/5 | 67 min | 13 min |
 
 **Recent Trend:**
-- Last 5 plans: 05-02 (12 min), 04-05 (25 min), 05-03 (15 min), 05-04 (10 min)
-- Trend: Rapid dashboard feature completion
+- Last 5 plans: 04-05 (25 min), 05-03 (15 min), 05-04 (10 min), 05-05 (5 min)
+- Trend: Phase 5 complete - consumer dashboard features done
 
 ## Accumulated Context
 
@@ -97,6 +97,10 @@ Recent decisions affecting current work:
 | 05-04 | ClaimStatusBadge uses Badge variants | Maps status to success/warning/error/info/default |
 | 05-04 | Merge localStorage + mock claims | Dedupe by ID, prioritize localStorage as newer |
 | 05-04 | Filter tabs with counts | Dynamic count badges for All, Active, Completed, Cancelled |
+| 05-05 | Auto-save alert preferences | Better UX, no explicit save button needed |
+| 05-05 | SMS toggle disabled without phone | Prevents confusion when phone not verified |
+| 05-05 | Email field read-only in profile | Identity field shouldn't change in profile settings |
+| 05-05 | updateProfile/updateAlertPreferences in AuthContext | Centralized state updates with timestamp tracking |
 
 ### Deferred Issues
 
@@ -109,5 +113,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-09
-Stopped at: Completed 05-04-PLAN.md (Claim status tracking) - 4/5 plans in Phase 5
+Stopped at: Completed 05-05-PLAN.md (Profile & Settings) - Phase 5 COMPLETE
 Resume file: None

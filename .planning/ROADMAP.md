@@ -20,9 +20,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Location Discovery** - Location-first browsing with auto-detect and manual override ✓
 - [x] **Phase 3: Deal Browsing** - Anonymous deal cards, filters, and comparison experience ✓
 - [x] **Phase 3.1: Image Blur** - INSERTED: Heavy blur + lock icon on deal images for anonymous users ✓
-- [x] **Phase 4: Consumer Auth** - Account creation with email/SMS verification UI, business reveal
-- [ ] **Phase 5: Consumer Dashboard** - Favorites, claims, status tracking, deal alerts, profile (In progress)
-- [ ] **Phase 6: Business Onboarding** - Claim existing profile and create new business flows
+- [x] **Phase 4: Consumer Auth** - Account creation with email/SMS verification UI, business reveal ✓
+- [x] **Phase 5: Consumer Dashboard** - Favorites, claims, status tracking, deal alerts, profile ✓
+- [ ] **Phase 6: Business Onboarding** - Claim existing profile and create new business flows (Next)
 - [ ] **Phase 7: Business Dashboard** - Deal management, lead inbox, messaging, analytics
 - [ ] **Phase 8: Admin Core** - Deal moderation, user management, content management
 - [ ] **Phase 9: Admin Platform** - Reporting, metrics, data management tools
@@ -90,14 +90,14 @@ Plans:
 **Goal**: Consumer account features — favorites, claims, tracking, alerts, profile
 **Depends on**: Phase 4
 **Research**: Unlikely (internal CRUD patterns, dashboard UI)
-**Plans**: TBD
+**Status**: Complete
 
 Plans:
 - [x] 05-01: Dashboard shell with sidebar navigation and home page ✓
 - [x] 05-02: Saved deals / favorites list ✓
 - [x] 05-03: Claim deal flow — preferred time request form ✓
 - [x] 05-04: Claim status tracking (Pending → Contacted → Booked → Completed) ✓
-- [ ] 05-05: User profile and settings page
+- [x] 05-05: User profile and settings page ✓
 
 ### Phase 6: Business Onboarding
 **Goal**: Business claim existing profile or create new business flows
@@ -173,7 +173,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 3. Deal Browsing | 4/4 | Complete | 2026-01-09 |
 | 3.1 Image Blur | 1/1 | Complete | 2026-01-09 |
 | 4. Consumer Auth | 5/5 | Complete | 2026-01-09 |
-| 5. Consumer Dashboard | 4/5 | In progress | - |
+| 5. Consumer Dashboard | 5/5 | Complete | 2026-01-09 |
 | 6. Business Onboarding | 0/3 | Not started | - |
 | 7. Business Dashboard | 0/7 | Not started | - |
 | 8. Admin Core | 0/4 | Not started | - |
