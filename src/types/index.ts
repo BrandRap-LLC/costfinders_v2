@@ -1,4 +1,5 @@
 export * from './business'
+export * from './businessOwner'
 export * from './claim'
 export * from './consumer'
 export * from './deal'
