@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-01-09)
 
 ## Current Position
 
-Phase: 4 of 10 (Consumer Auth)
-Plan: 4 of 4 in current phase
-Status: Phase complete
-Last activity: 2026-01-09 — Completed 04-04-PLAN.md (Phone verification UI)
+Phase: 5 of 10 (Consumer Dashboard)
+Plan: 1 of 5 in current phase
+Status: In progress
+Last activity: 2026-01-09 — Completed 05-01-PLAN.md (Dashboard shell)
 
-Progress: ██████████████████████████████████████████████████ 50%
+Progress: ████████████████████████████████████████████████████ 52%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
-- Average duration: 6.6 min
-- Total execution time: 1.6 hours
+- Total plans completed: 15
+- Average duration: 7.4 min
+- Total execution time: 1.9 hours
 
 **By Phase:**
 
@@ -32,10 +32,11 @@ Progress: ███████████████████████�
 | 3. Deal Browsing | 4/4 | 20 min | 5 min |
 | 3.1 Image Blur | 1/1 | 4 min | 4 min |
 | 4. Consumer Auth | 4/4 | 30 min | 8 min |
+| 5. Consumer Dashboard | 1/5 | 25 min | 25 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (3 min), 04-02 (3 min), 04-03 (16 min), 04-04 (8 min)
-- Trend: Consistent
+- Last 5 plans: 04-02 (3 min), 04-03 (16 min), 04-04 (8 min), 05-01 (25 min)
+- Trend: 05-01 higher due to UX issue fixes during checkpoint
 
 ## Accumulated Context
 
@@ -80,6 +81,10 @@ Recent decisions affecting current work:
 | 04-04 | Phone validation 10+ digits | Basic phone number validation |
 | 04-04 | Skip phone verification option | MVP flexibility, users can verify later |
 | 04-04 | Status transitions in verifyPhone | email_verified -> fully_verified, unverified -> phone_verified |
+| 05-01 | Icon-only sidebar with tooltips | Minimal footprint (64px), labels via Tooltip component on hover |
+| 05-01 | Global header in root layout | Auth-aware navigation, hidden on dashboard routes |
+| 05-01 | Modal items-start positioning | Prevents tall content cutoff at top of viewport |
+| 05-01 | Location selection navigates to /deals | Closes modal and routes to deals page automatically |
 
 ### Deferred Issues
 
@@ -92,5 +97,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-09
-Stopped at: Completed 04-04-PLAN.md (Phone verification UI) - Phase 4 complete
+Stopped at: Completed 05-01-PLAN.md (Dashboard shell) - Phase 5 in progress
 Resume file: None
