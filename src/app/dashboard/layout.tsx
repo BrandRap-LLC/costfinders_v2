@@ -56,7 +56,7 @@ export default function DashboardLayout({
     <div className="min-h-screen">
       <DashboardSidebar />
       {/* Main content with left padding for sidebar on desktop */}
-      <main className="md:pl-60 pt-20 pb-20 md:pb-0 px-4 sm:px-6 lg:px-8">
+      <main className="md:pl-16 pt-20 pb-20 md:pb-0 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto py-6">
           {children}
         </div>
