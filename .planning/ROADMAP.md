@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Project setup, glassmorphic design system, mock data layer ✓
 - [x] **Phase 2: Location Discovery** - Location-first browsing with auto-detect and manual override ✓
 - [x] **Phase 3: Deal Browsing** - Anonymous deal cards, filters, and comparison experience ✓
-- [ ] **Phase 3.1: Image Blur** - INSERTED: Heavy blur + lock icon on deal images for anonymous users
+- [x] **Phase 3.1: Image Blur** - INSERTED: Heavy blur + lock icon on deal images for anonymous users ✓
 - [ ] **Phase 4: Consumer Auth** - Account creation with email/SMS verification UI, business reveal
 - [ ] **Phase 5: Consumer Dashboard** - Favorites, claims, status tracking, deal alerts, profile
 - [ ] **Phase 6: Business Onboarding** - Claim existing profile and create new business flows
@@ -67,10 +67,10 @@ Plans:
 **Goal**: Add heavy blur + lock icon overlay to deal images for anonymous users
 **Depends on**: Phase 3
 **Research**: Unlikely (CSS blur effects, overlay patterns)
-**Status**: Not started
+**Status**: Complete
 
 Plans:
-- [ ] 03.1-01: Blurred image component with lock overlay for DealCard and detail page
+- [x] 03.1-01: Blurred image component with lock overlay for DealCard and detail page ✓
 
 ### Phase 4: Consumer Auth
 **Goal**: Account creation flow with email/SMS verification UI, triggering business reveal
@@ -170,7 +170,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 1. Foundation | 3/3 | Complete | 2026-01-09 |
 | 2. Location Discovery | 2/2 | Complete | 2026-01-09 |
 | 3. Deal Browsing | 4/4 | Complete | 2026-01-09 |
-| 3.1 Image Blur | 0/1 | Not started | - |
+| 3.1 Image Blur | 1/1 | Complete | 2026-01-09 |
 | 4. Consumer Auth | 0/4 | Not started | - |
 | 5. Consumer Dashboard | 0/5 | Not started | - |
 | 6. Business Onboarding | 0/3 | Not started | - |
