@@ -4,6 +4,7 @@ import { Lock, MapPin, ShieldCheck, Star } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { BlurredImage } from '@/components/patterns/blurredImage'
+import { SaveButton } from '@/components/patterns/saveButton'
 import type { AnonymousDeal, TreatmentCategory } from '@/types'
 
 interface DealCardProps {
@@ -55,10 +56,13 @@ export function DealCard({ deal, onClick, variant = 'grid' }: DealCardProps) {
           {categoryLabels[deal.category]}
         </Badge>
 
-        {/* Discount Badge - Top Right (above blur) */}
-        <Badge variant="brand" size="sm" className="absolute top-3 right-3 z-10">
-          {deal.discountPercent}% OFF
-        </Badge>
+        {/* Save Button & Discount Badge - Top Right (above blur) */}
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
+          <SaveButton dealId={deal.id} size="sm" />
+          <Badge variant="brand" size="sm">
+            {deal.discountPercent}% OFF
+          </Badge>
+        </div>
 
         {/* Sponsored Indicator - Bottom Left (above blur) */}
         {deal.isSponsored && (
