@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { EmailVerification } from '@/components/features/emailVerification'
+import { PhoneVerification } from '@/components/features/phoneVerification'
 import { SignInForm } from '@/components/features/signInForm'
 import { SignUpForm } from '@/components/features/signUpForm'
 import { Modal } from '@/components/ui/modal'
 import { useAuth } from '@/lib/context/authContext'
 
-type AuthView = 'signUp' | 'signIn' | 'emailVerification'
+type AuthView = 'signUp' | 'signIn' | 'emailVerification' | 'phoneVerification'
 
 interface AuthModalProps {
   isOpen: boolean
@@ -45,14 +46,28 @@ export function AuthModal({
     if (state.user?.verificationStatus === 'unverified') {
       setPendingEmail(state.user.email)
       setCurrentView('emailVerification')
+    } else if (state.user?.verificationStatus === 'email_verified') {
+      // Email verified but phone not yet - show phone verification
+      setCurrentView('phoneVerification')
     } else {
-      // Already verified - close modal
+      // Already fully_verified - close modal
       onSuccess?.()
       onClose()
     }
   }
 
-  const handleVerificationComplete = () => {
+  const handleEmailVerificationComplete = () => {
+    // Don't close modal - switch to phone verification
+    setCurrentView('phoneVerification')
+  }
+
+  const handlePhoneVerificationComplete = () => {
+    onSuccess?.()
+    onClose()
+  }
+
+  const handlePhoneVerificationSkip = () => {
+    // User can verify phone later
     onSuccess?.()
     onClose()
   }
@@ -73,6 +88,8 @@ export function AuthModal({
         return 'Welcome Back'
       case 'emailVerification':
         return 'Verify Email'
+      case 'phoneVerification':
+        return 'Verify Phone'
     }
   }
 
@@ -102,7 +119,14 @@ export function AuthModal({
         {currentView === 'emailVerification' && pendingEmail && (
           <EmailVerification
             email={pendingEmail}
-            onVerified={handleVerificationComplete}
+            onVerified={handleEmailVerificationComplete}
+          />
+        )}
+
+        {currentView === 'phoneVerification' && (
+          <PhoneVerification
+            onVerified={handlePhoneVerificationComplete}
+            onSkip={handlePhoneVerificationSkip}
           />
         )}
       </div>
