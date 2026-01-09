@@ -17,7 +17,7 @@ None
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Project setup, glassmorphic design system, mock data layer ✓
-- [ ] **Phase 2: Location Discovery** - Location-first browsing with auto-detect and manual override
+- [x] **Phase 2: Location Discovery** - Location-first browsing with auto-detect and manual override ✓
 - [ ] **Phase 3: Deal Browsing** - Anonymous deal cards, filters, and comparison experience
 - [ ] **Phase 4: Consumer Auth** - Account creation with email/SMS verification UI, business reveal
 - [ ] **Phase 5: Consumer Dashboard** - Favorites, claims, status tracking, deal alerts, profile
@@ -44,11 +44,11 @@ Plans:
 **Goal**: Location-first discovery with auto-detection and manual city/area selection
 **Depends on**: Phase 1
 **Research**: Unlikely (standard geolocation APIs, internal patterns)
-**Plans**: TBD
+**Status**: Complete
 
 Plans:
-- [ ] 02-01: Location detection service (browser geolocation, fallback to IP-based)
-- [ ] 02-02: Location selection UI — city picker, area filter, "near me" toggle
+- [x] 02-01: Location detection service (browser geolocation, context provider, expanded mock data) ✓
+- [x] 02-02: Location selection UI — city picker, area filter, "near me" toggle ✓
 
 ### Phase 3: Deal Browsing
 **Goal**: Core deal discovery UX — browse, filter, compare anonymous deals
@@ -158,7 +158,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-01-09 |
-| 2. Location Discovery | 0/2 | Not started | - |
+| 2. Location Discovery | 2/2 | Complete | 2026-01-09 |
 | 3. Deal Browsing | 0/4 | Not started | - |
 | 4. Consumer Auth | 0/4 | Not started | - |
 | 5. Consumer Dashboard | 0/5 | Not started | - |
