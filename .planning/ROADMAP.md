@@ -84,6 +84,7 @@ Plans:
 - [x] 04-02: Sign-in form and auth modal wrapper ✓
 - [x] 04-03: Email verification UI flow (mock) ✓
 - [x] 04-04: Phone verification UI flow (mock) ✓
+- [x] 04-05: Business reveal on verification ✓
 
 ### Phase 5: Consumer Dashboard
 **Goal**: Consumer account features — favorites, claims, tracking, alerts, profile
@@ -171,7 +172,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 2. Location Discovery | 2/2 | Complete | 2026-01-09 |
 | 3. Deal Browsing | 4/4 | Complete | 2026-01-09 |
 | 3.1 Image Blur | 1/1 | Complete | 2026-01-09 |
-| 4. Consumer Auth | 4/4 | Complete | 2026-01-09 |
+| 4. Consumer Auth | 5/5 | Complete | 2026-01-09 |
 | 5. Consumer Dashboard | 2/5 | In progress | - |
 | 6. Business Onboarding | 0/3 | Not started | - |
 | 7. Business Dashboard | 0/7 | Not started | - |
