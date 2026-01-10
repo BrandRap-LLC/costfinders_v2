@@ -1,5 +1,67 @@
 import type { Business } from '@/types'
 
+// Track dynamically claimed businesses (changes during session)
+let dynamicBusinesses: Business[] = []
+
+// Initialize dynamic array on first access
+function getDynamicBusinesses(): Business[] {
+  if (dynamicBusinesses.length === 0) {
+    dynamicBusinesses = [...businesses]
+  }
+  return dynamicBusinesses
+}
+
+/**
+ * Get a business by ID
+ */
+export function getBusinessById(id: string): Business | undefined {
+  return getDynamicBusinesses().find((b) => b.id === id)
+}
+
+/**
+ * Search businesses by name (case-insensitive)
+ */
+export function searchBusinessesByName(query: string): Business[] {
+  const normalizedQuery = query.toLowerCase().trim()
+  if (!normalizedQuery) return []
+
+  return getDynamicBusinesses().filter((b) =>
+    b.name.toLowerCase().includes(normalizedQuery)
+  )
+}
+
+/**
+ * Get all unclaimed businesses
+ */
+export function getUnclaimedBusinesses(): Business[] {
+  return getDynamicBusinesses().filter((b) => b.tier === 'unclaimed')
+}
+
+/**
+ * Claim a business for an owner
+ * Updates tier, claimedBy, claimedAt, and isVerified
+ */
+export function claimBusiness(businessId: string, ownerId: string): Business | null {
+  const businesses = getDynamicBusinesses()
+  const index = businesses.findIndex((b) => b.id === businessId)
+
+  if (index === -1) return null
+
+  const now = new Date().toISOString()
+  const updatedBusiness: Business = {
+    ...businesses[index],
+    tier: 'free',
+    claimedBy: ownerId,
+    claimedAt: now,
+    isVerified: true,
+    verifiedAt: now,
+    updatedAt: now,
+  }
+
+  dynamicBusinesses[index] = updatedBusiness
+  return updatedBusiness
+}
+
 export const businesses: Business[] = [
   // Unclaimed businesses (scraped data)
   {
