@@ -1,4 +1,5 @@
-import type { Claim, Consumer } from '@/types'
+import type { Claim, ClaimStatus, Consumer } from '@/types'
+import { getDealsForBusiness } from './deals'
 
 export const consumers: Consumer[] = [
   {
@@ -108,3 +109,73 @@ export const claims: Claim[] = [
     expiresAt: '2024-03-22T09:00:00Z',
   },
 ]
+
+// Track dynamically created/modified claims (changes during session)
+let dynamicClaims: Claim[] = []
+
+// Initialize dynamic array on first access
+function getDynamicClaims(): Claim[] {
+  if (dynamicClaims.length === 0) {
+    dynamicClaims = [...claims]
+  }
+  return dynamicClaims
+}
+
+/**
+ * Get all claims for deals belonging to a specific business
+ */
+export function getClaimsForBusiness(businessId: string): Claim[] {
+  const businessDeals = getDealsForBusiness(businessId)
+  const businessDealIds = businessDeals.map((d) => d.id)
+  return getDynamicClaims().filter((c) => businessDealIds.includes(c.dealId))
+}
+
+/**
+ * Update claim status
+ */
+export function updateClaimStatus(claimId: string, status: ClaimStatus): Claim | null {
+  const allClaims = getDynamicClaims()
+  const index = allClaims.findIndex((c) => c.id === claimId)
+
+  if (index === -1) return null
+
+  const now = new Date().toISOString()
+  const updatedClaim: Claim = {
+    ...allClaims[index],
+    status,
+    updatedAt: now,
+    // Track when business first responded
+    respondedAt: allClaims[index].respondedAt || (status !== 'pending' ? now : undefined),
+  }
+
+  dynamicClaims[index] = updatedClaim
+  return updatedClaim
+}
+
+/**
+ * Add business response to a claim
+ */
+export function addBusinessResponse(claimId: string, response: string): Claim | null {
+  const allClaims = getDynamicClaims()
+  const index = allClaims.findIndex((c) => c.id === claimId)
+
+  if (index === -1) return null
+
+  const now = new Date().toISOString()
+  const updatedClaim: Claim = {
+    ...allClaims[index],
+    businessResponse: response,
+    respondedAt: allClaims[index].respondedAt || now,
+    updatedAt: now,
+  }
+
+  dynamicClaims[index] = updatedClaim
+  return updatedClaim
+}
+
+/**
+ * Get a single claim by ID (from dynamic array)
+ */
+export function getClaimByIdDynamic(claimId: string): Claim | undefined {
+  return getDynamicClaims().find((c) => c.id === claimId)
+}

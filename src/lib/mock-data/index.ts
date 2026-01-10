@@ -1,8 +1,15 @@
 // Raw data exports
 
 export { businesses } from './businesses'
-export { claims, consumers } from './consumers'
-export { deals, toAnonymousDeal } from './deals'
+export {
+  claims,
+  consumers,
+  getClaimsForBusiness,
+  updateClaimStatus,
+  addBusinessResponse,
+  getClaimByIdDynamic,
+} from './consumers'
+export { deals, toAnonymousDeal, getDealById as getDealByIdDynamic, getDealsForBusiness } from './deals'
 export { cities, locationAreas } from './locations'
 
 // Query utilities
