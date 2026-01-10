@@ -107,7 +107,7 @@ Plans:
 
 Plans:
 - [x] 06-01: Business auth context, search modal, entry page ✓
-- [ ] 06-02: Claim existing business flow
+- [x] 06-02: Claim existing business flow ✓
 - [ ] 06-03: Create new business flow + verification UI
 
 ### Phase 7: Business Dashboard
@@ -174,7 +174,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 3.1 Image Blur | 1/1 | Complete | 2026-01-09 |
 | 4. Consumer Auth | 5/5 | Complete | 2026-01-09 |
 | 5. Consumer Dashboard | 5/5 | Complete | 2026-01-09 |
-| 6. Business Onboarding | 1/3 | In progress | - |
+| 6. Business Onboarding | 2/3 | In progress | - |
 | 7. Business Dashboard | 0/7 | Not started | - |
 | 8. Admin Core | 0/4 | Not started | - |
 | 9. Admin Platform | 0/2 | Not started | - |
