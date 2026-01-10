@@ -114,16 +114,16 @@ Plans:
 **Goal**: Business portal — deal management, leads, messaging, analytics, profile editing
 **Depends on**: Phase 6
 **Research**: Unlikely (dashboard patterns, messaging UI)
-**Plans**: TBD
+**Status**: In progress (4/7 plans)
 
 Plans:
 - [x] 07-01: Business dashboard shell with navigation ✓
 - [x] 07-02: Deal management — create, edit, pause deals ✓
 - [x] 07-03: Lead inbox with claim details ✓
-- [ ] 07-04: In-platform messaging with leads
-- [ ] 07-05: Performance analytics dashboard
-- [ ] 07-06: Business profile editing
-- [ ] 07-07: Scheduling integrations placeholder ("Coming Soon" UI)
+- [x] 07-04: In-platform messaging + analytics dashboard ✓
+- [ ] 07-05: Business profile editing
+- [ ] 07-06: Scheduling integrations placeholder ("Coming Soon" UI)
+- [ ] 07-07: Notifications and alerts settings
 
 ### Phase 8: Admin Core
 **Goal**: Admin moderation and management tools
