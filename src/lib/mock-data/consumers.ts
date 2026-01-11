@@ -1,4 +1,4 @@
-import type { Claim, ClaimStatus, Consumer } from '@/types'
+import type { Claim, ClaimStatus, Consumer, ConsumerStatus } from '@/types'
 import { getDealsForBusiness } from './deals'
 
 export const consumers: Consumer[] = [
@@ -11,6 +11,7 @@ export const consumers: Consumer[] = [
     verificationStatus: 'fully_verified',
     emailVerifiedAt: '2024-02-01T10:00:00Z',
     phoneVerifiedAt: '2024-02-01T10:15:00Z',
+    status: 'active',
     locationCity: 'Austin',
     locationState: 'TX',
     alertsEmail: true,
@@ -26,6 +27,7 @@ export const consumers: Consumer[] = [
     firstName: 'Mike',
     verificationStatus: 'email_verified',
     emailVerifiedAt: '2024-03-01T14:00:00Z',
+    status: 'active',
     locationCity: 'Dallas',
     locationState: 'TX',
     alertsEmail: true,
@@ -38,11 +40,77 @@ export const consumers: Consumer[] = [
     id: 'user-3',
     email: 'new@example.com',
     verificationStatus: 'unverified',
+    status: 'active',
     alertsEmail: false,
     alertsSms: false,
     favoriteCategories: [],
     createdAt: '2024-03-15T10:00:00Z',
     updatedAt: '2024-03-15T10:00:00Z',
+  },
+  {
+    id: 'user-4',
+    email: 'jennifer@example.com',
+    phone: '+12145559876',
+    firstName: 'Jennifer',
+    lastName: 'Martinez',
+    verificationStatus: 'fully_verified',
+    emailVerifiedAt: '2024-01-15T09:00:00Z',
+    phoneVerifiedAt: '2024-01-15T09:30:00Z',
+    status: 'active',
+    locationCity: 'Houston',
+    locationState: 'TX',
+    alertsEmail: true,
+    alertsSms: true,
+    favoriteCategories: ['fillers', 'laser'],
+    createdAt: '2024-01-15T08:00:00Z',
+    updatedAt: '2024-03-10T14:00:00Z',
+    lastLoginAt: '2024-03-10T14:00:00Z',
+  },
+  {
+    id: 'user-5',
+    email: 'david@example.com',
+    firstName: 'David',
+    lastName: 'Chen',
+    verificationStatus: 'phone_verified',
+    phoneVerifiedAt: '2024-02-20T11:00:00Z',
+    status: 'suspended',
+    locationCity: 'Austin',
+    locationState: 'TX',
+    alertsEmail: false,
+    alertsSms: true,
+    favoriteCategories: ['botox'],
+    createdAt: '2024-02-20T10:00:00Z',
+    updatedAt: '2024-03-05T16:00:00Z',
+  },
+  {
+    id: 'user-6',
+    email: 'ashley@example.com',
+    phone: '+15125554321',
+    firstName: 'Ashley',
+    lastName: 'Williams',
+    verificationStatus: 'email_verified',
+    emailVerifiedAt: '2024-03-08T15:00:00Z',
+    status: 'active',
+    locationCity: 'San Antonio',
+    locationState: 'TX',
+    alertsEmail: true,
+    alertsSms: false,
+    favoriteCategories: ['facials'],
+    createdAt: '2024-03-08T14:00:00Z',
+    updatedAt: '2024-03-12T09:00:00Z',
+    lastLoginAt: '2024-03-12T09:00:00Z',
+  },
+  {
+    id: 'user-7',
+    email: 'robert@example.com',
+    firstName: 'Robert',
+    verificationStatus: 'unverified',
+    status: 'active',
+    alertsEmail: false,
+    alertsSms: false,
+    favoriteCategories: [],
+    createdAt: '2024-03-14T12:00:00Z',
+    updatedAt: '2024-03-14T12:00:00Z',
   },
 ]
 
@@ -178,4 +246,52 @@ export function addBusinessResponse(claimId: string, response: string): Claim | 
  */
 export function getClaimByIdDynamic(claimId: string): Claim | undefined {
   return getDynamicClaims().find((c) => c.id === claimId)
+}
+
+// Track dynamically modified consumers (changes during session)
+let dynamicConsumers: Consumer[] = []
+
+// Initialize dynamic array on first access
+function getDynamicConsumers(): Consumer[] {
+  if (dynamicConsumers.length === 0) {
+    dynamicConsumers = [...consumers]
+  }
+  return dynamicConsumers
+}
+
+/**
+ * Get all consumers
+ */
+export function getAllConsumers(): Consumer[] {
+  return getDynamicConsumers()
+}
+
+/**
+ * Get claims count for a consumer
+ */
+export function getClaimsCountForConsumer(consumerId: string): number {
+  return getDynamicClaims().filter((c) => c.consumerId === consumerId).length
+}
+
+/**
+ * Update consumer status
+ */
+export function updateConsumerStatus(
+  consumerId: string,
+  status: ConsumerStatus
+): Consumer | null {
+  const allConsumers = getDynamicConsumers()
+  const index = allConsumers.findIndex((c) => c.id === consumerId)
+
+  if (index === -1) return null
+
+  const now = new Date().toISOString()
+  const updatedConsumer: Consumer = {
+    ...allConsumers[index],
+    status,
+    updatedAt: now,
+  }
+
+  dynamicConsumers[index] = updatedConsumer
+  return updatedConsumer
 }

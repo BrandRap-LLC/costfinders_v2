@@ -183,6 +183,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         firstName: firstName || undefined,
         lastName: lastName || undefined,
         verificationStatus: 'unverified',
+        status: 'active',
         alertsEmail: false,
         alertsSms: false,
         favoriteCategories: [],

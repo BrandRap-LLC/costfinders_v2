@@ -4,6 +4,8 @@ export type VerificationStatus =
   | 'phone_verified'
   | 'fully_verified'
 
+export type ConsumerStatus = 'active' | 'suspended'
+
 export interface Consumer {
   id: string
   email: string
@@ -15,6 +17,8 @@ export interface Consumer {
   verificationStatus: VerificationStatus
   emailVerifiedAt?: string
   phoneVerifiedAt?: string
+  // Account status
+  status: ConsumerStatus
   // Preferences
   locationCity?: string
   locationState?: string
