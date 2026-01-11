@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-01-09)
 ## Current Position
 
 Phase: 8 of 10 (Admin Core)
-Plan: 2 of 4 in current phase
+Plan: 3 of 4 in current phase
 Status: In progress
-Last activity: 2026-01-11 — Completed 08-02-PLAN.md (Admin Home & Deal Moderation)
+Last activity: 2026-01-11 — Completed 08-03-PLAN.md (User & Business Management)
 
-Progress: ████████████████████████████████████████████████████████████████████████████████ 80%
+Progress: █████████████████████████████████████████████████████████████████████████████████ 81%
 
 ## Performance Metrics
 
@@ -35,11 +35,11 @@ Progress: ███████████████████████�
 | 5. Consumer Dashboard | 5/5 | 67 min | 13 min |
 | 6. Business Onboarding | 3/3 | 17 min | 5.7 min |
 | 7. Business Dashboard | 5/5 | 76 min | 15 min |
-| 8. Admin Core | 2/4 | 14 min | 7 min |
+| 8. Admin Core | 3/4 | 20 min | 6.7 min |
 
 **Recent Trend:**
-- Last 5 plans: 07-04 (5 min), 07-05 (5 min), 08-01 (8 min), 08-02 (6 min)
-- Trend: Admin dashboard home and deal moderation complete
+- Last 5 plans: 07-05 (5 min), 08-01 (8 min), 08-02 (6 min), 08-03 (6 min)
+- Trend: Admin user management complete
 
 ## Accumulated Context
 
@@ -127,6 +127,9 @@ Recent decisions affecting current work:
 | 08-02 | MetricCard highlight variant | For action-needed states like pending moderation count |
 | 08-02 | Inline mock data for preview | Simpler than filtering deals.ts for moderation queue |
 | 08-02 | Request Changes expandable textarea | Inline notes input before submitting moderation action |
+| 08-03 | ConsumerStatus type added | Enables user suspension (active | suspended) |
+| 08-03 | Business tier change nested dropdown | Cleaner than modal for tier upgrades |
+| 08-03 | Responsive admin tables | Desktop table, mobile card list pattern |
 
 ### Deferred Issues
 
@@ -139,5 +142,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-11
-Stopped at: Completed 08-02-PLAN.md (Admin Home & Deal Moderation)
+Stopped at: Completed 08-03-PLAN.md (User & Business Management)
 Resume file: None
