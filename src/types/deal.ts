@@ -6,6 +6,12 @@ export type TreatmentCategory =
   | 'body'
   | 'skincare'
 
+export type ModerationStatus =
+  | 'pending_review'
+  | 'approved'
+  | 'rejected'
+  | 'changes_requested'
+
 export interface Deal {
   id: string
   businessId: string
@@ -29,6 +35,9 @@ export interface Deal {
   viewCount: number
   createdAt: string
   updatedAt: string
+  // Moderation fields (optional for backward compatibility)
+  moderationStatus?: ModerationStatus
+  moderationNotes?: string
 }
 
 // What consumers see before verification
