@@ -329,8 +329,8 @@ export function BusinessBillingOverride({ business }: BusinessBillingOverridePro
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <Card variant="glass" padding="lg" className="max-w-md w-full">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center">
-                <Warning size={20} weight="fill" className="text-amber-400" />
+              <div className="w-10 h-10 rounded-full bg-warning/10 flex items-center justify-center">
+                <Warning size={20} weight="fill" className="text-warning-text" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-text-primary">Confirm Override</h3>
@@ -352,7 +352,7 @@ export function BusinessBillingOverride({ business }: BusinessBillingOverridePro
               {creditsToGrant > 0 && (
                 <div className="flex justify-between text-sm">
                   <span className="text-text-secondary">Credits Granted</span>
-                  <span className="text-green-400">+{creditsToGrant}</span>
+                  <span className="text-success-text">+{creditsToGrant}</span>
                 </div>
               )}
               {customLeadPrice && (
@@ -448,7 +448,7 @@ export function BusinessBillingOverride({ business }: BusinessBillingOverridePro
                   {override.creditsGranted && (
                     <div className="flex items-center gap-2 text-sm">
                       <span className="text-text-secondary">Credits:</span>
-                      <span className="text-green-400">+{override.creditsGranted}</span>
+                      <span className="text-success-text">+{override.creditsGranted}</span>
                     </div>
                   )}
 

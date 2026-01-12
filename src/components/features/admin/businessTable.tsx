@@ -164,7 +164,7 @@ function ActionsDropdown({
           {business.status === 'active' ? (
             <button
               type="button"
-              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-glass-bg-hover transition-colors text-left border-t border-glass-border"
+              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-error-text hover:bg-glass-bg-hover transition-colors text-left border-t border-glass-border"
               onClick={() => {
                 onStatusChange(business.id, 'suspended')
                 setIsOpen(false)
@@ -176,7 +176,7 @@ function ActionsDropdown({
           ) : (
             <button
               type="button"
-              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-green-400 hover:bg-glass-bg-hover transition-colors text-left border-t border-glass-border"
+              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-success-text hover:bg-glass-bg-hover transition-colors text-left border-t border-glass-border"
               onClick={() => {
                 onStatusChange(business.id, 'active')
                 setIsOpen(false)
@@ -278,7 +278,7 @@ export function BusinessTable({
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-1.5">
-                      <Star size={14} weight="fill" className="text-amber-400" />
+                      <Star size={14} weight="fill" className="text-warning-text" />
                       <span className="text-sm text-text-primary">
                         {business.rating.toFixed(1)}
                       </span>
@@ -290,7 +290,7 @@ export function BusinessTable({
                   <td className="px-6 py-4">
                     {business.claimedAt ? (
                       <div>
-                        <span className="text-sm text-green-400">Yes</span>
+                        <span className="text-sm text-success-text">Yes</span>
                         <p className="text-xs text-text-tertiary">
                           {formatDate(business.claimedAt)}
                         </p>
@@ -347,7 +347,7 @@ export function BusinessTable({
                   <span className="text-text-primary">{dealsCount}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Star size={14} weight="fill" className="text-amber-400" />
+                  <Star size={14} weight="fill" className="text-warning-text" />
                   <span className="text-text-primary">
                     {business.rating.toFixed(1)}
                   </span>

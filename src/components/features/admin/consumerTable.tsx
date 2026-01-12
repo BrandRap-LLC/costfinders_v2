@@ -99,7 +99,7 @@ function ActionsDropdown({
           {consumer.status === 'active' ? (
             <button
               type="button"
-              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-glass-bg-hover transition-colors text-left"
+              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-error-text hover:bg-glass-bg-hover transition-colors text-left"
               onClick={() => {
                 onStatusChange(consumer.id, 'suspended')
                 setIsOpen(false)
@@ -111,7 +111,7 @@ function ActionsDropdown({
           ) : (
             <button
               type="button"
-              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-green-400 hover:bg-glass-bg-hover transition-colors text-left"
+              className="w-full flex items-center gap-3 px-4 py-3 text-sm text-success-text hover:bg-glass-bg-hover transition-colors text-left"
               onClick={() => {
                 onStatusChange(consumer.id, 'active')
                 setIsOpen(false)
