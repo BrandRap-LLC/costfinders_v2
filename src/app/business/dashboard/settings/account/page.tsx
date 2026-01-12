@@ -1,33 +1,104 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { CaretLeft, Crown, CheckCircle } from '@phosphor-icons/react'
+import { CaretLeft, Crown, CheckCircle, CreditCard, Receipt, Warning } from '@phosphor-icons/react'
 import { useBusinessAuth } from '@/lib/context/businessAuthContext'
 import { getBusinessById } from '@/lib/mock-data/businesses'
+import { getInvoices, getPaymentMethods } from '@/lib/mock-data/billing'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Modal } from '@/components/ui/modal'
 import { TierComparison } from '@/components/features/tierComparison'
+import { BillingHistory } from '@/components/features/billingHistory'
+import { PaymentMethods } from '@/components/features/paymentMethods'
+
+type TabId = 'plan' | 'billing'
 
 export default function AccountSettingsPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const { state } = useBusinessAuth()
   const business = state.owner?.businessId
     ? getBusinessById(state.owner.businessId)
     : null
 
+  // Tab state
+  const [activeTab, setActiveTab] = useState<TabId>('plan')
+
+  // Success message from checkout
+  const [showUpgradeSuccess, setShowUpgradeSuccess] = useState(false)
+
+  // Cancel subscription modal
+  const [showCancelModal, setShowCancelModal] = useState(false)
+  const [isCancelling, setIsCancelling] = useState(false)
+
+  // Mock data
+  const invoices = getInvoices()
+  const paymentMethods = getPaymentMethods()
+
   // Get current tier, default to 'free' for display if business exists
   const currentTier = business?.tier ?? 'free'
 
+  // Check for upgrade success param
+  useEffect(() => {
+    if (searchParams.get('upgraded') === 'true') {
+      setShowUpgradeSuccess(true)
+      // Clear the param from URL
+      const url = new URL(window.location.href)
+      url.searchParams.delete('upgraded')
+      window.history.replaceState({}, '', url.toString())
+      // Auto-hide after 5 seconds
+      setTimeout(() => setShowUpgradeSuccess(false), 5000)
+    }
+  }, [searchParams])
+
   const handleSelectTier = (tier: 'free' | 'paid') => {
     if (tier === 'paid' && currentTier !== 'paid') {
-      // Route to checkout page (to be built in 10-02)
       router.push('/business/dashboard/settings/account/checkout')
     }
   }
 
+  const handleCancelSubscription = () => {
+    setIsCancelling(true)
+    // Simulate API call
+    setTimeout(() => {
+      setIsCancelling(false)
+      setShowCancelModal(false)
+      // In real app, this would update the tier
+    }, 1500)
+  }
+
+  const handleDownloadInvoice = (invoiceId: string) => {
+    // Mock download - in real app would fetch actual PDF
+    console.log('Downloading invoice:', invoiceId)
+    alert(`Invoice ${invoiceId} would be downloaded in production`)
+  }
+
+  const handleAddPaymentMethod = () => {
+    // In real app, would open Stripe modal or redirect
+    alert('In production, this would open a secure payment form to add a new card')
+  }
+
+  const handleRemovePaymentMethod = (id: string) => {
+    // Mock removal - in real app would call API
+    console.log('Removing payment method:', id)
+  }
+
+  const handleSetDefaultPaymentMethod = (id: string) => {
+    // Mock set default - in real app would call API
+    console.log('Setting default payment method:', id)
+  }
+
+  const tabs: { id: TabId; label: string; icon: typeof Crown }[] = [
+    { id: 'plan', label: 'Plan', icon: Crown },
+    { id: 'billing', label: 'Billing', icon: CreditCard },
+  ]
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Back Link */}
       <Link
         href="/business/dashboard/settings"
@@ -44,6 +115,19 @@ export default function AccountSettingsPage() {
           Manage your subscription plan and billing settings
         </p>
       </div>
+
+      {/* Upgrade Success Message */}
+      {showUpgradeSuccess && (
+        <div className="flex items-center gap-3 p-4 bg-green-500/10 rounded-xl border border-green-500/20">
+          <CheckCircle size={20} weight="fill" className="text-green-400 flex-shrink-0" />
+          <div>
+            <p className="text-sm font-medium text-green-400">Subscription activated!</p>
+            <p className="text-xs text-text-secondary mt-0.5">
+              You now have access to all Professional features.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Current Plan Status */}
       <Card variant="glass" padding="lg">
@@ -81,32 +165,174 @@ export default function AccountSettingsPage() {
         </div>
       </Card>
 
-      {/* Tier Comparison */}
-      <TierComparison currentTier={currentTier} onSelectTier={handleSelectTier} />
+      {/* Tab Navigation */}
+      <div className="flex gap-1 p-1 bg-glass-bg rounded-xl border border-glass-border w-fit">
+        {tabs.map((tab) => {
+          const Icon = tab.icon
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`
+                flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all
+                ${activeTab === tab.id
+                  ? 'bg-brand-primary text-white shadow-md'
+                  : 'text-text-secondary hover:text-text-primary hover:bg-glass-bg-hover'
+                }
+              `}
+            >
+              <Icon size={18} weight={activeTab === tab.id ? 'fill' : 'light'} />
+              {tab.label}
+            </button>
+          )
+        })}
+      </div>
 
-      {/* Billing Info (placeholder for future) */}
-      {currentTier === 'paid' && (
-        <Card variant="glass" padding="lg">
-          <h3 className="text-lg font-semibold text-text-primary mb-4">
-            Billing Information
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-text-muted mb-1">Next billing date</p>
-              <p className="text-text-primary font-medium">February 15, 2025</p>
-            </div>
-            <div>
-              <p className="text-text-muted mb-1">Payment method</p>
-              <p className="text-text-primary font-medium">Visa ending in 4242</p>
-            </div>
-          </div>
-          <div className="mt-4 pt-4 border-t border-glass-border">
-            <p className="text-xs text-text-muted">
-              Billing management coming soon. Contact support for billing inquiries.
-            </p>
-          </div>
-        </Card>
+      {/* Tab Content */}
+      {activeTab === 'plan' && (
+        <div className="space-y-6">
+          <TierComparison currentTier={currentTier} onSelectTier={handleSelectTier} />
+        </div>
       )}
+
+      {activeTab === 'billing' && (
+        <div className="space-y-6">
+          {/* Billing Summary for paid users */}
+          {currentTier === 'paid' && (
+            <Card variant="glass" padding="lg">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div>
+                  <p className="text-xs text-text-tertiary uppercase tracking-wide mb-1">
+                    Current Plan
+                  </p>
+                  <p className="text-lg font-semibold text-text-primary">Professional</p>
+                  <p className="text-sm text-text-secondary">$99/month</p>
+                </div>
+                <div>
+                  <p className="text-xs text-text-tertiary uppercase tracking-wide mb-1">
+                    Next Billing Date
+                  </p>
+                  <p className="text-lg font-semibold text-text-primary">Feb 15, 2025</p>
+                  <p className="text-sm text-text-secondary">Auto-renewal enabled</p>
+                </div>
+                <div>
+                  <p className="text-xs text-text-tertiary uppercase tracking-wide mb-1">
+                    Payment Method
+                  </p>
+                  <p className="text-lg font-semibold text-text-primary">
+                    Visa ****4242
+                  </p>
+                  <p className="text-sm text-text-secondary">Expires 12/27</p>
+                </div>
+              </div>
+            </Card>
+          )}
+
+          {/* No subscription notice for free users */}
+          {currentTier !== 'paid' && (
+            <Card variant="glass" padding="lg">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <Warning size={20} weight="fill" className="text-amber-400" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-text-primary mb-1">
+                    No active subscription
+                  </h3>
+                  <p className="text-sm text-text-secondary mb-4">
+                    Upgrade to Professional to access billing features and unlock premium features.
+                  </p>
+                  <Button
+                    variant="primary"
+                    onClick={() => router.push('/business/dashboard/settings/account/checkout')}
+                  >
+                    Upgrade to Professional
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          )}
+
+          {/* Payment Methods */}
+          <PaymentMethods
+            paymentMethods={currentTier === 'paid' ? paymentMethods : []}
+            onAddMethod={handleAddPaymentMethod}
+            onRemoveMethod={handleRemovePaymentMethod}
+            onSetDefault={handleSetDefaultPaymentMethod}
+          />
+
+          {/* Billing History */}
+          <BillingHistory
+            invoices={currentTier === 'paid' ? invoices : []}
+            onDownload={handleDownloadInvoice}
+          />
+
+          {/* Cancel Subscription (only for paid users) */}
+          {currentTier === 'paid' && (
+            <Card variant="glass" padding="lg">
+              <h3 className="text-lg font-semibold text-text-primary mb-2">
+                Cancel Subscription
+              </h3>
+              <p className="text-sm text-text-secondary mb-4">
+                If you cancel, your Professional features will remain active until your current billing period ends.
+                You can resubscribe at any time.
+              </p>
+              <Button
+                variant="ghost"
+                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                onClick={() => setShowCancelModal(true)}
+              >
+                Cancel Subscription
+              </Button>
+            </Card>
+          )}
+        </div>
+      )}
+
+      {/* Cancel Confirmation Modal */}
+      <Modal
+        isOpen={showCancelModal}
+        onClose={() => setShowCancelModal(false)}
+        title="Cancel Subscription"
+        size="sm"
+      >
+        <div className="space-y-4">
+          <p className="text-text-secondary">
+            Are you sure you want to cancel your Professional subscription?
+          </p>
+          <ul className="text-sm text-text-secondary space-y-2">
+            <li className="flex items-start gap-2">
+              <span className="text-text-tertiary">-</span>
+              <span>You&apos;ll lose access to premium features at the end of your billing period</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-text-tertiary">-</span>
+              <span>Your deals will remain active but won&apos;t have priority placement</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-text-tertiary">-</span>
+              <span>You can resubscribe anytime to restore features</span>
+            </li>
+          </ul>
+          <div className="flex gap-3 pt-2">
+            <Button
+              variant="secondary"
+              className="flex-1"
+              onClick={() => setShowCancelModal(false)}
+            >
+              Keep Subscription
+            </Button>
+            <Button
+              variant="danger"
+              className="flex-1"
+              onClick={handleCancelSubscription}
+              isLoading={isCancelling}
+            >
+              Cancel Subscription
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
