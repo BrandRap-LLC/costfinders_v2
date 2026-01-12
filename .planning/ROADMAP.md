@@ -41,10 +41,12 @@ See [v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md) for full details.
 **Goal**: Review existing styles, document inconsistencies, establish unified token system
 **Depends on**: v1.0 complete
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 11-01: TBD (run /gsd:plan-phase 11 to break down)
+- [ ] 11-01: Audit & document inconsistencies (DESIGN-AUDIT.md, DESIGN-TOKENS-REFERENCE.md)
+- [ ] 11-02: Extend CSS design tokens (semantic colors in @theme, semanticClasses export)
+- [ ] 11-03: Update core UI components (badge.tsx, input.tsx to use semantic tokens)
 
 #### Phase 12: Shared Components
 
@@ -104,7 +106,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 8. Admin Core | v1.0 | 4/4 | Complete | 2026-01-12 |
 | 9. Admin Platform | v1.0 | 2/2 | Complete | 2026-01-12 |
 | 10. Monetization UI | v1.0 | 5/5 | Complete | 2026-01-12 |
-| 11. Design System Audit | v1.1 | 0/? | Not started | - |
+| 11. Design System Audit | v1.1 | 0/3 | Not started | - |
 | 12. Shared Components | v1.1 | 0/? | Not started | - |
 | 13. Navigation Overhaul | v1.1 | 0/? | Not started | - |
 | 14. Module Polish | v1.1 | 0/? | Not started | - |
