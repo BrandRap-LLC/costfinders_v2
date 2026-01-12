@@ -22,6 +22,17 @@ export {
 } from './messages'
 export { deals, toAnonymousDeal, getDealById as getDealByIdDynamic, getDealsForBusiness } from './deals'
 export { cities, locationAreas } from './locations'
+export {
+  getCategories,
+  getCategoryById,
+  getCategoryBySlug,
+  createCategory,
+  updateCategory,
+  toggleCategoryStatus,
+  deleteCategory,
+  getCategoryStats,
+  type Category,
+} from './categories'
 
 // Query utilities
 export {
