@@ -726,3 +726,416 @@ Despite tone variations, these patterns remain consistent:
 
 ---
 
+## 8. Implementation Patterns
+
+### 8.1 Validation Function Structure
+
+Standard pattern for field validation:
+
+```typescript
+// Standard validation pattern
+interface ValidationRules {
+  label: string;
+  required?: boolean;
+  minLength?: number;
+  maxLength?: number;
+  pattern?: RegExp;
+  validate?: (value: string) => string | undefined;
+}
+
+const validateField = (value: string, rules: ValidationRules): string | undefined => {
+  // Required check
+  if (rules.required && !value.trim()) {
+    return `${rules.label} is required`;
+  }
+
+  // Skip other validations if empty and not required
+  if (!value.trim()) {
+    return undefined;
+  }
+
+  // Min length
+  if (rules.minLength && value.length < rules.minLength) {
+    return `${rules.label} must be at least ${rules.minLength} characters`;
+  }
+
+  // Max length
+  if (rules.maxLength && value.length > rules.maxLength) {
+    return `${rules.label} must be ${rules.maxLength} characters or less`;
+  }
+
+  // Pattern match
+  if (rules.pattern && !rules.pattern.test(value)) {
+    return `Please enter a valid ${rules.label.toLowerCase()}`;
+  }
+
+  // Custom validation
+  if (rules.validate) {
+    return rules.validate(value);
+  }
+
+  return undefined;
+};
+```
+
+---
+
+### 8.2 Common Validation Patterns
+
+```typescript
+// Email validation
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Phone validation (US format)
+const phonePattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
+// URL validation
+const urlPattern = /^https?:\/\/.+\..+/;
+
+// ZIP code validation (5 or 9 digit)
+const zipPattern = /^\d{5}(-\d{4})?$/;
+```
+
+---
+
+### 8.3 Helper Text Component Pattern
+
+```typescript
+interface FieldProps {
+  label: string;
+  helperText?: string;
+  error?: string;
+  required?: boolean;
+}
+
+// Field with helper text
+<Input
+  label="Password"
+  helperText="Min. 8 characters"
+  error={errors.password}
+  required
+/>
+
+// Rendered output:
+// Password *
+// Min. 8 characters          ← Helper text (shown when no error)
+// [                    ]
+// Password is required       ← Error (replaces helper text)
+```
+
+---
+
+### 8.4 Character Counter Pattern
+
+```typescript
+interface TextareaProps {
+  label: string;
+  maxLength: number;
+  showCount?: boolean;
+  value: string;
+  onChange: (value: string) => void;
+}
+
+// Textarea with counter
+<Textarea
+  label="Description"
+  maxLength={500}
+  showCount
+  value={description}
+  onChange={setDescription}
+/>
+
+// Display format: "245/500 characters"
+// Position: Below field, right-aligned
+// Color: Secondary text, warning at 90%, error at 100%
+```
+
+---
+
+### 8.5 Password Strength Component Pattern
+
+```typescript
+type StrengthLevel = 'weak' | 'medium' | 'strong';
+
+interface PasswordStrengthProps {
+  password: string;
+  showSuggestion?: boolean;
+}
+
+// Calculate strength
+const calculateStrength = (password: string): StrengthLevel => {
+  if (password.length < 8) return 'weak';
+
+  let score = 0;
+  if (/[a-z]/.test(password)) score++;
+  if (/[A-Z]/.test(password)) score++;
+  if (/[0-9]/.test(password)) score++;
+  if (/[^a-zA-Z0-9]/.test(password)) score++;
+  if (password.length >= 12) score++;
+
+  if (score >= 4) return 'strong';
+  if (score >= 2) return 'medium';
+  return 'weak';
+};
+
+// Get suggestion
+const getSuggestion = (password: string): string | undefined => {
+  if (password.length < 8) return 'Too short';
+  if (!/[0-9]/.test(password)) return 'Add a number';
+  if (!/[^a-zA-Z0-9]/.test(password)) return 'Add a special character';
+  if (!/[A-Z]/.test(password)) return 'Add an uppercase letter';
+  return undefined;
+};
+```
+
+---
+
+### 8.6 Debounced Async Validation Pattern
+
+```typescript
+// Email availability check with debounce
+const useEmailAvailability = (email: string, delay = 500) => {
+  const [status, setStatus] = useState<'idle' | 'checking' | 'available' | 'unavailable' | 'error'>('idle');
+
+  useEffect(() => {
+    if (!email || !isValidEmail(email)) {
+      setStatus('idle');
+      return;
+    }
+
+    setStatus('checking');
+
+    const timer = setTimeout(async () => {
+      try {
+        const isAvailable = await checkEmailAvailability(email);
+        setStatus(isAvailable ? 'available' : 'unavailable');
+      } catch {
+        setStatus('error');
+      }
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [email, delay]);
+
+  return status;
+};
+
+// Display messages by status
+const statusMessages = {
+  idle: null,
+  checking: 'Checking...',
+  available: null, // Silent success (show checkmark only)
+  unavailable: 'This email is already in use',
+  error: "Couldn't verify. Try again."
+};
+```
+
+---
+
+### 8.7 Form-Level Error Handling Pattern
+
+```typescript
+interface FormState {
+  values: Record<string, string>;
+  errors: Record<string, string | undefined>;
+  touched: Record<string, boolean>;
+}
+
+// Show error only after field has been touched
+const shouldShowError = (fieldName: string, state: FormState): boolean => {
+  return state.touched[fieldName] && !!state.errors[fieldName];
+};
+
+// On submit: validate all fields and focus first error
+const handleSubmit = async (state: FormState) => {
+  const allErrors = validateAllFields(state.values);
+
+  if (Object.keys(allErrors).length > 0) {
+    setErrors(allErrors);
+
+    // Focus first error field
+    const firstErrorField = Object.keys(allErrors)[0];
+    document.getElementById(firstErrorField)?.focus();
+
+    return;
+  }
+
+  // Submit form...
+};
+```
+
+---
+
+### 8.8 Accessibility Requirements
+
+| Requirement | Implementation |
+|-------------|----------------|
+| Error announcement | Use `role="alert"` for error messages |
+| Field association | Use `aria-describedby` linking fields to errors |
+| Invalid state | Use `aria-invalid="true"` on error fields |
+| Focus management | Move focus to first error field on submit |
+| Required indicator | Use `aria-required="true"` + visual indicator |
+
+**Accessible field example:**
+
+```html
+<label for="email">
+  Email address
+  <span aria-hidden="true">*</span>
+</label>
+<span id="email-hint" class="helper-text">
+  We'll send verification to this email
+</span>
+<input
+  id="email"
+  type="email"
+  aria-required="true"
+  aria-invalid="true"
+  aria-describedby="email-hint email-error"
+/>
+<span id="email-error" role="alert" class="error-text">
+  Please enter a valid email address
+</span>
+```
+
+---
+
+### 8.9 Error Clearing Behavior
+
+| Trigger | Behavior |
+|---------|----------|
+| User starts typing | Clear error for that field |
+| User focuses field | Do not clear (wait for blur or typing) |
+| User blurs field | Revalidate and update error |
+| Form submission | Validate all fields, show all errors |
+| Successful submission | Clear all errors |
+
+```typescript
+// Clear error when user starts typing
+const handleChange = (fieldName: string, value: string) => {
+  setValues(prev => ({ ...prev, [fieldName]: value }));
+
+  // Clear error for this field
+  if (errors[fieldName]) {
+    setErrors(prev => ({ ...prev, [fieldName]: undefined }));
+  }
+};
+```
+
+---
+
+## 9. Quick Reference Card
+
+### Validation Timing Quick Reference
+
+| Trigger | Use For | Example Fields |
+|---------|---------|----------------|
+| On blur | Most fields | Email, text, phone, select |
+| On change | Real-time feedback | Password strength, character counters |
+| On submit | Final validation | All fields |
+| Debounced (500ms) | Async checks | Email availability, username |
+
+---
+
+### Message Templates Quick Reference
+
+| Scenario | Template | Example |
+|----------|----------|---------|
+| Required | "{Field} is required" | "Email is required" |
+| Invalid format | "Please enter a valid {field}" | "Please enter a valid email address" |
+| Too short | "{Field} must be at least {min} characters" | "Password must be at least 8 characters" |
+| Too long | "{Field} must be {max} characters or less" | "Bio must be 500 characters or less" |
+| Mismatch | "{Field} must match {other field}" | "Passwords must match" |
+| Comparison | "{Field} must be {comparison} {other field}" | "Discounted price must be less than original price" |
+| Future date | "{Field} must be a future date" | "Expiration date must be a future date" |
+| Duplicate | "This {field} is already in use" | "This email is already in use" |
+| Invalid selection | "Please select a valid {field}" | "Please select a valid category" |
+
+---
+
+### Helper Text Quick Reference
+
+| Field Type | Helper Text Example |
+|------------|---------------------|
+| Password (create) | "Min. 8 characters" |
+| Email (sign up) | "We'll send verification to this email" |
+| Phone (business) | "Customers may contact you at this number" |
+| URL | "Include https://" |
+| Description | "500 characters max" |
+| Date | "Must be a future date" |
+
+---
+
+### Placeholder Quick Reference
+
+| Field | Placeholder |
+|-------|-------------|
+| Email | "you@example.com" |
+| Phone | "(555) 555-5555" |
+| URL | "https://yourbusiness.com" |
+| Date | "MM/DD/YYYY" |
+| ZIP | "12345" |
+| Credit card | "4242 4242 4242 4242" |
+| Search | "Search deals..." |
+
+---
+
+### Real-Time Feedback Quick Reference
+
+| Feature | Fields | Display |
+|---------|--------|---------|
+| Character counter | Textareas | "245/500 characters" |
+| Password strength | Password create | Weak/Medium/Strong bar |
+| Availability check | Email (sign up) | Spinner → checkmark/error |
+| Format as you type | Phone, credit card | Auto-formatting |
+
+---
+
+### Do's and Don'ts
+
+**Do:**
+- Validate on blur for most fields
+- Show helper text before user makes mistake
+- Clear errors when user starts correcting
+- Focus first error field on submit
+- Use character counters for length-limited textareas
+- Show password strength meter during creation
+- Use debounce for async validation
+- Provide clear, specific error messages
+
+**Don't:**
+- Validate on every keystroke (except counters/strength)
+- Show all errors at once before user tries
+- Use vague messages ("Invalid input")
+- Disable submit button based on validation
+- Show both helper text and error simultaneously
+- Reveal if email exists on failed login
+- Block submission based on password strength alone
+- Use red color as the only error indicator
+
+---
+
+### Module Tone Quick Reference
+
+| Module | Tone | Required Field Example |
+|--------|------|------------------------|
+| Consumer | Encouraging, patient | "Email is required" |
+| Business | Professional, efficient | "Deal title is required" |
+| Admin | Factual, concise | "Rejection reason is required" |
+
+---
+
+### Accessibility Checklist
+
+- [ ] `aria-describedby` links field to error/helper text
+- [ ] `aria-invalid="true"` on fields with errors
+- [ ] `role="alert"` on error messages
+- [ ] `aria-required="true"` on required fields
+- [ ] Focus moves to first error on submit
+- [ ] Visual indicators don't rely on color alone
+- [ ] Keyboard navigation works for all form controls
+
+---
+
+*Based on Phase 17 Voice & Tone Definition and ERROR-MESSAGES.md patterns. Form validation copy supports future i18n extraction.*
+
