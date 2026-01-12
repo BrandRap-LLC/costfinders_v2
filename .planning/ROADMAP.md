@@ -102,10 +102,10 @@ Plans:
 **Goal**: Handle no-data scenarios consistently
 **Depends on**: Phase 19
 **Research**: Unlikely (applying established patterns)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 20-01: TBD
+- [x] 20-01: Empty states & placeholders guide (EMPTY-STATES.md)
 
 #### Phase 21: Form Validation Copy
 
@@ -272,7 +272,7 @@ Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 �
 | 17. Voice & Tone Definition | v1.2 | 1/1 | Complete | 2026-01-12 |
 | 18. Error Messaging System | v1.2 | 1/1 | Complete | 2026-01-12 |
 | 19. Success & Confirmation States | v1.2 | 1/1 | Complete | 2026-01-12 |
-| 20. Empty States & Placeholders | v1.2 | 0/? | Not started | - |
+| 20. Empty States & Placeholders | v1.2 | 1/1 | Complete | 2026-01-12 |
 | 21. Form Validation Copy | v1.2 | 0/? | Not started | - |
 | 22. Notification Templates | v1.2 | 0/? | Not started | - |
 | 23. Documentation & Guidelines | v1.2 | 0/? | Not started | - |

@@ -590,4 +590,250 @@ Every empty state should answer: *Why is this empty? What can I do about it?*
 
 ---
 
+## 6. Display Patterns
+
+### 6.1 Visual Hierarchy
+
+Empty states follow a consistent visual structure:
+
+| Element | Specification |
+|---------|---------------|
+| **Icon** | Optional, 48px, muted color (text-secondary), relevant to context |
+| **Title** | text-lg, font-semibold, text-primary |
+| **Description** | text-sm, text-secondary, max 2 lines |
+| **CTA** | Primary button for main action, link style for secondary |
+
+**Spacing:**
+- Icon → Title: 16px (mb-4)
+- Title → Description: 8px (mb-2)
+- Description → CTA: 16px (mt-4)
+
+---
+
+### 6.2 Layout Guidelines
+
+| Context | Alignment | Container |
+|---------|-----------|-----------|
+| Full-page empty state | Center (text-center) | Centered in viewport, max-w-md |
+| Card/section empty state | Left (text-left) | Contained within card padding |
+| Table/list empty state | Center | Full width of table/list container |
+| Inline empty state | Left | Inline with content flow |
+
+**Full-page empty state example:**
+```
+┌──────────────────────────────────────────┐
+│                                          │
+│              [Icon - 48px]               │
+│                                          │
+│           No saved deals yet             │
+│                                          │
+│  Deals you save will appear here.        │
+│  Browse our collection to find           │
+│  something you love.                     │
+│                                          │
+│           [Browse deals]                 │
+│                                          │
+└──────────────────────────────────────────┘
+```
+
+---
+
+### 6.3 Icon Recommendations
+
+| Context | Recommended Icon | Alternative |
+|---------|------------------|-------------|
+| No items (general) | MagnifyingGlass | Folder |
+| No search results | MagnifyingGlass | — |
+| No messages | ChatCircle | Envelope |
+| No notifications | Bell | BellSimple |
+| First-time/welcome | Sparkle | RocketLaunch |
+| Error loading | WarningCircle | Warning |
+| Offline | WifiSlash | CloudSlash |
+| No favorites/saved | Heart | Bookmark |
+| No leads/users | Users | User |
+| No deals | Tag | Ticket |
+| Queue empty | CheckCircle | — |
+| Locked/restricted | Lock | ShieldCheck |
+| Premium required | Crown | Star |
+| Calendar/date empty | Calendar | CalendarBlank |
+| Analytics empty | ChartLine | ChartBar |
+
+**Icon styling:**
+```tsx
+<Icon size={48} weight="light" className="text-secondary" />
+```
+
+---
+
+### 6.4 Responsive Behavior
+
+| Breakpoint | Adjustments |
+|------------|-------------|
+| Mobile (< 640px) | Icon size 40px, Description single line if possible |
+| Tablet (640-1024px) | Standard layout |
+| Desktop (> 1024px) | May increase max-width for full-page states |
+
+---
+
+## 7. Implementation Guidelines
+
+### 7.1 Component Interface
+
+```tsx
+interface EmptyStateProps {
+  /** Icon component from Phosphor Icons */
+  icon?: React.ReactNode;
+  /** Main heading text */
+  title: string;
+  /** Supporting description text */
+  description?: string;
+  /** Primary call-to-action */
+  action?: {
+    label: string;
+    onClick: () => void;
+    variant?: 'primary' | 'secondary' | 'link';
+  };
+  /** Secondary action (displayed as link) */
+  secondaryAction?: {
+    label: string;
+    onClick: () => void;
+  };
+  /** Layout alignment */
+  align?: 'center' | 'left';
+  /** Additional CSS classes */
+  className?: string;
+}
+```
+
+---
+
+### 7.2 State Detection Logic
+
+Distinguish between different empty state types:
+
+```tsx
+// Pseudocode for state detection
+function getEmptyStateType(context) {
+  if (isLoading) return null; // Show skeleton, not empty state
+  if (hasError) return 'error';
+  if (!hasPermission) return 'permission';
+  if (hasActiveFilters && data.length === 0) return 'filter';
+  if (hasSearchQuery && data.length === 0) return 'search';
+  if (data.length === 0) return 'first-time';
+  return null; // Has data, no empty state needed
+}
+```
+
+**Priority order:**
+1. Loading → Show skeleton/spinner
+2. Error → Error empty state
+3. Permission → Permission empty state
+4. Filter active + no results → Filter empty state
+5. Search active + no results → Search empty state
+6. No data → First-time empty state
+
+---
+
+### 7.3 Accessibility Requirements
+
+| Requirement | Implementation |
+|-------------|----------------|
+| Screen reader announcement | Use `role="status"` for dynamic empty states |
+| Icon accessibility | Add `aria-hidden="true"` to decorative icons |
+| Keyboard navigation | Ensure CTA is keyboard accessible (focusable, activatable) |
+| Color independence | Don't rely on color alone; use icons + text |
+| Focus management | On filter clear, return focus appropriately |
+
+**Example accessible empty state:**
+```tsx
+<div role="status" aria-live="polite" className="empty-state">
+  <MagnifyingGlass size={48} aria-hidden="true" />
+  <h3>No deals found</h3>
+  <p>Try adjusting your search or browse all deals.</p>
+  <button onClick={clearSearch}>Clear search</button>
+</div>
+```
+
+---
+
+### 7.4 Animation Guidelines
+
+| Transition | Usage |
+|------------|-------|
+| Fade in | When empty state first appears |
+| Fade out | When data loads and empty state is replaced |
+| None | Avoid complex animations that delay content |
+
+**Timing:**
+- Fade duration: 150-200ms
+- Delay before showing empty state: 300ms (avoid flash on fast loads)
+
+---
+
+## 8. Quick Reference Card
+
+### Always Do
+
+- Include a helpful description
+- Provide a CTA when an action is possible
+- Match module tone (Consumer warm, Business efficient, Admin factual)
+- Use sentence case throughout
+- End descriptions with a period
+- Use appropriate icons from Phosphor
+- Distinguish between search, filter, and first-time empty states
+- Use `role="status"` for accessibility
+
+### Never Do
+
+- Leave empty state without any text
+- Use "Nothing here" alone (too vague)
+- Make user feel bad ("You have no friends")
+- Use technical language in consumer module
+- Skip the CTA when one is available
+- Use title case for empty state titles
+- Add exclamation marks
+- Show empty state while still loading
+
+---
+
+### Template Quick Reference
+
+| Type | Title Pattern | Description Pattern | CTA Pattern |
+|------|---------------|---------------------|-------------|
+| First-time | "No {items} yet" | "When you {action}, they'll appear here." | "{Action}" |
+| Search | "No {items} found" | "Try adjusting your search or {alternative}." | "Clear search" |
+| Filter | "No {items} match your filters" | "Try removing some filters to see more results." | "Clear filters" |
+| Error | "Couldn't load {items}" | "Something went wrong. Please try again." | "Try again" |
+| Permission | "{Feature} requires {requirement}" | "Upgrade to access this feature." | "View plans" |
+
+---
+
+### Module Tone Quick Reference
+
+| Module | Tone | Example Title | Example Description |
+|--------|------|---------------|---------------------|
+| Consumer | Warm, encouraging | "No saved deals yet" | "Deals you save will appear here. Browse our collection to find something you love." |
+| Business | Professional, efficient | "No leads yet" | "When customers claim your deals, they'll appear here." |
+| Admin | Factual, concise | "No users found" | "Adjust your search or filters." |
+
+---
+
+### Icon Quick Reference
+
+| Context | Icon |
+|---------|------|
+| Search/filter empty | MagnifyingGlass |
+| First-time deals | Tag |
+| First-time favorites | Heart |
+| Messages empty | ChatCircle |
+| Leads/users empty | Users |
+| Error state | WarningCircle |
+| Offline | WifiSlash |
+| Permission/locked | Lock |
+| Premium feature | Crown |
+| Analytics empty | ChartLine |
+| Queue clear | CheckCircle |
+
+---
+
 *Based on Phase 17 Voice & Tone Definition and Phase 16 Messaging Audit findings. Empty state patterns support future i18n extraction.*
