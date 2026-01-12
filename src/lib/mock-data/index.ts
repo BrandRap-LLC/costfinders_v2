@@ -44,6 +44,21 @@ export {
   getTreatmentStats,
   type Treatment,
 } from './treatments'
+export {
+  getLeadPricing,
+  getAllLeadPricing,
+  getCreditPackages,
+  getCreditPackageById,
+  getBusinessCredits,
+  getCreditUsageHistory,
+  calculateTierSavings,
+  purchaseCredits,
+  type BusinessTier,
+  type TierPricing,
+  type CreditPackage,
+  type BusinessCredits,
+  type CreditUsageHistory,
+} from './leadPricing'
 
 // Query utilities
 export {
