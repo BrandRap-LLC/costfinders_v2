@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://costfinders.com'
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.costfinders.ai'
 
   // Check for production environment (Vercel or standard Node)
   const isProduction =

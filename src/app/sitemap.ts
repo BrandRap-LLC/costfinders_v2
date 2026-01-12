@@ -24,7 +24,7 @@ function slugify(text: string): string {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://costfinders.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.costfinders.ai'
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
