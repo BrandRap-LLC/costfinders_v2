@@ -1,7 +1,7 @@
 'use client'
 
-import { AuthenticatedDashboardLayout } from '@/components/layout/authenticatedDashboardLayout'
 import { AdminDashboardSidebar } from '@/components/layout/adminDashboardSidebar'
+import { AuthenticatedDashboardLayout } from '@/components/layout/authenticatedDashboardLayout'
 import { AdminAuthProvider, useAdminAuth } from '@/lib/context/adminAuthContext'
 
 function AdminDashboardContent({ children }: { children: React.ReactNode }) {

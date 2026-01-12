@@ -22,7 +22,8 @@ export default function BusinessDashboardLayout({
   }, [state.isLoading, state.isAuthenticated, state.owner?.businessId, router])
 
   // Don't render if authenticated but no business linked
-  const effectivelyAuthenticated = state.isAuthenticated && !!state.owner?.businessId
+  const effectivelyAuthenticated =
+    state.isAuthenticated && !!state.owner?.businessId
 
   return (
     <AuthenticatedDashboardLayout

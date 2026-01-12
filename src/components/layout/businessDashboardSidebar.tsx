@@ -17,7 +17,11 @@ const navItems: NavItem[] = [
   { href: '/business/dashboard/deals', label: 'Deals', icon: Tag },
   { href: '/business/dashboard/leads', label: 'Leads', icon: Users },
   { href: '/business/dashboard/messages', label: 'Messages', icon: ChatCircle },
-  { href: '/business/dashboard/analytics', label: 'Analytics', icon: ChartLine },
+  {
+    href: '/business/dashboard/analytics',
+    label: 'Analytics',
+    icon: ChartLine,
+  },
   { href: '/business/dashboard/profile', label: 'Profile', icon: Buildings },
   { href: '/business/dashboard/settings', label: 'Settings', icon: Gear },
 ]

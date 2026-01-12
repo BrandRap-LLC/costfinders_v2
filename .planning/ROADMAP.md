@@ -48,15 +48,16 @@ Plans:
 - [x] 11-02: Extend CSS design tokens (semantic colors in @theme, semanticClasses export)
 - [x] 11-03: Update core UI components (badge.tsx, input.tsx to use semantic tokens)
 
-#### Phase 12: Shared Components
+#### Phase 12: Shared Components ✅
 
 **Goal**: Create unified headers, footers, navigation components for all modules
 **Depends on**: Phase 11
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
 - [x] 12-01: Create shared navigation components (BaseSidebar, AuthenticatedDashboardLayout)
+- [x] 12-02: Migrate role-specific components to use shared base (consumer, business, admin)
 
 #### Phase 13: Navigation Overhaul
 
@@ -108,7 +109,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 9. Admin Platform | v1.0 | 2/2 | Complete | 2026-01-12 |
 | 10. Monetization UI | v1.0 | 5/5 | Complete | 2026-01-12 |
 | 11. Design System Audit | v1.1 | 3/3 | Complete | 2026-01-12 |
-| 12. Shared Components | v1.1 | 1/? | In progress | - |
-| 13. Navigation Overhaul | v1.1 | 0/? | Not started | - |
+| 12. Shared Components | v1.1 | 2/2 | Complete | 2026-01-12 |
+| 13. Navigation Overhaul | v1.1 | 0/2 | Not started | - |
 | 14. Module Polish | v1.1 | 0/? | Not started | - |
 | 15. Admin Polish & QA | v1.1 | 0/? | Not started | - |

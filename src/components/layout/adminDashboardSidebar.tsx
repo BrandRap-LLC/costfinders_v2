@@ -21,7 +21,11 @@ const navItems: NavItem[] = [
   { href: '/admin/dashboard/businesses', label: 'Businesses', icon: Buildings },
   { href: '/admin/dashboard/content', label: 'Content', icon: FolderSimple },
   { href: '/admin/dashboard/reports', label: 'Reports', icon: ChartBar },
-  { href: '/admin/dashboard/monetization', label: 'Monetization', icon: CurrencyDollar },
+  {
+    href: '/admin/dashboard/monetization',
+    label: 'Monetization',
+    icon: CurrencyDollar,
+  },
   { href: '/admin/dashboard/data', label: 'Data', icon: Database },
   { href: '/admin/dashboard/settings', label: 'Settings', icon: Gear },
 ]
