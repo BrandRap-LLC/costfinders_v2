@@ -7,7 +7,7 @@ Build the complete CostFinders UI — a price transparency and lead generation p
 ## Milestones
 
 - ✅ [v1.0 MVP](milestones/v1.0-ROADMAP.md) (Phases 1-10) — SHIPPED 2026-01-11
-- 🚧 **v1.1 UI Consistency & Polish** — Phases 11-15 (in progress)
+- ✅ **v1.1 UI Consistency & Polish** — Phases 11-15 — SHIPPED 2026-01-12
 
 ## Completed Milestones
 
@@ -32,11 +32,11 @@ See [v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md) for full details.
 
 </details>
 
-### 🚧 v1.1 UI Consistency & Polish (In Progress)
+### ✅ v1.1 UI Consistency & Polish — SHIPPED 2026-01-12
 
 **Milestone Goal:** Unify the design system, navigation, and shared components across all modules for a cohesive user experience
 
-#### Phase 11: Design System Audit
+#### Phase 11: Design System Audit ✅
 
 **Goal**: Review existing styles, document inconsistencies, establish unified token system
 **Depends on**: v1.0 complete
@@ -70,7 +70,7 @@ Plans:
 - [x] 13-01: Create PageHeader component + route configuration
 - [x] 13-02: Integrate into layouts + clean up ad-hoc navigation
 
-#### Phase 14: Module Polish
+#### Phase 14: Module Polish ✅
 
 **Goal**: Apply unified system to deal browsing, consumer flows, business portal
 **Depends on**: Phase 13
@@ -82,10 +82,10 @@ Plans:
 - [x] 14-02: Migrate consumer deal components to semantic tokens
 - [x] 14-03: Migrate business onboarding components to semantic tokens
 - [x] 14-04: Migrate monetization & payment components to semantic tokens
-- [ ] 14-05: Migrate consumer & business dashboard pages to semantic tokens
-- [ ] 14-06: Migrate business deal & lead management components to semantic tokens
+- [x] 14-05: Migrate consumer & business dashboard pages to semantic tokens
+- [x] 14-06: Migrate business deal & lead management components to semantic tokens
 
-#### Phase 15: Admin Polish & QA
+#### Phase 15: Admin Polish & QA ✅
 
 **Goal**: Apply unified system to admin tools, comprehensive cross-module QA
 **Depends on**: Phase 14
@@ -94,7 +94,7 @@ Plans:
 
 Plans:
 - [x] 15-01: Migrate admin dashboard pages to semantic tokens
-- [ ] 15-02: Migrate admin components + comprehensive cross-module QA
+- [x] 15-02: Migrate admin components + comprehensive cross-module QA
 
 ## Progress
 
@@ -117,5 +117,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 11. Design System Audit | v1.1 | 3/3 | Complete | 2026-01-12 |
 | 12. Shared Components | v1.1 | 2/2 | Complete | 2026-01-12 |
 | 13. Navigation Overhaul | v1.1 | 2/2 | Complete | 2026-01-12 |
-| 14. Module Polish | v1.1 | 4/6 | In progress | - |
-| 15. Admin Polish & QA | v1.1 | 1/2 | In progress | - |
+| 14. Module Polish | v1.1 | 6/6 | Complete | 2026-01-12 |
+| 15. Admin Polish & QA | v1.1 | 2/2 | Complete | 2026-01-12 |
