@@ -352,3 +352,377 @@ When a field has both helper text and an error, prioritize display:
 
 ---
 
+## 5. Field Validation Catalog
+
+Reference field validation patterns from ERROR-MESSAGES.md section 4.1 for message templates. This section documents form-specific validation rules.
+
+### 5.1 Common Field Validations (All Modules)
+
+These validations apply consistently across Consumer, Business, and Admin modules:
+
+| Field | Required | Format | Min/Max | Error Messages |
+|-------|----------|--------|---------|----------------|
+| Email | Yes* | email | - | "Email is required", "Please enter a valid email address" |
+| Password | Yes* | - | 8+ chars | "Password is required", "Password must be at least 8 characters" |
+| Confirm Password | Yes* | - | Match password | "Please confirm your password", "Passwords must match" |
+| Phone | Varies | phone | - | "Please enter a valid phone number" |
+| URL | No | URL | - | "Please enter a valid URL (e.g., https://example.com)" |
+| ZIP Code | Varies | 5 or 9 digits | - | "Please enter a valid ZIP code" |
+| Date | Varies | MM/DD/YYYY | - | "Please enter a valid date" |
+
+*Required when field is present in form.
+
+---
+
+### 5.2 Consumer Module Forms
+
+#### Sign Up Form
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Email* | Yes | email format, unique | "Email is required", "Please enter a valid email address", "This email is already in use" | "We'll send verification to this email" |
+| Password* | Yes | min 8 chars | "Password is required", "Password must be at least 8 characters" | "Min. 8 characters" |
+| Confirm Password* | Yes | matches password | "Please confirm your password", "Passwords must match" | - |
+| First Name | No | - | - | - |
+| Last Name | No | - | - | - |
+
+**Real-time validation:**
+- Email: Availability check (debounced 500ms)
+- Password: Strength meter
+
+---
+
+#### Sign In Form
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Email* | Yes | email format | "Email is required", "Please enter a valid email address" | - |
+| Password* | Yes | - | "Password is required" | - |
+
+**Note:** Do not reveal whether email exists on failed login. Use: "Invalid email or password. Please try again."
+
+---
+
+#### Profile Form
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| First Name | No | max 50 chars | "First name must be 50 characters or less" | - |
+| Last Name | No | max 50 chars | "Last name must be 50 characters or less" | - |
+| Phone | No | phone format | "Please enter a valid phone number" | - |
+| Location (City) | No | - | - | "Used to show you nearby deals" |
+
+---
+
+#### Alert Preferences Form
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Email Alerts | No | boolean | - | "Receive deal alerts via email" |
+| SMS Alerts | No | boolean, requires phone | "Add a phone number to enable SMS alerts" | "Receive deal alerts via text" |
+| Frequency | No | select | - | - |
+
+**Dependency:** SMS Alerts requires phone number to be set in profile.
+
+---
+
+#### Claim Deal Modal
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Preferred Date | No | future date | "Please select a future date" | - |
+| Preferred Time | No | select | - | - |
+| Notes | No | max 500 chars | "Notes must be 500 characters or less" | "Optional message to the business" |
+
+**Character counter:** Show for Notes field.
+
+---
+
+### 5.3 Business Module Forms
+
+#### Create Business Form (Claim Flow)
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Business Name* | Yes | max 100 chars | "Business name is required", "Business name must be 100 characters or less" | "This is how customers will find you" |
+| Email* | Yes | email format | "Business email is required", "Please enter a valid email address" | "We'll send leads to this email" |
+| Phone* | Yes | phone format | "Business phone is required", "Please enter a valid phone number" | "Customers may contact you at this number" |
+| Address* | Yes | - | "Business address is required" | - |
+| City* | Yes | - | "City is required" | - |
+| State* | Yes | select | "Please select a state" | - |
+| ZIP Code* | Yes | 5 digit format | "ZIP code is required", "Please enter a valid ZIP code" | - |
+
+---
+
+#### Business Profile Form
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Business Name* | Yes | max 100 chars | "Business name is required", "Business name must be 100 characters or less" | - |
+| Description | No | max 1000 chars | "Description must be 1000 characters or less" | - |
+| Website | No | URL format | "Please enter a valid URL (e.g., https://example.com)" | "Include https://" |
+| Phone* | Yes | phone format | "Business phone is required", "Please enter a valid phone number" | - |
+| Logo | No | image, max 5MB | "Logo must be a JPG, PNG, or WebP file", "Logo must be under 5 MB" | "Appears on your profile and deal cards" |
+
+**Character counter:** Show for Description field.
+
+---
+
+#### Deal Form (Create/Edit)
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Title* | Yes | max 100 chars | "Deal title is required", "Title must be 100 characters or less" | "Keep it brief and descriptive" |
+| Description* | Yes | max 2000 chars | "Description is required", "Description must be 2000 characters or less" | - |
+| Original Price* | Yes | positive number | "Original price is required", "Please enter a valid price" | - |
+| Discounted Price* | Yes | positive number, < original | "Discounted price is required", "Discounted price must be less than original price" | "What customers pay" |
+| Category* | Yes | select | "Please select a category" | - |
+| Treatment Type | No | select | - | - |
+| Expiration Date | No | future date | "Expiration date must be a future date" | - |
+| Terms | No | max 1000 chars | "Terms must be 1000 characters or less" | "Any restrictions or fine print" |
+| Image | No | image, max 5MB | "Image must be a JPG, PNG, or WebP file", "Image must be under 5 MB" | - |
+
+**Real-time validation:**
+- Price comparison: Validate when both prices entered
+- Character counters: Show for Description and Terms
+
+---
+
+#### Mock Payment Form
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Card Number* | Yes | 16 digits | "Card number is required", "Please enter a valid card number" | - |
+| Expiration Date* | Yes | MM/YY, future | "Expiration date is required", "Please enter a valid expiration date", "Card has expired" | - |
+| CVV* | Yes | 3-4 digits | "CVV is required", "Please enter a valid CVV" | - |
+| Billing ZIP* | Yes | 5 digits | "Billing ZIP is required", "Please enter a valid ZIP code" | - |
+
+**Real-time validation:**
+- Card number: Format as user types, detect card type
+- Expiration: Validate not expired when both fields populated
+
+---
+
+### 5.4 Admin Module Forms
+
+#### Admin Login
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Email* | Yes | email format | "Email is required", "Please enter a valid email address" | - |
+| Password* | Yes | - | "Password is required" | - |
+| 2FA Code | When enabled | 6 digits | "Verification code is required", "Please enter a valid verification code" | "Enter the code from your authenticator app" |
+
+---
+
+#### Content Management Forms
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Name* | Yes | max 100 chars | "Name is required", "Name must be 100 characters or less" | - |
+| Slug* | Yes | alphanumeric + hyphens | "Slug is required", "Slug must contain only letters, numbers, and hyphens" | "URL-friendly identifier" |
+| Description | No | max 500 chars | "Description must be 500 characters or less" | - |
+| Status | Yes | select | "Please select a status" | - |
+
+---
+
+#### User Management Actions
+
+| Field | Required | Validation | Error Message | Helper Text |
+|-------|----------|------------|---------------|-------------|
+| Rejection Reason* | Yes (when rejecting) | max 500 chars | "Rejection reason is required" | "This will be sent to the business owner" |
+| Suspension Reason | No | max 500 chars | - | "Internal note" |
+| Notes | No | max 1000 chars | - | - |
+
+---
+
+## 6. Module-Specific Tone Matrix
+
+Validation messages adapt tone based on module context, while maintaining consistent message structure.
+
+### 6.1 Consumer Module Tone
+
+| Attribute | Description |
+|-----------|-------------|
+| **Encouraging** | Support user progress without pressure |
+| **Patient** | Don't make users feel rushed or judged |
+| **Reassuring** | Build confidence that they can fix it |
+
+**Tone in validation:**
+
+| Scenario | Consumer Tone | Example |
+|----------|---------------|---------|
+| Required field | Direct but friendly | "Email is required" |
+| Format error | Helpful, non-technical | "Please enter a valid email address" |
+| Near completion | Encouraging | "Almost there! Just need your password." |
+| Multiple errors | Calm, prioritized | Focus first error field |
+
+---
+
+### 6.2 Business Module Tone
+
+| Attribute | Description |
+|-----------|-------------|
+| **Professional** | Respect business owner's expertise |
+| **Efficient** | Value their time with concise messages |
+| **Action-oriented** | Focus on what needs to be done |
+
+**Tone in validation:**
+
+| Scenario | Business Tone | Example |
+|----------|---------------|---------|
+| Required field | Direct, no fluff | "Deal title is required" |
+| Format error | Clear, practical | "Please enter a valid price (e.g., $199)" |
+| Publishing requirement | Business context | "Required for publishing" |
+| Complex validation | Factual explanation | "Discounted price must be less than original price" |
+
+---
+
+### 6.3 Admin Module Tone
+
+| Attribute | Description |
+|-----------|-------------|
+| **Factual** | State information without embellishment |
+| **Concise** | No extra words |
+| **Precise** | Exact information needed |
+
+**Tone in validation:**
+
+| Scenario | Admin Tone | Example |
+|----------|------------|---------|
+| Required field | Minimal | "Required" or "Rejection reason is required" |
+| Format error | Technical acceptable | "Invalid user ID format" |
+| Process requirement | Process-focused | "Reason required for rejection" |
+| Bulk action | Quantified | "3 of 5 items failed validation" |
+
+---
+
+### 6.4 Cross-Module Consistency
+
+Despite tone variations, these patterns remain consistent:
+
+| Pattern | All Modules |
+|---------|-------------|
+| Required field structure | "{Field} is required" |
+| Format error structure | "Please enter a valid {field}" |
+| Length error structure | "{Field} must be {constraint} characters" |
+| Comparison error structure | "{Field} must be {comparison} {other field}" |
+
+---
+
+## 7. Real-Time Validation Behaviors
+
+### 7.1 Password Strength Meter
+
+**When:** Password creation (sign up, password reset, change password).
+
+**Behavior:**
+- Begin showing after first character typed
+- Update on every keystroke
+- Show strength level + optional improvement suggestion
+- Don't block submission (unless security policy requires)
+
+**Display progression:**
+```
+[        ] ← Not started
+
+[••]
+[██░░░░░░░░░░] Weak - Too short
+
+[••••••••]
+[████████░░░░] Medium - Add a special character
+
+[••••••••••!1]
+[████████████] Strong
+```
+
+**Improvement suggestions:**
+- "Too short" → Show when < 8 characters
+- "Add a number" → When no digits present
+- "Add a special character" → When no symbols present
+- "Add uppercase letter" → When all lowercase
+
+---
+
+### 7.2 Email Availability Check
+
+**When:** Sign up form email field.
+
+**Behavior:**
+1. User stops typing
+2. Wait 500ms (debounce)
+3. Show spinner: "Checking..."
+4. Display result:
+   - Available: Checkmark (silent) or "Available"
+   - Unavailable: "This email is already in use"
+   - Error: "Couldn't verify. Try again."
+
+**Clear behavior:**
+- Clear result when user starts typing again
+- Don't re-check until user stops typing
+
+---
+
+### 7.3 Character Counters
+
+**When:** Textarea fields with length limits (descriptions, bios, notes).
+
+**Behavior:**
+- Show count from first focus or always visible
+- Update on every keystroke
+- Format: "{current}/{max} characters"
+- Optional: Change color at 90% capacity
+- At limit: Prevent further input OR show over-limit in error color
+
+**Fields with counters:**
+- Deal description (2000 chars)
+- Business description (1000 chars)
+- Deal terms (1000 chars)
+- Claim notes (500 chars)
+- Admin rejection reason (500 chars)
+
+---
+
+### 7.4 Date Range Validation
+
+**When:** Forms with start/end date pairs (deal duration, report filters).
+
+**Behavior:**
+- Validate individually on blur
+- Validate comparison when both dates populated
+- Error on end date field: "End date must be after start date"
+
+**Fields:**
+- Deal expiration (must be future)
+- Report date range (end after start)
+- Filter date range (end after start)
+
+---
+
+### 7.5 Price Comparison Validation
+
+**When:** Deal form with original and discounted price.
+
+**Behavior:**
+- Validate format individually on blur
+- Validate comparison when both prices entered
+- Error on discounted price: "Discounted price must be less than original price"
+
+---
+
+### 7.6 Image Upload Validation
+
+**When:** Logo upload, deal image upload.
+
+**Behavior:**
+1. User selects file
+2. Immediately validate:
+   - File type (JPG, PNG, WebP)
+   - File size (max 5 MB)
+3. Show error if invalid:
+   - "Please upload a JPG, PNG, or WebP file"
+   - "File size must be under 5 MB"
+4. Show preview if valid
+
+---
+
