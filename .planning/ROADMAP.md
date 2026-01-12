@@ -8,6 +8,7 @@ Build the complete CostFinders UI — a price transparency and lead generation p
 
 - ✅ [v1.0 MVP](milestones/v1.0-ROADMAP.md) (Phases 1-10) — SHIPPED 2026-01-11
 - ✅ [v1.1 UI Consistency & Polish](milestones/v1.1-ROADMAP.md) (Phases 11-15) — SHIPPED 2026-01-12
+- 🚧 **v1.2 Messaging Style Guide** — Phases 16-23 (in progress)
 
 ## Completed Milestones
 
@@ -47,10 +48,96 @@ See [v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md) for full details.
 
 </details>
 
+### 🚧 v1.2 Messaging Style Guide (In Progress)
+
+**Milestone Goal:** Establish consistent voice, tone, and messaging patterns across the entire CostFinders platform
+
+#### Phase 16: Messaging Audit
+
+**Goal**: Review all existing copy across consumer, business, admin modules
+**Depends on**: Previous milestone complete
+**Research**: Unlikely (internal review)
+**Plans**: TBD
+
+Plans:
+- [ ] 16-01: TBD (run /gsd:plan-phase 16 to break down)
+
+#### Phase 17: Voice & Tone Definition
+
+**Goal**: Establish brand voice guidelines and writing principles
+**Depends on**: Phase 16
+**Research**: Likely (UX writing best practices, brand voice frameworks)
+**Research topics**: UX writing guidelines, voice and tone frameworks, microcopy best practices
+**Plans**: TBD
+
+Plans:
+- [ ] 17-01: TBD
+
+#### Phase 18: Error Messaging System
+
+**Goal**: Standardize error message patterns and copy
+**Depends on**: Phase 17
+**Research**: Likely (error message UX patterns)
+**Research topics**: Error message UX, friendly error copy patterns, recovery messaging
+**Plans**: TBD
+
+Plans:
+- [ ] 18-01: TBD
+
+#### Phase 19: Success & Confirmation States
+
+**Goal**: Positive feedback and confirmation messaging
+**Depends on**: Phase 18
+**Research**: Unlikely (applying established voice)
+**Plans**: TBD
+
+Plans:
+- [ ] 19-01: TBD
+
+#### Phase 20: Empty States & Placeholders
+
+**Goal**: Handle no-data scenarios consistently
+**Depends on**: Phase 19
+**Research**: Unlikely (applying established patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 20-01: TBD
+
+#### Phase 21: Form Validation Copy
+
+**Goal**: Input validation messages and inline feedback
+**Depends on**: Phase 20
+**Research**: Unlikely (applying established patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 21-01: TBD
+
+#### Phase 22: Notification Templates
+
+**Goal**: Email, SMS, in-app notification copy patterns
+**Depends on**: Phase 21
+**Research**: Unlikely (applying established patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 22-01: TBD
+
+#### Phase 23: Documentation & Guidelines
+
+**Goal**: Create the messaging style guide document
+**Depends on**: Phase 22
+**Research**: Unlikely (compilation of established patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 23-01: TBD
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15
+Phases execute in numeric order: 1 → ... → 15 → 16 → 17 → 18 → 19 → 20 → 21 → 22 → 23
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -70,3 +157,11 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 13. Navigation Overhaul | v1.1 | 2/2 | Complete | 2026-01-12 |
 | 14. Module Polish | v1.1 | 6/6 | Complete | 2026-01-12 |
 | 15. Admin Polish & QA | v1.1 | 2/2 | Complete | 2026-01-12 |
+| 16. Messaging Audit | v1.2 | 0/? | Not started | - |
+| 17. Voice & Tone Definition | v1.2 | 0/? | Not started | - |
+| 18. Error Messaging System | v1.2 | 0/? | Not started | - |
+| 19. Success & Confirmation States | v1.2 | 0/? | Not started | - |
+| 20. Empty States & Placeholders | v1.2 | 0/? | Not started | - |
+| 21. Form Validation Copy | v1.2 | 0/? | Not started | - |
+| 22. Notification Templates | v1.2 | 0/? | Not started | - |
+| 23. Documentation & Guidelines | v1.2 | 0/? | Not started | - |
