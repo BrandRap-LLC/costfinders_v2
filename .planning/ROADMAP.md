@@ -62,7 +62,7 @@ See [v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md) for full details.
 
 Plans:
 - [x] 16-01: Consumer module messaging audit (public + dashboard)
-- [ ] 16-02: Business module messaging audit (onboarding + dashboard)
+- [x] 16-02: Business module messaging audit (onboarding + dashboard)
 - [ ] 16-03: Admin module audit + consolidated findings
 
 #### Phase 17: Voice & Tone Definition
@@ -268,7 +268,7 @@ Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 �
 | 13. Navigation Overhaul | v1.1 | 2/2 | Complete | 2026-01-12 |
 | 14. Module Polish | v1.1 | 6/6 | Complete | 2026-01-12 |
 | 15. Admin Polish & QA | v1.1 | 2/2 | Complete | 2026-01-12 |
-| 16. Messaging Audit | v1.2 | 1/3 | In progress | - |
+| 16. Messaging Audit | v1.2 | 2/3 | In progress | - |
 | 17. Voice & Tone Definition | v1.2 | 0/? | Not started | - |
 | 18. Error Messaging System | v1.2 | 0/? | Not started | - |
 | 19. Success & Confirmation States | v1.2 | 0/? | Not started | - |
