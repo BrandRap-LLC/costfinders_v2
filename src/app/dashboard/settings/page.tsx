@@ -48,8 +48,8 @@ export default function SettingsPage() {
       <Card variant="glass" padding="lg">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center">
-              <Bell size={20} weight="duotone" className="text-green-400" />
+            <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
+              <Bell size={20} weight="duotone" className="text-success-text" />
             </div>
             <div>
               <CardTitle>Notifications</CardTitle>
@@ -68,8 +68,8 @@ export default function SettingsPage() {
       <Card variant="glass" padding="lg">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
-              <SignOut size={20} weight="duotone" className="text-red-400" />
+            <div className="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center">
+              <SignOut size={20} weight="duotone" className="text-error-text" />
             </div>
             <div>
               <CardTitle>Account</CardTitle>
@@ -107,7 +107,7 @@ export default function SettingsPage() {
               </div>
               <button
                 type="button"
-                className="text-sm text-red-400 hover:text-red-300 transition-colors flex items-center gap-1.5"
+                className="text-sm text-error-text hover:text-error-text/80 transition-colors flex items-center gap-1.5"
                 onClick={() =>
                   alert('Contact support@costfinders.com to delete your account')
                 }

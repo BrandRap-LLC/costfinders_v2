@@ -18,28 +18,28 @@ function getVerificationBadge(status: string | undefined) {
   switch (status) {
     case 'fully_verified':
       return (
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm font-medium">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-success/10 text-success-text text-sm font-medium">
           <CheckCircle size={16} weight="fill" />
           Fully Verified
         </div>
       )
     case 'email_verified':
       return (
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 text-sm font-medium">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-warning/10 text-warning-text text-sm font-medium">
           <WarningCircle size={16} weight="fill" />
           Email Verified
         </div>
       )
     case 'phone_verified':
       return (
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 text-sm font-medium">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-warning/10 text-warning-text text-sm font-medium">
           <WarningCircle size={16} weight="fill" />
           Phone Verified
         </div>
       )
     default:
       return (
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-medium">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error/10 text-error-text text-sm font-medium">
           <WarningCircle size={16} weight="fill" />
           Unverified
         </div>
@@ -83,8 +83,8 @@ export default function DashboardPage() {
         <Card variant="glass" padding="lg">
           <CardContent>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center">
-                <ClipboardText size={24} weight="fill" className="text-green-400" />
+              <div className="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center">
+                <ClipboardText size={24} weight="fill" className="text-success-text" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-text-primary">0</p>
@@ -98,8 +98,8 @@ export default function DashboardPage() {
         <Card variant="glass" padding="lg">
           <CardContent>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                <UserCircle size={24} weight="fill" className="text-blue-400" />
+              <div className="w-12 h-12 rounded-xl bg-info/10 flex items-center justify-center">
+                <UserCircle size={24} weight="fill" className="text-info-text" />
               </div>
               <div>
                 <p className="text-sm text-text-secondary mb-1">Account Status</p>
