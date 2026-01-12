@@ -9,6 +9,7 @@ Build the complete CostFinders UI — a price transparency and lead generation p
 - ✅ [v1.0 MVP](milestones/v1.0-ROADMAP.md) (Phases 1-10) — SHIPPED 2026-01-11
 - ✅ [v1.1 UI Consistency & Polish](milestones/v1.1-ROADMAP.md) (Phases 11-15) — SHIPPED 2026-01-12
 - 🚧 **v1.2 Messaging Style Guide** — Phases 16-23 (in progress)
+- 📋 **v1.3 Location SEO Clusters** — Phases 24-33 (planned)
 
 ## Completed Milestones
 
@@ -136,10 +137,117 @@ Plans:
 Plans:
 - [ ] 23-01: TBD
 
+### 📋 v1.3 Location SEO Clusters (Planned)
+
+**Milestone Goal:** Create SEO-optimized location-based page hierarchy for organic search visibility — state → city → neighborhood pages with structured data, sitemaps, and optimized content.
+
+#### Phase 24: SEO Foundation
+
+**Goal**: Meta tags, structured data schemas, sitemap infrastructure
+**Depends on**: Phase 23 (or can run in parallel)
+**Research**: Likely (Next.js App Router SEO patterns, JSON-LD schemas)
+**Research topics**: Next.js metadata API, JSON-LD structured data for local business, Open Graph optimization
+**Plans**: TBD
+
+Plans:
+- [ ] 24-01: TBD
+
+#### Phase 25: State Pages
+
+**Goal**: State-level landing pages with city listings and aggregated deals
+**Depends on**: Phase 24
+**Research**: Unlikely (internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 25-01: TBD
+
+#### Phase 26: City Pages
+
+**Goal**: City-level pages with neighborhood breakdown and featured deals
+**Depends on**: Phase 25
+**Research**: Unlikely (internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 26-01: TBD
+
+#### Phase 27: Neighborhood Pages
+
+**Goal**: Neighborhood-level pages with all providers and deals
+**Depends on**: Phase 26
+**Research**: Unlikely (internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 27-01: TBD
+
+#### Phase 28: Provider Pages
+
+**Goal**: Individual medspa provider pages with SEO-friendly URLs
+**Depends on**: Phase 27
+**Research**: Unlikely (internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 28-01: TBD
+
+#### Phase 29: Service Category Pages
+
+**Goal**: Treatment-type pages (Botox, Fillers, etc.) by location
+**Depends on**: Phase 28
+**Research**: Unlikely (internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 29-01: TBD
+
+#### Phase 30: Dynamic Sitemap
+
+**Goal**: Programmatic sitemap generation for all location pages
+**Depends on**: Phase 29
+**Research**: Likely (Next.js sitemap generation, Google Search Console)
+**Research topics**: Next.js sitemap.ts, sitemap index files, robots.txt configuration
+**Plans**: TBD
+
+Plans:
+- [ ] 30-01: TBD
+
+#### Phase 31: Internal Linking
+
+**Goal**: Breadcrumbs, related links, cross-page navigation
+**Depends on**: Phase 30
+**Research**: Unlikely (internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 31-01: TBD
+
+#### Phase 32: Content Optimization
+
+**Goal**: Page titles, descriptions, heading hierarchy, content blocks
+**Depends on**: Phase 31
+**Research**: Unlikely (internal patterns)
+**Plans**: TBD
+
+Plans:
+- [ ] 32-01: TBD
+
+#### Phase 33: Performance & Core Web Vitals
+
+**Goal**: Image optimization, lazy loading, LCP/CLS optimization
+**Depends on**: Phase 32
+**Research**: Likely (Core Web Vitals, Next.js Image optimization)
+**Research topics**: Core Web Vitals thresholds, Next.js Image component, font loading optimization
+**Plans**: TBD
+
+Plans:
+- [ ] 33-01: TBD
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → ... → 15 → 16 → 17 → 18 → 19 → 20 → 21 → 22 → 23
+Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 → 28 → 29 → 30 → 31 → 32 → 33
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -167,3 +275,13 @@ Phases execute in numeric order: 1 → ... → 15 → 16 → 17 → 18 → 19 �
 | 21. Form Validation Copy | v1.2 | 0/? | Not started | - |
 | 22. Notification Templates | v1.2 | 0/? | Not started | - |
 | 23. Documentation & Guidelines | v1.2 | 0/? | Not started | - |
+| 24. SEO Foundation | v1.3 | 0/? | Not started | - |
+| 25. State Pages | v1.3 | 0/? | Not started | - |
+| 26. City Pages | v1.3 | 0/? | Not started | - |
+| 27. Neighborhood Pages | v1.3 | 0/? | Not started | - |
+| 28. Provider Pages | v1.3 | 0/? | Not started | - |
+| 29. Service Category Pages | v1.3 | 0/? | Not started | - |
+| 30. Dynamic Sitemap | v1.3 | 0/? | Not started | - |
+| 31. Internal Linking | v1.3 | 0/? | Not started | - |
+| 32. Content Optimization | v1.3 | 0/? | Not started | - |
+| 33. Performance & CWV | v1.3 | 0/? | Not started | - |
