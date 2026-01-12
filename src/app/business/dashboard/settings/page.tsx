@@ -19,10 +19,9 @@ const settingsLinks = [
   },
   {
     title: 'Account',
-    description: 'Manage subscription and billing',
-    href: '#',
+    description: 'View subscription and billing',
+    href: '/business/dashboard/settings/account',
     icon: CreditCard,
-    disabled: true,
   },
 ]
 
@@ -39,45 +38,22 @@ export default function SettingsPage() {
       <div className="grid gap-4">
         {settingsLinks.map((link) => {
           const Icon = link.icon
-          const content = (
-            <Card
-              className={`p-5 transition-all duration-200 ${
-                link.disabled
-                  ? 'opacity-60 cursor-not-allowed'
-                  : 'hover:bg-glass-bg-hover cursor-pointer'
-              }`}
-            >
-              <div className="flex items-center gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
-                  <Icon size={24} weight="light" className="text-brand-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-text-primary">
-                    {link.title}
-                    {link.disabled && (
-                      <span className="ml-2 text-xs font-normal text-text-muted">
-                        (Coming Soon)
-                      </span>
-                    )}
-                  </h3>
-                  <p className="text-sm text-text-secondary mt-0.5">
-                    {link.description}
-                  </p>
-                </div>
-                {!link.disabled && (
-                  <CaretRight size={20} weight="light" className="text-text-muted" />
-                )}
-              </div>
-            </Card>
-          )
-
-          if (link.disabled) {
-            return <div key={link.title}>{content}</div>
-          }
-
           return (
             <Link key={link.title} href={link.href}>
-              {content}
+              <Card className="p-5 transition-all duration-200 hover:bg-glass-bg-hover cursor-pointer">
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+                    <Icon size={24} weight="light" className="text-brand-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-text-primary">{link.title}</h3>
+                    <p className="text-sm text-text-secondary mt-0.5">
+                      {link.description}
+                    </p>
+                  </div>
+                  <CaretRight size={20} weight="light" className="text-text-muted" />
+                </div>
+              </Card>
             </Link>
           )
         })}
