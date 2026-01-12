@@ -3,7 +3,6 @@
 import { use } from 'react'
 import Link from 'next/link'
 import {
-  ArrowLeft,
   Storefront,
   Tag,
   CurrencyDollar,
@@ -39,15 +38,7 @@ export default function BusinessBillingPage({ params }: PageProps) {
 
   if (!business) {
     return (
-      <div className="space-y-6">
-        <Link href="/admin/dashboard/businesses">
-          <Button variant="ghost" size="sm" className="gap-2">
-            <ArrowLeft size={16} />
-            Back to Businesses
-          </Button>
-        </Link>
-
-        <Card variant="glass" padding="lg" className="text-center py-12">
+      <Card variant="glass" padding="lg" className="text-center py-12">
           <div className="w-16 h-16 mx-auto rounded-full bg-red-500/10 flex items-center justify-center mb-4">
             <Storefront size={32} className="text-red-400" />
           </div>
@@ -61,7 +52,6 @@ export default function BusinessBillingPage({ params }: PageProps) {
             <Button>View All Businesses</Button>
           </Link>
         </Card>
-      </div>
     )
   }
 
@@ -72,14 +62,6 @@ export default function BusinessBillingPage({ params }: PageProps) {
 
   return (
     <div className="space-y-6">
-      {/* Back Navigation */}
-      <Link href="/admin/dashboard/businesses">
-        <Button variant="ghost" size="sm" className="gap-2">
-          <ArrowLeft size={16} />
-          Back to Businesses
-        </Button>
-      </Link>
-
       {/* Business Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
