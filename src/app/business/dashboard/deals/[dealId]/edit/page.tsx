@@ -2,7 +2,6 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { ArrowLeft } from '@phosphor-icons/react'
 import { useBusinessAuth } from '@/lib/context/businessAuthContext'
 import { getDealById } from '@/lib/mock-data/deals'
 import { DealForm } from '@/components/features/dealManagement/dealForm'
@@ -56,64 +55,38 @@ export default function EditDealPage() {
   // Deal not found
   if (deal === null) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => router.push('/business/dashboard/deals')}
-          >
-            <ArrowLeft size={20} weight="light" />
+      <Card variant="glass" padding="lg">
+        <div className="text-center py-12">
+          <h2 className="text-lg font-medium text-text-primary mb-2">
+            Deal Not Found
+          </h2>
+          <p className="text-text-secondary mb-6">
+            The deal you are looking for does not exist or has been deleted.
+          </p>
+          <Button onClick={() => router.push('/business/dashboard/deals')}>
+            Back to Deals
           </Button>
-          <h1 className="text-2xl font-bold text-text-primary">Edit Deal</h1>
         </div>
-
-        <Card variant="glass" padding="lg">
-          <div className="text-center py-12">
-            <h2 className="text-lg font-medium text-text-primary mb-2">
-              Deal Not Found
-            </h2>
-            <p className="text-text-secondary mb-6">
-              The deal you are looking for does not exist or has been deleted.
-            </p>
-            <Button onClick={() => router.push('/business/dashboard/deals')}>
-              Back to Deals
-            </Button>
-          </div>
-        </Card>
-      </div>
+      </Card>
     )
   }
 
   // Check if deal belongs to this business
   if (deal.businessId !== businessId) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => router.push('/business/dashboard/deals')}
-          >
-            <ArrowLeft size={20} weight="light" />
+      <Card variant="glass" padding="lg">
+        <div className="text-center py-12">
+          <h2 className="text-lg font-medium text-text-primary mb-2">
+            Access Denied
+          </h2>
+          <p className="text-text-secondary mb-6">
+            You do not have permission to edit this deal.
+          </p>
+          <Button onClick={() => router.push('/business/dashboard/deals')}>
+            Back to Deals
           </Button>
-          <h1 className="text-2xl font-bold text-text-primary">Edit Deal</h1>
         </div>
-
-        <Card variant="glass" padding="lg">
-          <div className="text-center py-12">
-            <h2 className="text-lg font-medium text-text-primary mb-2">
-              Access Denied
-            </h2>
-            <p className="text-text-secondary mb-6">
-              You do not have permission to edit this deal.
-            </p>
-            <Button onClick={() => router.push('/business/dashboard/deals')}>
-              Back to Deals
-            </Button>
-          </div>
-        </Card>
-      </div>
+      </Card>
     )
   }
 
