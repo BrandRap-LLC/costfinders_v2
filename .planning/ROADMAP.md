@@ -158,10 +158,10 @@ Plans:
 **Goal**: State-level landing pages with city listings and aggregated deals
 **Depends on**: Phase 24
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 25-01: TBD
+- [ ] 25-01: State landing pages (route, metadata, city listings, sitemap update)
 
 #### Phase 26: City Pages
 
@@ -277,7 +277,7 @@ Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 �
 | 22. Notification Templates | v1.2 | 0/? | Not started | - |
 | 23. Documentation & Guidelines | v1.2 | 0/? | Not started | - |
 | 24. SEO Foundation | v1.3 | 3/3 | Complete | 2026-01-12 |
-| 25. State Pages | v1.3 | 0/? | Not started | - |
+| 25. State Pages | v1.3 | 0/1 | Planned | - |
 | 26. City Pages | v1.3 | 0/? | Not started | - |
 | 27. Neighborhood Pages | v1.3 | 0/? | Not started | - |
 | 28. Provider Pages | v1.3 | 0/? | Not started | - |
