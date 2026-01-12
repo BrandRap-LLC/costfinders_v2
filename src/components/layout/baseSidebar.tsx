@@ -1,8 +1,8 @@
 'use client'
 
+import { SignOut } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SignOut } from '@phosphor-icons/react'
 import { Tooltip } from '@/components/ui/tooltip'
 
 export interface NavItem {

@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export interface AuthenticatedDashboardLayoutProps {
   children: React.ReactNode
@@ -32,7 +32,11 @@ export function AuthenticatedDashboardLayout({
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <svg className="animate-spin h-8 w-8 text-brand-primary" viewBox="0 0 24 24">
+          <svg
+            className="animate-spin h-8 w-8 text-brand-primary"
+            viewBox="0 0 24 24"
+          >
+            <title>Loading</title>
             <circle
               className="opacity-25"
               cx="12"
@@ -64,9 +68,7 @@ export function AuthenticatedDashboardLayout({
       {sidebar}
       {/* Main content with left padding for sidebar on desktop */}
       <main className="md:pl-16 pt-20 pb-20 md:pb-0 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto py-6">
-          {children}
-        </div>
+        <div className="max-w-6xl mx-auto py-6">{children}</div>
       </main>
     </div>
   )
