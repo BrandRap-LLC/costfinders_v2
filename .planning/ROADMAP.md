@@ -60,13 +60,14 @@ Plans:
 
 #### Phase 13: Navigation Overhaul
 
-**Goal**: Improve routing, hierarchy, and flow between consumer/business/admin experiences
+**Goal**: Add breadcrumb navigation and back buttons for improved page hierarchy
 **Depends on**: Phase 12
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 13-01: TBD
+- [ ] 13-01: Create PageHeader component + route configuration
+- [ ] 13-02: Integrate into layouts + clean up ad-hoc navigation
 
 #### Phase 14: Module Polish
 
