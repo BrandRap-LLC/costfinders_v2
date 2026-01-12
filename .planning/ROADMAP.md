@@ -93,7 +93,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 15-01: Migrate admin dashboard pages to semantic tokens
+- [x] 15-01: Migrate admin dashboard pages to semantic tokens
 - [ ] 15-02: Migrate admin components + comprehensive cross-module QA
 
 ## Progress
@@ -118,4 +118,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 12. Shared Components | v1.1 | 2/2 | Complete | 2026-01-12 |
 | 13. Navigation Overhaul | v1.1 | 2/2 | Complete | 2026-01-12 |
 | 14. Module Polish | v1.1 | 2/6 | In progress | - |
-| 15. Admin Polish & QA | v1.1 | 0/2 | Not started | - |
+| 15. Admin Polish & QA | v1.1 | 1/2 | In progress | - |
