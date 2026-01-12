@@ -57,10 +57,12 @@ See [v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md) for full details.
 **Goal**: Review all existing copy across consumer, business, admin modules
 **Depends on**: Previous milestone complete
 **Research**: Unlikely (internal review)
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 16-01: TBD (run /gsd:plan-phase 16 to break down)
+- [ ] 16-01: Consumer module messaging audit (public + dashboard)
+- [ ] 16-02: Business module messaging audit (onboarding + dashboard)
+- [ ] 16-03: Admin module audit + consolidated findings
 
 #### Phase 17: Voice & Tone Definition
 
@@ -157,7 +159,7 @@ Phases execute in numeric order: 1 → ... → 15 → 16 → 17 → 18 → 19 �
 | 13. Navigation Overhaul | v1.1 | 2/2 | Complete | 2026-01-12 |
 | 14. Module Polish | v1.1 | 6/6 | Complete | 2026-01-12 |
 | 15. Admin Polish & QA | v1.1 | 2/2 | Complete | 2026-01-12 |
-| 16. Messaging Audit | v1.2 | 0/? | Not started | - |
+| 16. Messaging Audit | v1.2 | 0/3 | Not started | - |
 | 17. Voice & Tone Definition | v1.2 | 0/? | Not started | - |
 | 18. Error Messaging System | v1.2 | 0/? | Not started | - |
 | 19. Success & Confirmation States | v1.2 | 0/? | Not started | - |
