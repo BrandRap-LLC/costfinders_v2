@@ -58,8 +58,8 @@ export function ClaimCTA({ dealId, businessId, dealTitle }: ClaimCTAProps) {
     return (
       <Card variant="glass" padding="lg">
         <div className="flex flex-col items-center text-center space-y-4">
-          <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center">
-            <CheckCircle size={32} weight="fill" className="text-green-500" />
+          <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center">
+            <CheckCircle size={32} weight="fill" className="text-success-text" />
           </div>
           <div className="space-y-2">
             <h3 className="text-lg font-semibold text-text-primary">
@@ -137,8 +137,8 @@ export function ClaimCTA({ dealId, businessId, dealTitle }: ClaimCTAProps) {
     return (
       <Card variant="glass" padding="lg">
         <div className="flex flex-col items-center text-center space-y-4">
-          <div className="w-16 h-16 rounded-full bg-amber-400/10 flex items-center justify-center">
-            <Lock size={32} weight="fill" className="text-amber-400" />
+          <div className="w-16 h-16 rounded-full bg-warning/10 flex items-center justify-center">
+            <Lock size={32} weight="fill" className="text-warning-text" />
           </div>
           <div className="space-y-2">
             <h3 className="text-lg font-semibold text-text-primary">

@@ -103,14 +103,14 @@ export function ClaimCard({ claim }: ClaimCardProps) {
 
         {/* Booked Date/Time (if booked or completed) */}
         {claim.bookedDate && (claim.status === 'booked' || claim.status === 'completed') && (
-          <div className="flex items-center gap-2 p-3 bg-green-500/10 rounded-xl">
-            <CheckCircle size={18} weight="fill" className="text-green-500 shrink-0" />
+          <div className="flex items-center gap-2 p-3 bg-success/10 rounded-xl">
+            <CheckCircle size={18} weight="fill" className="text-success-text shrink-0" />
             <div className="text-sm">
-              <span className="text-green-400 font-medium">
+              <span className="text-success-text font-medium">
                 {claim.status === 'completed' ? 'Completed' : 'Booked'}: {formatDate(claim.bookedDate)}
               </span>
               {claim.bookedTime && (
-                <span className="text-green-400/80"> at {claim.bookedTime}</span>
+                <span className="text-success-text/80"> at {claim.bookedTime}</span>
               )}
             </div>
           </div>

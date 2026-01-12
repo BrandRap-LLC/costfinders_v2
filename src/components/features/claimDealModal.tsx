@@ -115,8 +115,8 @@ export function ClaimDealModal({
         {isSuccess ? (
           /* Success State */
           <div className="flex flex-col items-center text-center py-8">
-            <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-6">
-              <CheckCircle size={48} weight="fill" className="text-green-500" />
+            <div className="w-20 h-20 rounded-full bg-success/10 flex items-center justify-center mb-6">
+              <CheckCircle size={48} weight="fill" className="text-success-text" />
             </div>
             <h3 className="text-lg font-semibold text-text-primary mb-2">
               Claim submitted!
@@ -201,7 +201,7 @@ export function ClaimDealModal({
 
             {/* Error */}
             {error && (
-              <p className="text-sm text-red-400 bg-red-400/10 px-3 py-2 rounded-lg">
+              <p className="text-sm text-error-text bg-error/10 px-3 py-2 rounded-lg">
                 {error}
               </p>
             )}
