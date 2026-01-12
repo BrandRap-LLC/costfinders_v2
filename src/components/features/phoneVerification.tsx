@@ -145,7 +145,7 @@ export function PhoneVerification({
         {/* Resend */}
         <div className="space-y-2">
           {resendMessage ? (
-            <p className="text-sm text-green-400 bg-green-500/10 px-3 py-2 rounded-lg">
+            <p className="text-sm text-success-text bg-success/10 px-3 py-2 rounded-lg">
               Code sent!
             </p>
           ) : (

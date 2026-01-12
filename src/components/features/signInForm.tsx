@@ -112,13 +112,13 @@ export function SignInForm({
 
       {/* Forgot Password Toast */}
       {forgotPasswordSent && (
-        <p className="text-sm text-green-400 bg-green-500/10 px-3 py-2 rounded-lg">
+        <p className="text-sm text-success-text bg-success/10 px-3 py-2 rounded-lg">
           Check your email for password reset instructions.
         </p>
       )}
 
       {state.error && (
-        <p className="text-sm text-red-400 bg-red-500/10 px-3 py-2 rounded-lg">
+        <p className="text-sm text-error-text bg-error/10 px-3 py-2 rounded-lg">
           {state.error}
         </p>
       )}

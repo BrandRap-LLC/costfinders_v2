@@ -137,7 +137,7 @@ export function SignUpForm({ onSuccess, onSwitchToSignIn }: SignUpFormProps) {
       />
 
       {state.error && (
-        <p className="text-sm text-red-400 bg-red-500/10 px-3 py-2 rounded-lg">
+        <p className="text-sm text-error-text bg-error/10 px-3 py-2 rounded-lg">
           {state.error}
         </p>
       )}
