@@ -66,10 +66,10 @@ export function LeadPricingCard({
         <>
           <div className="border-t border-glass-border my-4" />
 
-          <div className="bg-green-500/5 border border-green-500/20 rounded-xl p-4">
+          <div className="bg-success/5 border border-success/20 rounded-xl p-4">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                <ArrowUp size={20} weight="bold" className="text-green-400" />
+              <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center flex-shrink-0">
+                <ArrowUp size={20} weight="bold" className="text-success-text" />
               </div>
               <div className="flex-1">
                 <p className="text-sm font-medium text-text-primary mb-1">
@@ -87,9 +87,9 @@ export function LeadPricingCard({
                       ${tierPricing.pricePerLead.toFixed(2)}/lead
                     </p>
                   </div>
-                  <div className="bg-green-500/10 rounded-lg p-2 text-center">
-                    <p className="text-xs text-green-400">Professional</p>
-                    <p className="text-sm font-semibold text-green-400">
+                  <div className="bg-success/10 rounded-lg p-2 text-center">
+                    <p className="text-xs text-success-text">Professional</p>
+                    <p className="text-sm font-semibold text-success-text">
                       ${paidTierPricing.pricePerLead.toFixed(2)}/lead
                     </p>
                   </div>

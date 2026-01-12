@@ -105,7 +105,7 @@ export function PricingTierCard({
               <Check
                 size={18}
                 weight="bold"
-                className={`flex-shrink-0 mt-0.5 ${highlighted ? 'text-brand-primary' : 'text-green-400'}`}
+                className={`flex-shrink-0 mt-0.5 ${highlighted ? 'text-brand-primary' : 'text-success-text'}`}
               />
               <span className="text-sm text-text-secondary">{feature}</span>
             </li>

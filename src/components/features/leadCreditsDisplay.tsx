@@ -68,9 +68,9 @@ export function LeadCreditsDisplay({
 
       {/* Low Credit Warning */}
       {isLowCredits && (
-        <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4 mb-4">
+        <div className="bg-warning/5 border border-warning/20 rounded-xl p-4 mb-4">
           <div className="flex items-start gap-3">
-            <Warning size={20} weight="fill" className="text-amber-400 flex-shrink-0 mt-0.5" />
+            <Warning size={20} weight="fill" className="text-warning-text flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-medium text-text-primary">Running low on credits</p>
               <p className="text-xs text-text-secondary mt-1">
