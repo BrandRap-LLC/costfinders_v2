@@ -100,10 +100,10 @@ export default function AccountSettingsPage() {
     <div className="space-y-6">
       {/* Upgrade Success Message */}
       {showUpgradeSuccess && (
-        <div className="flex items-center gap-3 p-4 bg-green-500/10 rounded-xl border border-green-500/20">
-          <CheckCircle size={20} weight="fill" className="text-green-400 flex-shrink-0" />
+        <div className="flex items-center gap-3 p-4 bg-success/10 rounded-xl border border-success/20">
+          <CheckCircle size={20} weight="fill" className="text-success-text flex-shrink-0" />
           <div>
-            <p className="text-sm font-medium text-green-400">Subscription activated!</p>
+            <p className="text-sm font-medium text-success-text">Subscription activated!</p>
             <p className="text-xs text-text-secondary mt-0.5">
               You now have access to all Professional features.
             </p>
@@ -139,7 +139,7 @@ export default function AccountSettingsPage() {
             </div>
           </div>
           {currentTier === 'paid' && (
-            <div className="flex items-center gap-2 text-green-400">
+            <div className="flex items-center gap-2 text-success-text">
               <CheckCircle size={20} weight="fill" />
               <span className="text-sm font-medium">Fully Activated</span>
             </div>
@@ -214,8 +214,8 @@ export default function AccountSettingsPage() {
           {currentTier !== 'paid' && (
             <Card variant="glass" padding="lg">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                  <Warning size={20} weight="fill" className="text-amber-400" />
+                <div className="w-10 h-10 rounded-xl bg-warning/10 flex items-center justify-center flex-shrink-0">
+                  <Warning size={20} weight="fill" className="text-warning-text" />
                 </div>
                 <div>
                   <h3 className="font-medium text-text-primary mb-1">
@@ -261,7 +261,7 @@ export default function AccountSettingsPage() {
               </p>
               <Button
                 variant="ghost"
-                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                className="text-error-text hover:text-error-text/80 hover:bg-error/10"
                 onClick={() => setShowCancelModal(true)}
               >
                 Cancel Subscription

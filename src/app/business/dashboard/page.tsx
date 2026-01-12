@@ -26,9 +26,9 @@ function MetricCard({ icon: Icon, value, label, trend }: MetricCardProps) {
           <div
             className={`flex items-center gap-1 text-sm font-medium ${
               trend.direction === 'up'
-                ? 'text-green-400'
+                ? 'text-success-text'
                 : trend.direction === 'down'
-                  ? 'text-red-400'
+                  ? 'text-error-text'
                   : 'text-text-secondary'
             }`}
           >

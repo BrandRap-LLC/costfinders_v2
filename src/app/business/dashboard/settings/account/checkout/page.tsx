@@ -55,8 +55,8 @@ export default function CheckoutPage() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <Card variant="glass" padding="lg" className="max-w-md w-full text-center">
-          <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-            <CheckCircle size={40} weight="fill" className="text-green-400" />
+          <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-4">
+            <CheckCircle size={40} weight="fill" className="text-success-text" />
           </div>
           <h1 className="text-2xl font-bold text-text-primary mb-2">
             Welcome to Professional!
@@ -106,7 +106,7 @@ export default function CheckoutPage() {
       </div>
 
       {/* Secure Checkout Banner */}
-      <div className="flex items-center gap-2 text-sm text-green-400 bg-green-500/10 rounded-xl px-4 py-2.5 border border-green-500/20">
+      <div className="flex items-center gap-2 text-sm text-success-text bg-success/10 rounded-xl px-4 py-2.5 border border-success/20">
         <ShieldCheck size={18} weight="fill" />
         <span>256-bit SSL encryption. Your payment information is secure.</span>
       </div>
@@ -141,8 +141,8 @@ export default function CheckoutPage() {
             <ul className="space-y-2.5">
               {INCLUDED_FEATURES.map((feature) => (
                 <li key={feature} className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                    <Check size={12} weight="bold" className="text-green-400" />
+                  <div className="w-5 h-5 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0">
+                    <Check size={12} weight="bold" className="text-success-text" />
                   </div>
                   <span className="text-sm text-text-primary">{feature}</span>
                 </li>
