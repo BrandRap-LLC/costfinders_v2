@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import { PageHeader } from '@/components/patterns/pageHeader'
 
 export interface AuthenticatedDashboardLayoutProps {
   children: React.ReactNode
@@ -68,7 +69,10 @@ export function AuthenticatedDashboardLayout({
       {sidebar}
       {/* Main content with left padding for sidebar on desktop */}
       <main className="md:pl-16 pt-20 pb-20 md:pb-0 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto py-6">{children}</div>
+        <div className="max-w-6xl mx-auto py-6">
+          <PageHeader />
+          {children}
+        </div>
       </main>
     </div>
   )
