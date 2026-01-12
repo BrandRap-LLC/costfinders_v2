@@ -37,9 +37,44 @@ export const colors = {
   },
   semantic: {
     success: 'var(--color-success)',
+    successText: 'var(--color-success-text)',
     warning: 'var(--color-warning)',
+    warningText: 'var(--color-warning-text)',
     error: 'var(--color-error)',
+    errorText: 'var(--color-error-text)',
     info: 'var(--color-info)',
+    infoText: 'var(--color-info-text)',
+  },
+} as const
+
+/**
+ * Semantic color class patterns for consistent component styling.
+ * Use these instead of hardcoding class strings.
+ */
+export const semanticClasses = {
+  success: {
+    badge: 'bg-success/10 border-success/20 text-success-text',
+    text: 'text-success-text',
+    bg: 'bg-success',
+    bgSubtle: 'bg-success/10',
+  },
+  warning: {
+    badge: 'bg-warning/10 border-warning/20 text-warning-text',
+    text: 'text-warning-text',
+    bg: 'bg-warning',
+    bgSubtle: 'bg-warning/10',
+  },
+  error: {
+    badge: 'bg-error/10 border-error/20 text-error-text',
+    text: 'text-error-text',
+    bg: 'bg-error',
+    bgSubtle: 'bg-error/10',
+  },
+  info: {
+    badge: 'bg-info/10 border-info/20 text-info-text',
+    text: 'text-info-text',
+    bg: 'bg-info',
+    bgSubtle: 'bg-info/10',
   },
 } as const
 
@@ -98,3 +133,4 @@ export type BlurToken = typeof blur
 export type RadiusToken = typeof radius
 export type SpacingToken = typeof spacing
 export type TransitionToken = typeof transitions
+export type SemanticClassToken = typeof semanticClasses
