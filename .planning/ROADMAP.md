@@ -125,7 +125,7 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 22-01: TBD
+- [x] 22-01: Notification templates (NOTIFICATIONS.md)
 
 #### Phase 23: Documentation & Guidelines
 
@@ -274,7 +274,7 @@ Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 �
 | 19. Success & Confirmation States | v1.2 | 1/1 | Complete | 2026-01-12 |
 | 20. Empty States & Placeholders | v1.2 | 1/1 | Complete | 2026-01-12 |
 | 21. Form Validation Copy | v1.2 | 1/1 | Complete | 2026-01-12 |
-| 22. Notification Templates | v1.2 | 0/? | Not started | - |
+| 22. Notification Templates | v1.2 | 1/1 | Complete | 2026-01-12 |
 | 23. Documentation & Guidelines | v1.2 | 0/? | Not started | - |
 | 24. SEO Foundation | v1.3 | 3/3 | Complete | 2026-01-12 |
 | 25. State Pages | v1.3 | 0/1 | Planned | - |
