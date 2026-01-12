@@ -32,7 +32,7 @@ export function PricingBreakdown({ deal }: PricingBreakdownProps) {
           <span className="text-text-muted line-through">
             ${deal.originalPrice}
           </span>
-          <span className="text-green-400">Save ${savings}</span>
+          <span className="text-success-text">Save ${savings}</span>
         </div>
       </div>
 
@@ -85,8 +85,8 @@ export function PricingBreakdown({ deal }: PricingBreakdownProps) {
               </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-green-400">You save</span>
-              <span className="text-green-400 font-medium">
+              <span className="text-success-text">You save</span>
+              <span className="text-success-text font-medium">
                 ${exampleSavings.toLocaleString()}
               </span>
             </div>
