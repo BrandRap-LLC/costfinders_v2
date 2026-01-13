@@ -168,30 +168,30 @@ Plans:
 **Goal**: City-level pages with neighborhood breakdown and featured deals
 **Depends on**: Phase 25
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 26-01: TBD
+- [x] 26-01: City landing pages (route, metadata, neighborhood listings, sitemap update)
 
 #### Phase 27: Neighborhood Pages
 
 **Goal**: Neighborhood-level pages with all providers and deals
 **Depends on**: Phase 26
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 27-01: TBD
+- [x] 27-01: Neighborhood landing pages (route, metadata, deal listings, sitemap update)
 
 #### Phase 28: Provider Pages
 
 **Goal**: Individual medspa provider pages with SEO-friendly URLs
 **Depends on**: Phase 27
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 28-01: TBD
+- [x] 28-01: Provider landing pages (route, metadata, business profile, deal listings)
 
 #### Phase 29: Service Category Pages
 
@@ -278,9 +278,9 @@ Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 �
 | 23. Documentation & Guidelines | v1.2 | 1/1 | Complete | 2026-01-12 |
 | 24. SEO Foundation | v1.3 | 3/3 | Complete | 2026-01-12 |
 | 25. State Pages | v1.3 | 1/1 | Complete | 2026-01-12 |
-| 26. City Pages | v1.3 | 0/? | Not started | - |
-| 27. Neighborhood Pages | v1.3 | 0/? | Not started | - |
-| 28. Provider Pages | v1.3 | 0/? | Not started | - |
+| 26. City Pages | v1.3 | 1/1 | Complete | 2026-01-12 |
+| 27. Neighborhood Pages | v1.3 | 1/1 | Complete | 2026-01-12 |
+| 28. Provider Pages | v1.3 | 1/1 | Complete | 2026-01-13 |
 | 29. Service Category Pages | v1.3 | 0/? | Not started | - |
 | 30. Dynamic Sitemap | v1.3 | 0/? | Not started | - |
 | 31. Internal Linking | v1.3 | 0/? | Not started | - |
