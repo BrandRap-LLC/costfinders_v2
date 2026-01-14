@@ -117,12 +117,11 @@ Plans:
 
 **Goal**: Create reusable bottom sheet for mobile menus and forms
 **Depends on**: Phase 35
-**Research**: Likely (Radix primitives, mobile patterns)
-**Research topics**: Bottom sheet patterns, Radix Dialog mobile variant, gesture dismissal
-**Plans**: TBD
+**Research**: Complete (CSS-only approach, following Modal pattern)
+**Plans**: 1
 
 Plans:
-- [ ] 36-01: TBD
+- [ ] 36-01: Bottom Sheet Component
 
 #### Phase 37: Modal Mobile Optimization
 
