@@ -212,7 +212,7 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 30-01: TBD
+- [x] 30-01: Dynamic sitemap with deal pages, category-state combos, SITEMAP_CONFIG
 
 #### Phase 31: Internal Linking
 
@@ -282,7 +282,7 @@ Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 �
 | 27. Neighborhood Pages | v1.3 | 1/1 | Complete | 2026-01-12 |
 | 28. Provider Pages | v1.3 | 1/1 | Complete | 2026-01-13 |
 | 29. Service Category Pages | v1.3 | 1/1 | Complete | 2026-01-13 |
-| 30. Dynamic Sitemap | v1.3 | 0/? | Not started | - |
+| 30. Dynamic Sitemap | v1.3 | 1/1 | Complete | 2026-01-14 |
 | 31. Internal Linking | v1.3 | 0/? | Not started | - |
 | 32. Content Optimization | v1.3 | 0/? | Not started | - |
 | 33. Performance & CWV | v1.3 | 0/? | Not started | - |
