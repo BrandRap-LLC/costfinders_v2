@@ -14,6 +14,7 @@ export {
   buildOrganizationSchema,
   buildBreadcrumbSchema,
   buildLocalBusinessSchema,
+  buildFaqSchema,
 } from './schemas'
 
 // Re-export types for convenience

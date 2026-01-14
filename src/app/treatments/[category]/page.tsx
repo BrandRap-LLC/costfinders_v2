@@ -2,11 +2,13 @@ import { Storefront, Tag } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { BreadcrumbSchema } from '@/components/seo'
+import { BreadcrumbSchema, FaqSchema } from '@/components/seo'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
+import { Faq } from '@/components/ui/faq'
 import { RelatedLinks, type RelatedLink } from '@/components/ui/relatedLinks'
 import { DealCard } from '@/components/features/dealCard'
 import { buildCanonicalUrl, SITE_CONFIG } from '@/lib/seo/metadata'
+import { getCategoryFaqs } from '@/lib/seo/faq-content'
 import {
   getAllCategorySlugs,
   getCategoryWithStats,
@@ -101,6 +103,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     description: `Browse ${category.name.toLowerCase()} deals in ${s.name}`,
   }))
 
+  // Get FAQ content for this category
+  const faqItems = getCategoryFaqs(category.name)
+
   // Build breadcrumb items
   const breadcrumbItems = [
     { name: 'Home', url: SITE_CONFIG.url },
@@ -115,6 +120,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <>
       {/* Structured Data */}
       <BreadcrumbSchema items={breadcrumbItems} />
+      <FaqSchema items={faqItems} />
 
       <main className="pt-20 pb-20 md:pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -206,6 +212,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               title={`Find ${category.name} by Location`}
               links={stateLinks}
             />
+          </section>
+
+          {/* FAQ Section */}
+          <section className="mt-12">
+            <Faq items={faqItems} />
           </section>
 
           {/* Back Navigation */}

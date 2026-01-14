@@ -1,8 +1,9 @@
 import { MapPin, Storefront, Tag } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { BreadcrumbSchema } from '@/components/seo'
+import { BreadcrumbSchema, FaqSchema } from '@/components/seo'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
+import { Faq } from '@/components/ui/faq'
 import { RelatedLinks, type RelatedLink } from '@/components/ui/relatedLinks'
 import { CityCard } from '@/components/features/cityCard'
 import {
@@ -10,6 +11,7 @@ import {
   generateStateMetadata,
   SITE_CONFIG,
 } from '@/lib/seo/metadata'
+import { getStateFaqs } from '@/lib/seo/faq-content'
 import {
   getStates,
   getStateBySlug,
@@ -75,6 +77,9 @@ export default async function StatePage({ params }: StatePageProps) {
     description: `${cat.description.substring(0, 50)}...`,
   }))
 
+  // Get FAQ content for this state
+  const faqItems = getStateFaqs(state.name)
+
   // Build breadcrumb items
   const breadcrumbItems = [
     { name: 'Home', url: SITE_CONFIG.url },
@@ -85,6 +90,7 @@ export default async function StatePage({ params }: StatePageProps) {
     <>
       {/* Structured Data */}
       <BreadcrumbSchema items={breadcrumbItems} />
+      <FaqSchema items={faqItems} />
 
       <main className="pt-20 pb-20 md:pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -192,6 +198,11 @@ export default async function StatePage({ params }: StatePageProps) {
               title="Popular Treatments"
               links={categoryLinks}
             />
+          </section>
+
+          {/* FAQ Section */}
+          <section className="mt-12">
+            <Faq items={faqItems} />
           </section>
         </div>
       </main>

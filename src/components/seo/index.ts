@@ -3,3 +3,4 @@
 export { WebsiteSchema } from './websiteSchema'
 export { OrganizationSchema } from './organizationSchema'
 export { BreadcrumbSchema } from './breadcrumbSchema'
+export { FaqSchema } from './faqSchema'

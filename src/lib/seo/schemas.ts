@@ -4,6 +4,7 @@ import type {
   Organization,
   BreadcrumbList,
   ListItem,
+  FAQPage,
 } from 'schema-dts'
 
 import { SITE_CONFIG } from './metadata'
@@ -122,5 +123,27 @@ export function buildLocalBusinessSchema(provider: {
         reviewCount: provider.rating.count,
       },
     }),
+  }
+}
+
+/**
+ * Build FAQPage structured data schema
+ * @param items - Array of FAQ items with question and answer
+ * @returns JSON-LD FAQPage object
+ */
+export function buildFaqSchema(
+  items: Array<{ question: string; answer: string }>
+): WithContext<FAQPage> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
   }
 }

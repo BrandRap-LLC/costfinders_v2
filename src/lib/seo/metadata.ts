@@ -98,3 +98,131 @@ export function generateStateMetadata(
     },
   }
 }
+
+/**
+ * Generate metadata for neighborhood pages with keyword-optimized titles
+ * @param neighborhood - Neighborhood name
+ * @param city - City name
+ * @param state - State name
+ * @param stats - Stats object with dealCount and businessCount
+ * @returns Next.js Metadata object
+ */
+export function generateNeighborhoodMetadata(
+  neighborhood: string,
+  city: string,
+  state: string,
+  stats: { dealCount: number; businessCount: number }
+): Metadata {
+  const title = `${neighborhood} Medspa Deals in ${city}, ${state} | Compare ${stats.dealCount} Offers`
+  const description = `Compare ${stats.dealCount} medspa deals from ${stats.businessCount} verified providers in ${neighborhood}, ${city}. Save up to 50% on Botox, fillers, and aesthetic treatments. Book today!`
+  const stateSlug = state.toLowerCase().replace(/\s+/g, '-')
+  const citySlug = city.toLowerCase().replace(/\s+/g, '-')
+  const neighborhoodSlug = neighborhood.toLowerCase().replace(/\s+/g, '-')
+  const canonicalPath = `/${stateSlug}/${citySlug}/${neighborhoodSlug}`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: buildCanonicalUrl(canonicalPath),
+      siteName: SITE_CONFIG.name,
+      type: 'website',
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      site: SITE_CONFIG.social.twitter,
+    },
+    alternates: {
+      canonical: buildCanonicalUrl(canonicalPath),
+    },
+  }
+}
+
+/**
+ * Generate metadata for provider pages
+ * @param provider - Provider/business name
+ * @param city - City name
+ * @param state - State name
+ * @param stats - Stats object with dealCount and services array
+ * @returns Next.js Metadata object
+ */
+export function generateProviderMetadata(
+  provider: string,
+  city: string,
+  state: string,
+  stats: { dealCount: number; services?: string[] }
+): Metadata {
+  const title = `${provider} - Medspa Deals in ${city}, ${state}`
+  const servicesText = stats.services?.slice(0, 3).join(', ') || 'aesthetic treatments'
+  const description = `Explore ${stats.dealCount} exclusive deals from ${provider} in ${city}, ${state}. Save on ${servicesText} and more. Compare prices and book today!`
+  const stateSlug = state.toLowerCase().replace(/\s+/g, '-')
+  const citySlug = city.toLowerCase().replace(/\s+/g, '-')
+  const providerSlug = provider.toLowerCase().replace(/\s+/g, '-')
+  const canonicalPath = `/${stateSlug}/${citySlug}/providers/${providerSlug}`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: buildCanonicalUrl(canonicalPath),
+      siteName: SITE_CONFIG.name,
+      type: 'website',
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      site: SITE_CONFIG.social.twitter,
+    },
+    alternates: {
+      canonical: buildCanonicalUrl(canonicalPath),
+    },
+  }
+}
+
+/**
+ * Generate metadata for category/treatment pages with keyword-optimized titles
+ * @param category - Category name (e.g., "Botox")
+ * @param stats - Stats object with dealCount, businessCount, and optional minPrice
+ * @returns Next.js Metadata object
+ */
+export function generateCategoryMetadata(
+  category: string,
+  stats: { dealCount: number; businessCount: number; minPrice?: number }
+): Metadata {
+  const priceText = stats.minPrice ? ` from $${stats.minPrice}` : ''
+  const title = `${category} Treatments: ${stats.dealCount} Deals${priceText} | CostFinders`
+  const description = `Compare ${stats.dealCount} ${category.toLowerCase()} deals from ${stats.businessCount} verified providers. Save on treatments${priceText}. Find the best prices and book today!`
+  const categorySlug = category.toLowerCase().replace(/\s+/g, '-')
+  const canonicalPath = `/treatments/${categorySlug}`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: buildCanonicalUrl(canonicalPath),
+      siteName: SITE_CONFIG.name,
+      type: 'website',
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      site: SITE_CONFIG.social.twitter,
+    },
+    alternates: {
+      canonical: buildCanonicalUrl(canonicalPath),
+    },
+  }
+}
