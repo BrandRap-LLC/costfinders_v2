@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { BreadcrumbSchema } from '@/components/seo'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
+import { RelatedLinks, type RelatedLink } from '@/components/ui/relatedLinks'
 import { CityCard } from '@/components/features/cityCard'
 import {
   buildCanonicalUrl,
@@ -20,6 +21,7 @@ import {
   getDealCountForCity,
   getBusinessCountForCity,
 } from '@/lib/mock-data/locations'
+import { getCategories } from '@/lib/mock-data/categories'
 
 // Generate static params for all supported states
 export async function generateStaticParams() {
@@ -64,6 +66,14 @@ export default async function StatePage({ params }: StatePageProps) {
 
   const cities = getCitiesForState(state.code)
   const stats = getStateStats(state.code)
+
+  // Build category links for related treatments section
+  const categories = getCategories()
+  const categoryLinks: RelatedLink[] = categories.slice(0, 6).map((cat) => ({
+    label: `${cat.name} in ${state.name}`,
+    href: `/treatments/${cat.slug}`,
+    description: `${cat.description.substring(0, 50)}...`,
+  }))
 
   // Build breadcrumb items
   const breadcrumbItems = [
@@ -174,6 +184,14 @@ export default async function StatePage({ params }: StatePageProps) {
                 </p>
               </div>
             )}
+          </section>
+
+          {/* Related Treatments */}
+          <section className="mt-12">
+            <RelatedLinks
+              title="Popular Treatments"
+              links={categoryLinks}
+            />
           </section>
         </div>
       </main>
