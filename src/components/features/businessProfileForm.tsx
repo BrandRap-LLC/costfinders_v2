@@ -342,7 +342,7 @@ export function BusinessProfileForm({ businessId }: BusinessProfileFormProps) {
             required
           />
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="City"
               name="city"
@@ -396,7 +396,7 @@ export function BusinessProfileForm({ businessId }: BusinessProfileFormProps) {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Zip code"
               name="zipCode"
