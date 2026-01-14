@@ -160,3 +160,23 @@ export function getCategoryWithStats(slug: string): (Category & { businessCount:
     businessCount: Math.ceil(category.dealCount / 2), // Rough estimate: ~2 deals per business
   }
 }
+
+/**
+ * Get all category-state combinations for sitemap
+ * Returns array of {categorySlug, stateSlug} for future /treatments/[category]/[state] pages
+ */
+export function getCategoryStateComboSlugs(): Array<{ categorySlug: string; stateSlug: string }> {
+  // Import supported states - avoid circular dependency by importing inline
+  const supportedStates = ['california', 'texas', 'new-york', 'florida']
+
+  const activeCategorySlugs = categories.filter((c) => c.isActive).map((c) => c.slug)
+  const combos: Array<{ categorySlug: string; stateSlug: string }> = []
+
+  for (const categorySlug of activeCategorySlugs) {
+    for (const stateSlug of supportedStates) {
+      combos.push({ categorySlug, stateSlug })
+    }
+  }
+
+  return combos
+}

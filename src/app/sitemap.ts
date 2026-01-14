@@ -3,7 +3,7 @@ import { getStates } from '@/lib/mock-data/states'
 import { getAllCitiesWithState } from '@/lib/mock-data/cities'
 import { getAllNeighborhoodsWithCityAndState } from '@/lib/mock-data/neighborhoods'
 import { getAllProvidersWithCityAndState } from '@/lib/mock-data/providers'
-import { getAllCategorySlugs } from '@/lib/mock-data/categories'
+import { getAllCategorySlugs, getCategoryStateComboSlugs } from '@/lib/mock-data/categories'
 import { getAllDealIds } from '@/lib/mock-data/deals'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -85,6 +85,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
+  // Category-state combination pages (e.g., /treatments/botox/california)
+  // Note: Actual pages at /treatments/[category]/[state] are planned for Phase 31+
+  // Adding to sitemap now prepares SEO foundation for "Botox in California" style landing pages
+  const categoryStateCombos = getCategoryStateComboSlugs()
+  const categoryStatePages: MetadataRoute.Sitemap = categoryStateCombos.map(
+    ({ categorySlug, stateSlug }) => ({
+      url: `${baseUrl}/treatments/${categorySlug}/${stateSlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.65,
+    })
+  )
+
   return [
     ...staticPages,
     ...statePages,
@@ -93,5 +106,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...providerPages,
     ...categoryPages,
     ...dealPages,
+    ...categoryStatePages,
   ]
 }
