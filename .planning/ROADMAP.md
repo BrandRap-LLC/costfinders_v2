@@ -103,10 +103,15 @@ Plans:
 **Goal**: Add card-based mobile variants for tables missing them
 **Depends on**: Phase 34
 **Research**: Unlikely (existing BillingHistory pattern)
-**Plans**: TBD
+**Plans**: 6
 
 Plans:
-- [ ] 35-01: TBD
+- [ ] 35-01: DealList Mobile Cards
+- [ ] 35-02: DealPerformanceTable Mobile Cards
+- [ ] 35-03: Boost History Mobile Cards
+- [ ] 35-04: Business Activity Mobile Cards
+- [ ] 35-05: Credit Packages Mobile Cards
+- [ ] 35-06: Activity Log Mobile Cards
 
 #### Phase 36: Bottom Sheet Component
 
@@ -212,7 +217,7 @@ Phases execute in numeric order: 1 → ... → 33 → 34 → 35 → 36 → 37 �
 | 32. Content Optimization | v1.3 | 1/1 | Complete | 2026-01-14 |
 | 33. Performance & CWV | v1.3 | 1/1 | Complete | 2026-01-14 |
 | 34. Mobile Form Optimization | v1.4 | 0/? | Not started | - |
-| 35. Mobile Table Alternatives | v1.4 | 0/? | Not started | - |
+| 35. Mobile Table Alternatives | v1.4 | 0/6 | Planned | - |
 | 36. Bottom Sheet Component | v1.4 | 0/? | Not started | - |
 | 37. Modal Mobile Optimization | v1.4 | 0/? | Not started | - |
 | 38. Touch Gesture Foundation | v1.4 | 0/? | Not started | - |
