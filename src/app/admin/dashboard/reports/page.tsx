@@ -229,33 +229,56 @@ export default function AdminReportsPage() {
         <div>
           <h2 className="text-lg font-semibold text-text-primary mb-4">Business Activity</h2>
           <Card variant="glass" padding="none">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-glass-border">
-                  <th className="text-left px-4 py-3 text-sm font-medium text-text-secondary">Metric</th>
-                  <th className="text-right px-4 py-3 text-sm font-medium text-text-secondary">This Period</th>
-                  <th className="text-right px-4 py-3 text-sm font-medium text-text-secondary">Change</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-glass-border">
-                {businessActivity.map((row) => (
-                  <tr key={row.metric} className="hover:bg-glass-bg-hover transition-colors">
-                    <td className="px-4 py-3 text-sm text-text-primary font-medium">{row.metric}</td>
-                    <td className="px-4 py-3 text-sm text-text-primary text-right">{row.thisPeriod}</td>
-                    <td className="px-4 py-3 text-right">
-                      <span
-                        className={`inline-flex items-center gap-1 text-sm font-medium ${
-                          row.positive ? 'text-success-text' : 'text-error-text'
-                        }`}
-                      >
-                        {row.positive ? <ArrowUp size={14} weight="bold" /> : <TrendDown size={14} weight="bold" />}
-                        {row.change}
-                      </span>
-                    </td>
+            {/* Desktop Table View */}
+            <div className="hidden sm:block">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-glass-border">
+                    <th className="text-left px-4 py-3 text-sm font-medium text-text-secondary">Metric</th>
+                    <th className="text-right px-4 py-3 text-sm font-medium text-text-secondary">This Period</th>
+                    <th className="text-right px-4 py-3 text-sm font-medium text-text-secondary">Change</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-glass-border">
+                  {businessActivity.map((row) => (
+                    <tr key={row.metric} className="hover:bg-glass-bg-hover transition-colors">
+                      <td className="px-4 py-3 text-sm text-text-primary font-medium">{row.metric}</td>
+                      <td className="px-4 py-3 text-sm text-text-primary text-right">{row.thisPeriod}</td>
+                      <td className="px-4 py-3 text-right">
+                        <span
+                          className={`inline-flex items-center gap-1 text-sm font-medium ${
+                            row.positive ? 'text-success-text' : 'text-error-text'
+                          }`}
+                        >
+                          {row.positive ? <ArrowUp size={14} weight="bold" /> : <TrendDown size={14} weight="bold" />}
+                          {row.change}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Card View */}
+            <div className="sm:hidden divide-y divide-glass-border">
+              {businessActivity.map((row) => (
+                <div key={row.metric} className="p-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-text-primary">{row.metric}</p>
+                    <p className="text-lg font-semibold text-text-primary mt-0.5">{row.thisPeriod}</p>
+                  </div>
+                  <span
+                    className={`inline-flex items-center gap-1 text-sm font-medium ${
+                      row.positive ? 'text-success-text' : 'text-error-text'
+                    }`}
+                  >
+                    {row.positive ? <ArrowUp size={14} weight="bold" /> : <TrendDown size={14} weight="bold" />}
+                    {row.change}
+                  </span>
+                </div>
+              ))}
+            </div>
           </Card>
         </div>
 

@@ -273,7 +273,9 @@ export default function MonetizationSettingsPage() {
         {/* Credit Packages Table */}
         <div>
           <h4 className="text-sm font-medium text-text-secondary mb-4">Credit Packages</h4>
-          <div className="overflow-x-auto">
+
+          {/* Desktop Table View */}
+          <div className="hidden sm:block overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-glass-border">
@@ -323,6 +325,50 @@ export default function MonetizationSettingsPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="sm:hidden space-y-3">
+            {initialSettings.creditPackages.map((pkg) => (
+              <div
+                key={pkg.id}
+                className="p-4 bg-glass-bg rounded-xl border border-glass-border"
+              >
+                {/* Header: Package Name + Best Value Badge */}
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <p className="font-medium text-text-primary">{pkg.credits} Credits</p>
+                    <p className="text-sm text-text-tertiary mt-0.5">{pkg.credits} leads</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {pkg.isBestValue && (
+                      <Badge variant="brand" size="sm">
+                        Best Value
+                      </Badge>
+                    )}
+                    <Badge variant="success" size="sm">
+                      {pkg.savingsPercent}% off
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Footer: Price + Per Lead */}
+                <div className="flex items-center justify-between pt-3 border-t border-glass-border">
+                  <div>
+                    <p className="text-xs text-text-tertiary">Total</p>
+                    <p className="text-lg font-semibold text-text-primary">
+                      ${pkg.price.toFixed(2)}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs text-text-tertiary">Per Lead</p>
+                    <p className="text-sm font-medium text-text-secondary">
+                      ${pkg.pricePerLead.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Card>

@@ -446,7 +446,8 @@ export default function DataManagementPage() {
 
         {/* Activity Table */}
         <Card variant="glass" padding="none">
-          <div className="overflow-x-auto">
+          {/* Desktop Table View */}
+          <div className="hidden sm:block overflow-x-auto">
             <table className="w-full min-w-[600px]">
               <thead>
                 <tr className="border-b border-glass-border">
@@ -497,6 +498,33 @@ export default function DataManagementPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="sm:hidden divide-y divide-glass-border">
+            {filteredActivities.map((activity) => (
+              <div key={activity.id} className="p-4">
+                {/* Header: Timestamp + Status */}
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-text-tertiary">
+                    {formatRelativeTime(activity.timestamp)}
+                  </span>
+                  <Badge variant={getStatusBadgeVariant(activity.status)} size="sm">
+                    <span className="flex items-center gap-1.5">
+                      {getStatusIcon(activity.status)}
+                      {activity.status.charAt(0).toUpperCase() + activity.status.slice(1)}
+                    </span>
+                  </Badge>
+                </div>
+                {/* Action + Admin */}
+                <p className="text-sm font-medium text-text-primary">{activity.action}</p>
+                <p className="text-xs text-text-secondary mt-0.5">by {activity.admin}</p>
+                {/* Details */}
+                <p className="text-sm text-text-secondary mt-2 pt-2 border-t border-glass-border">
+                  {activity.details}
+                </p>
+              </div>
+            ))}
           </div>
         </Card>
       </div>

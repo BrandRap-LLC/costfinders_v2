@@ -155,7 +155,8 @@ function DealPerformanceTable() {
         </Tooltip>
       </div>
 
-      <div className="overflow-x-auto">
+      {/* Desktop Table View */}
+      <div className="hidden sm:block overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-b border-glass-border">
@@ -234,6 +235,61 @@ function DealPerformanceTable() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="sm:hidden space-y-3">
+        {dealPerformanceData.map((deal) => (
+          <div
+            key={deal.id}
+            className="p-4 bg-glass-bg rounded-xl border border-glass-border"
+          >
+            <div className="flex items-start justify-between mb-2">
+              <div className="flex items-center gap-2 min-w-0">
+                {deal.id === topDeal.id && (
+                  <Crown size={16} weight="fill" className="text-yellow-500 flex-shrink-0" />
+                )}
+                <span className="text-sm font-medium text-text-primary truncate">
+                  {deal.title}
+                </span>
+              </div>
+              <Badge
+                variant={
+                  deal.status === 'active'
+                    ? 'success'
+                    : deal.status === 'paused'
+                      ? 'warning'
+                      : 'default'
+                }
+                size="sm"
+                className="flex-shrink-0 ml-2"
+              >
+                {deal.status.charAt(0).toUpperCase() + deal.status.slice(1)}
+              </Badge>
+            </div>
+            <div className="flex items-center justify-between mt-3 pt-3 border-t border-glass-border">
+              <div className="flex items-center gap-4 text-sm">
+                <div className="text-text-secondary">
+                  <span className="text-text-tertiary">Views:</span> {deal.views.toLocaleString()}
+                </div>
+                <div className="text-text-secondary">
+                  <span className="text-text-tertiary">Claims:</span> {deal.claims}
+                </div>
+              </div>
+              <span
+                className={`text-sm font-medium ${
+                  deal.conversionRate >= 4
+                    ? 'text-success'
+                    : deal.conversionRate >= 3
+                      ? 'text-text-primary'
+                      : 'text-text-muted'
+                }`}
+              >
+                {deal.conversionRate}%
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </Card>
   )

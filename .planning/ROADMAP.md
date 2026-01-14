@@ -98,20 +98,20 @@ See [v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md) for full details.
 Plans:
 - [x] 34-01: Responsive grid fixes for all form components
 
-#### Phase 35: Mobile Table Alternatives
+#### Phase 35: Mobile Table Alternatives ✓
 
 **Goal**: Add card-based mobile variants for tables missing them
 **Depends on**: Phase 34
 **Research**: Unlikely (existing BillingHistory pattern)
-**Plans**: 6
+**Plans**: 6/6 complete
 
 Plans:
-- [ ] 35-01: DealList Mobile Cards
-- [ ] 35-02: DealPerformanceTable Mobile Cards
-- [ ] 35-03: Boost History Mobile Cards
-- [ ] 35-04: Business Activity Mobile Cards
-- [ ] 35-05: Credit Packages Mobile Cards
-- [ ] 35-06: Activity Log Mobile Cards
+- [x] 35-01: DealList Mobile Cards
+- [x] 35-02: DealPerformanceTable Mobile Cards
+- [x] 35-03: Boost History Mobile Cards
+- [x] 35-04: Business Activity Mobile Cards
+- [x] 35-05: Credit Packages Mobile Cards
+- [x] 35-06: Activity Log Mobile Cards
 
 #### Phase 36: Bottom Sheet Component
 
@@ -217,7 +217,7 @@ Phases execute in numeric order: 1 → ... → 33 → 34 → 35 → 36 → 37 �
 | 32. Content Optimization | v1.3 | 1/1 | Complete | 2026-01-14 |
 | 33. Performance & CWV | v1.3 | 1/1 | Complete | 2026-01-14 |
 | 34. Mobile Form Optimization | v1.4 | 1/1 | Complete | 2026-01-14 |
-| 35. Mobile Table Alternatives | v1.4 | 0/6 | Not started | - |
+| 35. Mobile Table Alternatives | v1.4 | 6/6 | Complete | 2026-01-14 |
 | 36. Bottom Sheet Component | v1.4 | 0/? | Not started | - |
 | 37. Modal Mobile Optimization | v1.4 | 0/? | Not started | - |
 | 38. Touch Gesture Foundation | v1.4 | 0/? | Not started | - |

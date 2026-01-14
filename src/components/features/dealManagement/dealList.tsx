@@ -233,7 +233,8 @@ export function DealList({ businessId }: DealListProps) {
         </Card>
       ) : (
         <Card variant="glass" padding="none" className="overflow-hidden">
-          <div className="overflow-x-auto">
+          {/* Desktop Table View */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-glass-border">
@@ -379,6 +380,106 @@ export function DealList({ businessId }: DealListProps) {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="md:hidden divide-y divide-glass-border">
+            {filteredDeals.map((deal) => (
+              <div key={deal.id} className="p-4">
+                {/* Header: Title + Status */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Tag size={20} weight="fill" className="text-brand-primary" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-medium text-text-primary truncate">{deal.title}</p>
+                      <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                        <Badge variant="default" size="sm">
+                          {categoryLabels[deal.category]}
+                        </Badge>
+                        {deal.isFeatured && (
+                          <Badge variant="brand" size="sm">
+                            Featured
+                          </Badge>
+                        )}
+                        {getActiveBoostForDeal(deal.id) && (
+                          <Badge variant="info" size="sm">
+                            <Rocket size={10} weight="fill" className="mr-0.5" />
+                            Boosted
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <Badge variant={deal.isActive ? 'success' : 'warning'} size="sm" className="flex-shrink-0">
+                    {deal.isActive ? 'Active' : 'Paused'}
+                  </Badge>
+                </div>
+
+                {/* Middle: Price + Performance */}
+                <div className="flex items-center justify-between mb-3 py-3 border-t border-b border-glass-border">
+                  <div>
+                    <p className="font-medium text-brand-primary">
+                      {formatPrice(deal.dealPrice, deal.unit)}
+                    </p>
+                    <p className="text-sm text-text-tertiary line-through">
+                      {formatPrice(deal.originalPrice, deal.unit)}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-1 text-text-secondary">
+                      <Users size={16} weight="fill" />
+                      <span>{deal.claimCount}</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-text-secondary">
+                      <Eye size={16} weight="fill" />
+                      <span>{deal.viewCount.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer: Actions */}
+                <div className="flex items-center justify-end gap-2">
+                  {isDealEligibleForSponsorship(deal) && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleBoostClick(deal)}
+                      title="Boost this deal"
+                      className="text-brand-primary hover:text-brand-secondary hover:bg-brand-primary/10"
+                    >
+                      <Rocket size={18} weight="light" />
+                    </Button>
+                  )}
+                  <Link href={`/business/dashboard/deals/${deal.id}/edit`}>
+                    <Button variant="ghost" size="sm">
+                      <PencilSimple size={18} weight="light" />
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleToggleStatus(deal)}
+                    title={deal.isActive ? 'Pause deal' : 'Activate deal'}
+                  >
+                    {deal.isActive ? (
+                      <Pause size={18} weight="light" />
+                    ) : (
+                      <Play size={18} weight="light" />
+                    )}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDeleteClick(deal)}
+                    className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                  >
+                    <Trash size={18} weight="light" />
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         </Card>
       )}

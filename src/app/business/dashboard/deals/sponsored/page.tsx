@@ -281,7 +281,8 @@ export default function SponsoredDealsPage() {
           </Card>
         ) : (
           <Card variant="glass" padding="none" className="overflow-hidden">
-            <div className="overflow-x-auto">
+            {/* Desktop Table View */}
+            <div className="hidden sm:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-glass-border">
@@ -311,6 +312,58 @@ export default function SponsoredDealsPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* Mobile Card View */}
+            <div className="sm:hidden divide-y divide-glass-border">
+              {boostHistoryData.map((history) => {
+                const startDate = new Date(history.startDate).toLocaleDateString()
+                const endDate = new Date(history.endDate).toLocaleDateString()
+                return (
+                  <div key={history.id} className="p-4">
+                    {/* Header: Deal Title + Status */}
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="min-w-0">
+                        <p className="font-medium text-text-primary truncate">
+                          {history.dealTitle}
+                        </p>
+                        <Badge variant="default" size="sm" className="mt-1">
+                          {history.boostName}
+                        </Badge>
+                      </div>
+                      <Badge
+                        variant={history.status === 'completed' ? 'success' : 'warning'}
+                        size="sm"
+                        className="flex-shrink-0"
+                      >
+                        {history.status === 'completed' ? (
+                          <CheckCircle size={12} weight="fill" className="mr-1" />
+                        ) : (
+                          <XCircle size={12} weight="fill" className="mr-1" />
+                        )}
+                        {history.status.charAt(0).toUpperCase() + history.status.slice(1)}
+                      </Badge>
+                    </div>
+
+                    {/* Middle: Duration */}
+                    <p className="text-sm text-text-secondary mb-3">
+                      {startDate} - {endDate}
+                    </p>
+
+                    {/* Footer: Impressions + Cost */}
+                    <div className="flex items-center justify-between pt-3 border-t border-glass-border">
+                      <span className="flex items-center gap-1 text-sm text-text-secondary">
+                        <Eye size={14} weight="fill" />
+                        {history.impressionsDelivered.toLocaleString()} impressions
+                      </span>
+                      <span className="flex items-center gap-1 text-sm text-text-primary font-medium">
+                        <CurrencyDollar size={14} weight="fill" />
+                        {history.totalCost}
+                      </span>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </Card>
         )}
