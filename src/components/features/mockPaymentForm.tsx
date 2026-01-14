@@ -148,7 +148,7 @@ export function MockPaymentForm({ amount, planName, onSubmit, isLoading = false 
       </div>
 
       {/* Expiry and CVC Row */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Input
           label="Expiration"
           value={expiry}
@@ -196,7 +196,7 @@ export function MockPaymentForm({ amount, planName, onSubmit, isLoading = false 
 
       {/* State and ZIP (for US) */}
       {country === 'US' && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-1.5">
               State

@@ -378,7 +378,7 @@ export function DealForm({ businessId, existingDeal, mode }: DealFormProps) {
               error={errors.unit}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label="Min Units"
                 name="minUnits"
