@@ -96,7 +96,7 @@ export function ClaimDealModal({
   const today = new Date().toISOString().split('T')[0]
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose}>
+    <Modal isOpen={isOpen} onClose={handleClose} mobileVariant="fullscreen">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">

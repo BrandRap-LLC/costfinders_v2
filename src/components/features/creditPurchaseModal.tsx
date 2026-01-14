@@ -53,7 +53,7 @@ export function CreditPurchaseModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} title="Purchase Credits" size="md">
+    <Modal isOpen={isOpen} onClose={handleClose} title="Purchase Credits" size="md" mobileVariant="fullscreen">
       {state === 'confirm' && (
         <div className="space-y-6">
           {/* Package Summary */}
