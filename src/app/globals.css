@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+:root {
+  /* Typography */
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  /* Colors - Base (Blue Slate Theme from Style Guide) */
+  --color-bg-primary: #4c5578;
+  --color-bg-secondary: #3d4563;
+  --color-bg-tertiary: #2a2d3a;
+
+  /* Colors - Surface (for lighter sections) */
+  --color-surface-light: #e2e8f0;
+  --color-surface-medium: #94a3b8;
+
+  /* Colors - Glass */
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --color-glass-border: rgba(255, 255, 255, 0.10);
+  --color-glass-border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Colors - Text */
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-text-tertiary: #8b92a6;
+  --color-text-muted: #4c5578;
+
+  /* Colors - Brand (Pink/Magenta Accent from Style Guide) */
+  --color-brand-primary: #ff0080;
+  --color-brand-secondary: #ff4081;
+  --color-brand-tertiary: #ff6b9d;
+
+  /* Colors - Semantic */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Shadows - Grounded/Product Photography Style
+   * Simulates overhead light source
+   * Concentrated at bottom center, fades outward
+   * Creates "resting on surface" feeling */
+  --shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 8px 10px -2px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-lg:
+    0 8px 12px -2px rgba(0, 0, 0, 0.25),
+    0 16px 24px -4px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-glass:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-elevated:
+    0 12px 20px -4px rgba(0, 0, 0, 0.3),
+    0 24px 40px -8px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+
+  /* Product Photography Shadows (named per style guide) */
+  --shadow-product-overhead:
+    0 6px 12px -2px rgba(0, 0, 0, 0.2),
+    0 12px 20px -4px rgba(0, 0, 0, 0.15);
+  --shadow-photographic-ground:
+    0 8px 16px -4px rgba(0, 0, 0, 0.25),
+    0 16px 32px -8px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-natural-bottom:
+    0 10px 24px -6px rgba(0, 0, 0, 0.3),
+    0 20px 40px -12px rgba(0, 0, 0, 0.2);
+
+  /* Blur */
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 16px;
+  --blur-xl: 24px;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Transitions (ease-in-out per style guide) */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+
+  /* Legacy support */
+  --background: var(--color-bg-primary);
+  --foreground: var(--color-text-primary);
+}
+
+@theme inline {
+  /* Background colors (Blue Slate Theme) */
+  --color-bg-primary: #4c5578;
+  --color-bg-secondary: #3d4563;
+  --color-bg-tertiary: #2a2d3a;
+
+  /* Surface colors (for lighter sections) */
+  --color-surface-light: #e2e8f0;
+  --color-surface-medium: #94a3b8;
+
+  /* Glass colors */
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --color-glass-border: rgba(255, 255, 255, 0.10);
+  --color-glass-border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Brand colors (Pink/Magenta Accent) */
+  --color-brand-primary: #ff0080;
+  --color-brand-secondary: #ff4081;
+  --color-brand-tertiary: #ff6b9d;
+
+  /* Text colors */
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-text-tertiary: #8b92a6;
+  --color-text-muted: #4c5578;
+
+  /* Semantic colors */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Semantic text variants (lighter for dark backgrounds) */
+  --color-success-text: #4ade80;
+  --color-warning-text: #fbbf24;
+  --color-error-text: #f87171;
+  --color-info-text: #60a5fa;
+
+  /* Product Photography Shadows */
+  --shadow-product-overhead:
+    0 6px 12px -2px rgba(0, 0, 0, 0.2),
+    0 12px 20px -4px rgba(0, 0, 0, 0.15);
+  --shadow-photographic-ground:
+    0 8px 16px -4px rgba(0, 0, 0, 0.25),
+    0 16px 32px -8px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-natural-bottom:
+    0 10px 24px -6px rgba(0, 0, 0, 0.3),
+    0 20px 40px -12px rgba(0, 0, 0, 0.2);
+
+  /* Legacy */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+}
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
