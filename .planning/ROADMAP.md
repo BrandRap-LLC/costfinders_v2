@@ -230,10 +230,10 @@ Plans:
 **Goal**: Page titles, descriptions, heading hierarchy, content blocks
 **Depends on**: Phase 31
 **Research**: Unlikely (internal patterns)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 32-01: TBD
+- [ ] 32-01: Enhanced metadata helpers, FAQ component, FAQ integration (State + Category pages)
 
 #### Phase 33: Performance & Core Web Vitals
 
@@ -285,5 +285,5 @@ Phases execute in numeric order: 1 → ... → 23 → 24 → 25 → 26 → 27 �
 | 29. Service Category Pages | v1.3 | 1/1 | Complete | 2026-01-13 |
 | 30. Dynamic Sitemap | v1.3 | 1/1 | Complete | 2026-01-14 |
 | 31. Internal Linking | v1.3 | 0/2 | Planned | - |
-| 32. Content Optimization | v1.3 | 0/? | Not started | - |
+| 32. Content Optimization | v1.3 | 0/1 | Planned | - |
 | 33. Performance & CWV | v1.3 | 0/? | Not started | - |

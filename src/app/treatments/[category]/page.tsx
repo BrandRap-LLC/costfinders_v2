@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { BreadcrumbSchema } from '@/components/seo'
+import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { DealCard } from '@/components/features/dealCard'
 import { buildCanonicalUrl, SITE_CONFIG } from '@/lib/seo/metadata'
 import {
@@ -110,26 +111,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {/* Hero Section */}
           <section className="mb-12">
             {/* Breadcrumb Navigation */}
-            <nav className="mb-6 text-sm text-text-tertiary">
-              <ol className="flex items-center gap-2 flex-wrap">
-                <li>
-                  <Link href="/" className="hover:text-text-primary transition-colors">
-                    Home
-                  </Link>
-                </li>
-                <li>/</li>
-                <li>
-                  <Link
-                    href="/treatments"
-                    className="hover:text-text-primary transition-colors"
-                  >
-                    Treatments
-                  </Link>
-                </li>
-                <li>/</li>
-                <li className="text-text-primary">{category.name}</li>
-              </ol>
-            </nav>
+            <Breadcrumb
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Treatments', href: '/treatments' },
+                { label: category.name },
+              ]}
+            />
 
             {/* Hero Content */}
             <div className="bg-glass-bg backdrop-blur-lg border border-glass-border rounded-2xl p-8 shadow-glass">
