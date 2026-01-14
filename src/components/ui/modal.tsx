@@ -9,6 +9,7 @@ interface ModalProps {
   title?: string
   children: ReactNode
   size?: 'sm' | 'md' | 'lg' | 'xl'
+  mobileVariant?: 'default' | 'fullscreen' | 'bottom'
 }
 
 const sizes = {
@@ -18,13 +19,34 @@ const sizes = {
   xl: 'max-w-xl',
 }
 
+// Mobile variant classes for responsive behavior
+const mobileVariants = {
+  default: {
+    container: 'flex items-start justify-center pt-24 px-4 pb-4',
+    modal: '',
+    animation: 'animate-in fade-in zoom-in-95 duration-200',
+  },
+  fullscreen: {
+    container: 'flex items-start justify-center md:pt-24 px-0 md:px-4 pb-0 md:pb-4',
+    modal: 'inset-0 md:inset-auto w-full h-full md:w-auto md:h-auto rounded-none md:rounded-2xl',
+    animation: 'animate-in fade-in md:zoom-in-95 duration-200',
+  },
+  bottom: {
+    container: 'flex items-end md:items-start justify-center md:pt-24 px-0 md:px-4 pb-0 md:pb-4',
+    modal: 'w-full md:w-auto rounded-t-2xl md:rounded-2xl max-h-[90vh] md:max-h-none',
+    animation: 'animate-in slide-in-from-bottom md:fade-in md:zoom-in-95 duration-200',
+  },
+}
+
 export function Modal({
   isOpen,
   onClose,
   title,
   children,
   size = 'md',
+  mobileVariant = 'default',
 }: ModalProps) {
+  const variant = mobileVariants[mobileVariant]
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -46,7 +68,7 @@ export function Modal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 pb-4 overflow-y-auto">
+    <div className={`fixed inset-0 z-50 ${variant.container} overflow-y-auto`}>
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
@@ -62,11 +84,12 @@ export function Modal({
       {/* Modal */}
       <div
         className={`
-          relative w-full ${sizes[size]}
+          relative w-full ${mobileVariant === 'default' ? sizes[size] : `md:${sizes[size]}`}
           bg-bg-secondary backdrop-blur-xl
           border border-glass-border
-          rounded-2xl shadow-elevated
-          animate-in fade-in zoom-in-95 duration-200
+          ${mobileVariant === 'default' ? 'rounded-2xl' : ''} shadow-elevated
+          ${variant.modal}
+          ${variant.animation}
         `}
         role="dialog"
         aria-modal="true"
